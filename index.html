@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="A personal map of Austin's best restaurants." />
+  <title>Austin Eats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────────────────── */
+    :root {
+      --bg:      #0f0d0a;
+      --surface: #1a1714;
+      --card:    #201c18;
+      --border:  #2d2923;
+      --accent:  #f0a830;
+      --red:     #c94a2d;
+      --text:    #f2ece2;
+      --muted:   #8a7e6e;
+      --tag:     #252118;
+      --green:   #68b868;
+      --hdr:     52px;
+      --bar:     44px;
+      --nav:     58px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; height: 100dvh; }
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { opacity: .4; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: 'DM Sans', sans-serif; }
+    select option { background: var(--card); }
+
+    /* ─── HEADER ─────────────────────────────────────────────────────────── */
+    #hdr {
+      height: var(--hdr);
+      display: flex; align-items: center; gap: 10px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0; z-index: 100;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--accent); white-space: nowrap; line-height: 1; }
+    .logo em { font-style: italic; color: var(--text); }
+    #search {
+      flex: 1; min-width: 60px;
+      background: var(--tag); border: 1px solid var(--border); border-radius: 20px;
+      color: var(--text); font-size: 14px; padding: 7px 14px;
+      outline: none; transition: border-color .15s;
+    }
+    #search::placeholder { color: var(--muted); }
+    #search:focus { border-color: var(--accent); }
+    .hdr-btn {
+      width: 34px; height: 34px; flex-shrink: 0;
+      background: var(--tag); border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text); cursor: pointer; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+    }
+    .hdr-btn:hover { border-color: var(--accent); }
+    .hdr-btn.on { background: rgba(240,168,48,.12); border-color: var(--accent); }
+    .add-btn {
+      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .05em;
+      padding: 7px 14px; border-radius: 20px; border: none;
+      background: var(--accent); color: #0f0d0a;
+      cursor: pointer; font-weight: 500; text-transform: uppercase;
+      flex-shrink: 0; white-space: nowrap; transition: opacity .15s;
+    }
+    .add-btn:hover { opacity: .85; }
+    #saving { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); white-space: nowrap; }
+
+    /* ─── FILTER BAR ─────────────────────────────────────────────────────── */
+    #bar {
+      height: var(--bar);
+      display: flex; align-items: center; gap: 6px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0; overflow-x: auto;
+    }
+    #bar::-webkit-scrollbar { height: 0; }
+    .pill {
+      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .06em;
+      padding: 5px 13px; border-radius: 20px; white-space: nowrap;
+      border: 1px solid var(--border); background: transparent; color: var(--muted);
+      cursor: pointer; text-transform: uppercase; transition: all .15s;
+    }
+    .pill.on { border-color: var(--accent); background: rgba(240,168,48,.1); color: var(--accent); }
+    #cnt { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); margin-left: auto; flex-shrink: 0; }
+
+    /* ─── MAIN ───────────────────────────────────────────────────────────── */
+    #main { flex: 1; display: flex; overflow: hidden; position: relative; }
+
+    /* ─── SIDEBAR ────────────────────────────────────────────────────────── */
+    #sidebar { width: 298px; border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; }
+    @media (max-width: 767px) { #sidebar { display: none; } }
+    #list { flex: 1; overflow-y: auto; }
+    .li {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 16px;
+      border-left: 3px solid transparent;
+      border-bottom: 1px solid rgba(45,41,35,.6);
+      cursor: pointer; transition: all .15s;
+    }
+    .li:hover { background: var(--surface); }
+    .li.on { border-left-color: var(--accent); background: rgba(240,168,48,.06); }
+    .li-thumb { width: 50px; height: 50px; border-radius: 9px; overflow: hidden; flex-shrink: 0; background: var(--tag); }
+    .li-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .li-name { font-weight: 500; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .li-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .li-stars { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); flex-shrink: 0; }
+    .empty { padding: 48px 20px; text-align: center; color: var(--muted); font-size: 14px; line-height: 1.8; }
+
+    /* ─── MAP ────────────────────────────────────────────────────────────── */
+    #mc { flex: 1; position: relative; overflow: hidden; }
+    #map { width: 100%; height: 100%; }
+    .leaflet-tile-pane { filter: brightness(.72) saturate(.6) sepia(.2); }
+    .leaflet-control-zoom { border: 1px solid var(--border) !important; }
+    .leaflet-control-zoom a { background: var(--surface) !important; color: var(--text) !important; border-bottom: 1px solid var(--border) !important; }
+    .leaflet-control-attribution { font-size: 9px !important; background: rgba(26,23,20,.75) !important; color: var(--muted) !important; }
+    .leaflet-control-attribution a { color: var(--accent) !important; }
+    #badge {
+      position: absolute; top: 14px; left: 14px;
+      background: rgba(26,23,20,.92); border: 1px solid var(--border);
+      border-radius: 12px; padding: 9px 14px;
+      backdrop-filter: blur(8px); z-index: 500; pointer-events: none;
+    }
+    #badge .bl { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 2px; }
+    #badge .bn { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--accent); line-height: 1; }
+    .pin-wrap { display: flex; flex-direction: column; align-items: center; }
+    .pin-lbl { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; white-space: nowrap; box-shadow: 0 2px 12px rgba(0,0,0,.5); margin-bottom: 3px; }
+    .pin-dot { width: 11px; height: 11px; border-radius: 50%; }
+
+    /* ─── DETAIL PANEL ───────────────────────────────────────────────────── */
+    #dp { display: none; }
+    #dp.show-d {
+      display: block;
+      position: absolute; bottom: 18px; right: 18px;
+      width: 355px; max-height: calc(100% - 36px); overflow-y: auto;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; box-shadow: 0 8px 48px rgba(0,0,0,.75);
+      animation: up .22s ease; z-index: 40;
+    }
+    #dp.show-m {
+      display: block;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 84vh; overflow-y: auto;
+      background: var(--card); border-top: 1px solid var(--border);
+      border-radius: 22px 22px 0 0; box-shadow: 0 -8px 48px rgba(0,0,0,.75);
+      animation: up .28s cubic-bezier(.32,.72,0,1); z-index: 70;
+    }
+    .dp-drag { display: flex; justify-content: center; padding: 10px 0 4px; }
+    .dp-drag-bar { width: 36px; height: 4px; border-radius: 2px; background: var(--border); }
+    .dp-x {
+      position: absolute; top: 12px; right: 12px;
+      width: 30px; height: 30px; background: rgba(0,0,0,.45);
+      border: none; border-radius: 50%; color: var(--text);
+      cursor: pointer; font-size: 14px;
+      display: flex; align-items: center; justify-content: center; z-index: 2;
+    }
+    .dp-photo { width: 100%; height: 140px; overflow: hidden; position: relative; background: var(--tag); }
+    .dp-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .dp-photo-grd { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 35%, rgba(15,13,10,.88) 100%); }
+    .dp-photo-ttl { position: absolute; bottom: 12px; left: 14px; font-family: 'Playfair Display', serif; font-size: 20px; color: #fff; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,.7); line-height: 1.2; }
+    .dp-body { padding: 15px 18px 22px; }
+    .dp-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .dp-cuisine { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; }
+    .spill {
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      padding: 3px 10px; border-radius: 20px;
+      cursor: pointer; text-transform: uppercase; letter-spacing: .06em; transition: all .15s; border: 1px solid;
+    }
+    .spill.vis { border-color: var(--green); background: rgba(104,184,104,.1); color: var(--green); }
+    .spill.wl  { border-color: var(--border); background: var(--tag); color: var(--muted); }
+    .dp-name { font-family: 'Playfair Display', serif; font-size: 22px; line-height: 1.2; margin-bottom: 4px; }
+    .dp-addr { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+    .stars-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .s { font-size: 18px; cursor: pointer; line-height: 1; transition: color .1s, transform .1s; }
+    .s:hover { transform: scale(1.2); }
+    .s-lbl { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+    .mets { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+    .met { background: var(--tag); border: 1px solid var(--border); border-radius: 10px; padding: 10px 8px; text-align: center; }
+    .met-l { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 4px; }
+    .met-v { font-size: 15px; font-weight: 500; display: flex; justify-content: center; align-items: center; gap: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+    .tag { font-family: 'DM Mono', monospace; font-size: 10px; background: var(--tag); border: 1px solid var(--border); border-radius: 20px; padding: 3px 9px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .info-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .ir { display: flex; gap: 10px; font-size: 13px; align-items: flex-start; }
+    .ir a { color: var(--accent); word-break: break-all; }
+    .notes-sec { margin-bottom: 16px; }
+    .notes-lbl { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; }
+    .notes-txt { font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.6; cursor: pointer; padding: 8px 10px; border-radius: 8px; border: 1px dashed var(--border); min-height: 38px; }
+    .notes-txt.ph { color: var(--border); font-style: normal; }
+    .acts { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-p { flex: 1; min-width: 90px; padding: 11px 8px; border-radius: 11px; background: var(--accent); border: none; color: #0f0d0a; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; text-transform: uppercase; letter-spacing: .05em; cursor: pointer; transition: opacity .15s; }
+    .btn-p:hover { opacity: .85; }
+    .btn-s { flex: 1; min-width: 90px; padding: 11px 8px; border-radius: 11px; border: 1px solid var(--border); background: var(--tag); color: var(--text); font-family: 'DM Mono', monospace; font-size: 11px; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 5px; text-transform: uppercase; letter-spacing: .05em; cursor: pointer; transition: all .15s; }
+    .btn-s:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-d { color: var(--red) !important; border-color: rgba(201,74,45,.3) !important; }
+    .btn-d:hover { border-color: var(--red) !important; background: rgba(201,74,45,.08) !important; color: var(--red) !important; }
+    .adm-row { display: flex; gap: 6px; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--border); }
+
+    /* ─── MODAL ──────────────────────────────────────────────────────────── */
+    #mov { position: fixed; inset: 0; background: rgba(0,0,0,.78); z-index: 200; display: none; align-items: flex-end; justify-content: center; animation: fi .2s; }
+    #mov.show { display: flex; }
+    #mod { background: var(--card); border-radius: 22px 22px 0 0; width: 100%; max-width: 520px; max-height: 93vh; overflow-y: auto; padding: 0 22px 32px; animation: up .25s cubic-bezier(.32,.72,0,1); }
+    .m-handle { display: flex; justify-content: center; padding: 12px 0 16px; }
+    .m-handle-bar { width: 36px; height: 4px; border-radius: 2px; background: var(--border); }
+    .m-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--accent); margin-bottom: 20px; }
+    .fg { margin-bottom: 14px; }
+    .fl { font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); display: block; margin-bottom: 5px; }
+    .fh { font-size: 11px; color: var(--border); margin-top: 3px; }
+    .fi, .fs, .ft { width: 100%; background: var(--tag); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 9px 12px; outline: none; transition: border-color .15s; }
+    .fi:focus, .fs:focus, .ft:focus { border-color: var(--accent); }
+    .ft { resize: vertical; min-height: 70px; }
+    .fr2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .fr3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .sp { display: flex; gap: 6px; }
+    .sp span { font-size: 22px; cursor: pointer; color: var(--border); transition: color .1s, transform .1s; line-height: 1; }
+    .sp span:hover, .sp span.on { color: var(--accent); }
+    .sp span:hover { transform: scale(1.2); }
+    .m-btns { display: flex; gap: 10px; margin-top: 20px; }
+    .m-cancel { flex: 1; padding: 12px; border-radius: 11px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; transition: all .15s; }
+    .m-cancel:hover { border-color: var(--muted); color: var(--text); }
+    .m-save { flex: 2; padding: 12px; border-radius: 11px; border: none; background: var(--accent); color: #0f0d0a; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; transition: opacity .15s; }
+    .m-save:hover { opacity: .85; }
+
+    /* ─── PIN DIALOG ─────────────────────────────────────────────────────── */
+    #pov { position: fixed; inset: 0; background: rgba(0,0,0,.82); z-index: 300; display: none; align-items: center; justify-content: center; padding: 20px; }
+    #pov.show { display: flex; }
+    #pdlg { background: var(--card); border: 1px solid var(--border); border-radius: 20px; width: 100%; max-width: 340px; padding: 28px; animation: up .2s ease; }
+    .p-ttl { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--accent); margin-bottom: 8px; }
+    .p-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
+    .p-inp { width: 100%; background: var(--tag); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'DM Mono', monospace; font-size: 20px; padding: 12px; outline: none; text-align: center; letter-spacing: .3em; transition: border-color .15s; }
+    .p-inp:focus { border-color: var(--accent); }
+    .p-err { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--red); margin-top: 6px; min-height: 16px; }
+
+    /* ─── MOBILE LIST OVERLAY ────────────────────────────────────────────── */
+    #lov {
+      display: none; position: fixed; z-index: 60;
+      background: var(--bg);
+      top: calc(var(--hdr) + var(--bar));
+      left: 0; right: 0;
+      bottom: var(--nav);
+      overflow-y: auto;
+    }
+    #lov.show { display: block; }
+
+    /* ─── MOBILE NAV ─────────────────────────────────────────────────────── */
+    #nav { display: none; height: var(--nav); border-top: 1px solid var(--border); background: var(--surface); flex-shrink: 0; }
+    @media (max-width: 767px) { #nav { display: flex; } }
+    .nb { flex: 1; padding: 8px 0 10px; background: transparent; border: none; color: var(--muted); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; transition: color .15s; }
+    .nb.on { color: var(--accent); }
+    .nb-i { font-size: 20px; line-height: 1; }
+    .nb-l { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: .06em; }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────────────────── */
+    @keyframes up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fi  { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="logo">Austin <em>Eats</em></div>
+  <input id="search" type="search" placeholder="Search restaurants…" autocomplete="off" />
+  <span id="saving" style="display:none">saving…</span>
+  <button id="admin-btn" class="hdr-btn" title="Admin">🔒</button>
+</header>
+
+<!-- FILTER BAR -->
+<div id="bar">
+  <button class="pill on" data-f="all">All Spots</button>
+  <button class="pill" data-f="visited">✓ Visited</button>
+  <button class="pill" data-f="wishlist">♡ Wishlist</button>
+  <span id="cnt"></span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <div id="sidebar"><div id="list"></div></div>
+  <div id="mc">
+    <div id="map"></div>
+    <div id="badge"><div class="bl">Pinned</div><div class="bn" id="bn">0</div></div>
+    <div id="dp"></div>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<nav id="nav">
+  <button class="nb on" id="nb-map" onclick="A.setView('map')"><span class="nb-i">🗺</span><span class="nb-l">Map</span></button>
+  <button class="nb" id="nb-list" onclick="A.setView('list')"><span class="nb-i">📋</span><span class="nb-l">List</span></button>
+  <button class="nb" id="nb-add" onclick="A.openModal()"><span class="nb-i">＋</span><span class="nb-l">Add</span></button>
+</nav>
+
+<!-- MOBILE LIST OVERLAY -->
+<div id="lov"></div>
+
+<!-- EDIT MODAL -->
+<div id="mov" onclick="if(event.target===this)A.closeModal()">
+  <div id="mod"></div>
+</div>
+
+<!-- PIN DIALOG -->
+<div id="pov" onclick="if(event.target===this)A.closePinDlg()">
+  <div id="pdlg"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+'use strict';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONSTANTS
+// ─────────────────────────────────────────────────────────────────────────────
+const LS_DATA = 'ae-data';
+const LS_PIN  = 'ae-pin';
+const SS_ADM  = 'ae-admin';
+const PRICE   = ['$','$$','$$$','$$$$'];
+const VIBES   = ['Romantic','Family','Casual','Business','Lively','Cozy','Healthy','Trendy'];
+const VI      = {Romantic:'🕯',Family:'👨‍👩‍👧',Casual:'🍻',Business:'💼',Lively:'🎉',Cozy:'☕',Healthy:'🌿',Trendy:'✨'};
+const FP      = id => `https://picsum.photos/seed/ae${id}/600/300`;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// APP
+// ─────────────────────────────────────────────────────────────────────────────
+const A = {
+
+  // ── State ──────────────────────────────────────────────────────────────────
+  data:     [],
+  sel:      null,
+  filter:   'all',
+  search:   '',
+  admin:    false,
+  view:     'map',       // mobile only
+  lmap:     null,
+  markers:  {},
+  eid:      null,        // editing id
+  sp:       0,           // star pick
+  stimer:   null,
+  ntarea:   null,        // notes textarea ref
+
+  // ── Init ───────────────────────────────────────────────────────────────────
+  async init() {
+    this.admin = sessionStorage.getItem(SS_ADM) === '1';
+
+    // Load order: localStorage → data.json → hardcoded seed
+    const raw = localStorage.getItem(LS_DATA);
+    if (raw) {
+      try { this.data = JSON.parse(raw); } catch { this.data = []; }
+    }
+    if (!this.data.length) {
+      try {
+        const r = await fetch('data.json');
+        if (r.ok) this.data = await r.json();
+      } catch {}
+    }
+    if (!this.data.length) this.data = SEED;
+    if (!localStorage.getItem(LS_DATA)) this._ls();
+
+    this._initMap();
+    this._bindEvents();
+    this.render();
+  },
+
+  // ── Map ────────────────────────────────────────────────────────────────────
+  _initMap() {
+    this.lmap = L.map('map', { center:[30.267,-97.743], zoom:13, zoomControl:true });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'© <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom:19,
+    }).addTo(this.lmap);
+  },
+
+  _drawMarkers() {
+    Object.values(this.markers).forEach(m => this.lmap.removeLayer(m));
+    this.markers = {};
+    const list = this._filtered();
+    list.forEach(r => {
+      const act = r.id === this.sel;
+      const ic = L.divIcon({
+        className: '',
+        html: `<div class="pin-wrap" style="transform:scale(${act?1.2:1});transition:transform .2s">
+          <div class="pin-lbl" style="background:${act?'#c94a2d':'#f0a830'};color:${act?'#fff':'#0f0d0a'}">${r.name}</div>
+          <div class="pin-dot" style="background:${act?'#c94a2d':'#f0a830'};box-shadow:0 0 0 3px ${act?'rgba(201,74,45,.35)':'rgba(240,168,48,.3)'}"></div>
+        </div>`,
+        iconSize:[0,0], iconAnchor:[0,0],
+      });
+      const m = L.marker([r.lat, r.lng], { icon:ic }).addTo(this.lmap);
+      m.on('click', () => this.select(r.id));
+      this.markers[r.id] = m;
+    });
+    document.getElementById('bn').textContent = list.length;
+  },
+
+  _panTo(r) {
+    if (this.lmap && r) this.lmap.panTo([r.lat, r.lng], { animate:true, duration:.5 });
+  },
+
+  // ── Data ───────────────────────────────────────────────────────────────────
+  _filtered() {
+    return this.data.filter(r => {
+      if (this.filter === 'visited'  && r.status !== 'visited')  return false;
+      if (this.filter === 'wishlist' && r.status !== 'wishlist') return false;
+      if (this.search) {
+        const q = this.search.toLowerCase();
+        if (!r.name.toLowerCase().includes(q) && !r.cuisine.toLowerCase().includes(q)) return false;
+      }
+      return true;
+    });
+  },
+
+  _ls() {
+    localStorage.setItem(LS_DATA, JSON.stringify(this.data));
+    const el = document.getElementById('saving');
+    el.style.display = 'inline';
+    clearTimeout(this.stimer);
+    this.stimer = setTimeout(() => el.style.display = 'none', 1400);
+  },
+
+  _update(next) { this.data = next; this._ls(); },
+
+  exportJSON() {
+    const b = new Blob([JSON.stringify(this.data, null, 2)], { type:'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'data.json'; a.click();
+  },
+
+  // ── Admin ──────────────────────────────────────────────────────────────────
+  toggleAdmin() {
+    if (this.admin) {
+      this.admin = false; sessionStorage.removeItem(SS_ADM); this.renderHeader();
+    } else { this.openPinDlg(); }
+  },
+
+  openPinDlg() {
+    const has = !!localStorage.getItem(LS_PIN);
+    document.getElementById('pdlg').innerHTML = `
+      <div class="p-ttl">${has ? 'Admin Login' : 'Set Admin PIN'}</div>
+      <div class="p-sub">${has ? 'Enter your PIN to unlock editing.' : 'Choose a PIN to protect editing on this device.'}</div>
+      <input class="p-inp" id="p1" type="password" maxlength="12" placeholder="••••" autocomplete="off" />
+      ${!has ? `<input class="p-inp" id="p2" type="password" maxlength="12" placeholder="Confirm PIN" autocomplete="off" style="margin-top:8px"/>` : ''}
+      <div class="p-err" id="perr"></div>
+      <div class="m-btns">
+        <button class="m-cancel" onclick="A.closePinDlg()">Cancel</button>
+        <button class="m-save" onclick="A.submitPin()">${has ? 'Unlock' : 'Set PIN'}</button>
+      </div>`;
+    document.getElementById('pov').classList.add('show');
+    setTimeout(() => document.getElementById('p1')?.focus(), 80);
+    document.getElementById('p1').onkeydown = e => { if (e.key==='Enter') this.submitPin(); };
+  },
+
+  submitPin() {
+    const pin = document.getElementById('p1')?.value;
+    const has = !!localStorage.getItem(LS_PIN);
+    const err = document.getElementById('perr');
+    if (!has) {
+      const c = document.getElementById('p2')?.value;
+      if (!pin || pin.length < 2) { err.textContent = 'PIN too short.'; return; }
+      if (pin !== c) { err.textContent = "PINs don't match."; return; }
+      localStorage.setItem(LS_PIN, btoa(pin));
+      this.admin = true; sessionStorage.setItem(SS_ADM,'1');
+      this.closePinDlg(); this.renderHeader();
+    } else {
+      if (pin === atob(localStorage.getItem(LS_PIN))) {
+        this.admin = true; sessionStorage.setItem(SS_ADM,'1');
+        this.closePinDlg(); this.renderHeader();
+      } else {
+        err.textContent = 'Incorrect PIN.';
+        document.getElementById('p1').value = ''; document.getElementById('p1').focus();
+      }
+    }
+  },
+
+  closePinDlg() { document.getElementById('pov').classList.remove('show'); },
+
+  // ── Selection ──────────────────────────────────────────────────────────────
+  select(id) {
+    this.sel = this.sel === id ? null : id;
+    if (this.sel) {
+      const r = this.data.find(x => x.id === this.sel);
+      this._panTo(r);
+      if (window.innerWidth < 768) { this.view = 'map'; this._syncMobileView(); }
+    }
+    this.renderDetail(); this._drawMarkers(); this.renderList();
+  },
+
+  // ── Quick actions ──────────────────────────────────────────────────────────
+  rate(id, v)   { this._update(this.data.map(r => r.id===id ? {...r,rating:v} : r)); this.renderDetail(); },
+  toggleSt(id)  { this._update(this.data.map(r => r.id===id ? {...r,status:r.status==='visited'?'wishlist':'visited'} : r)); this.renderDetail(); this.renderList(); this.renderMobList(); },
+  delRest(id)   { if (!confirm('Delete this restaurant?')) return; this._update(this.data.filter(r=>r.id!==id)); this.sel=null; this.render(); },
+
+  openNotes(id) {
+    const r = this.data.find(x=>x.id===id); if (!r) return;
+    const el = document.querySelector('#dp .notes-txt'); if (!el) return;
+    const ta = document.createElement('textarea');
+    ta.className = 'fi ft'; ta.value = r.notes||''; ta.style.marginBottom='8px';
+    this.ntarea = ta;
+    const row = document.createElement('div');
+    row.style.cssText='display:flex;gap:8px;margin-bottom:12px';
+    row.innerHTML=`<button class="m-cancel" style="flex:1;padding:8px" onclick="A.renderDetail()">Cancel</button><button class="m-save" style="flex:2;padding:8px" onclick="A.saveNotes(${id})">Save</button>`;
+    el.replaceWith(ta); ta.after(row); ta.focus();
+  },
+
+  saveNotes(id) {
+    const notes = this.ntarea?.value||'';
+    this._update(this.data.map(r=>r.id===id?{...r,notes}:r));
+    this.renderDetail();
+  },
+
+  // ── Render ─────────────────────────────────────────────────────────────────
+  render() { this.renderHeader(); this.renderList(); this.renderMobList(); this._drawMarkers(); this.renderDetail(); },
+
+  renderHeader() {
+    const btn = document.getElementById('admin-btn');
+    btn.textContent = this.admin ? '🔓' : '🔒';
+    btn.classList.toggle('on', this.admin);
+    document.getElementById('add-btn')?.remove();
+    document.getElementById('exp-btn')?.remove();
+    if (this.admin) {
+      const ab = document.createElement('button'); ab.id='add-btn'; ab.className='add-btn'; ab.textContent='+ Add'; ab.onclick=()=>this.openModal(); btn.before(ab);
+      const eb = document.createElement('button'); eb.id='exp-btn'; eb.className='hdr-btn'; eb.title='Export data.json'; eb.textContent='💾'; eb.onclick=()=>this.exportJSON(); ab.before(eb);
+    }
+  },
+
+  _liHTML(r) {
+    const thumb = r.photo||FP(r.id);
+    return `<div class="li${this.sel===r.id?' on':''}" onclick="A.select(${r.id})">
+      <div class="li-thumb"><img src="${thumb}" alt="${r.name}" onerror="this.src='${FP(r.id)}'" loading="lazy"/></div>
+      <div style="flex:1;min-width:0">
+        <div class="li-name">${r.name}</div>
+        <div class="li-sub">${r.cuisine} · ${r.price} · ${r.status==='wishlist'?'♡ Wishlist':'✓ Visited'}</div>
+      </div>
+      <div class="li-stars">${r.rating?'★'.repeat(r.rating):'—'}</div>
+    </div>`;
+  },
+
+  renderList() {
+    const f = this._filtered();
+    document.getElementById('cnt').textContent = `${f.length} spot${f.length!==1?'s':''}`;
+    document.getElementById('list').innerHTML = f.length
+      ? f.map(r=>this._liHTML(r)).join('')
+      : `<div class="empty"><div style="font-size:32px;margin-bottom:8px">🍽</div>No spots match.</div>`;
+  },
+
+  renderMobList() {
+    const f = this._filtered();
+    document.getElementById('lov').innerHTML = f.length
+      ? f.map(r=>`<div class="li${this.sel===r.id?' on':''}" onclick="A.select(${r.id});A.setView('map')">
+          <div class="li-thumb"><img src="${r.photo||FP(r.id)}" alt="${r.name}" onerror="this.src='${FP(r.id)}'" loading="lazy"/></div>
+          <div style="flex:1;min-width:0"><div class="li-name">${r.name}</div><div class="li-sub">${r.cuisine} · ${r.price} · ${r.status==='wishlist'?'♡ Wishlist':'✓ Visited'}</div></div>
+          <div class="li-stars">${r.rating?'★'.repeat(r.rating):'—'}</div>
+        </div>`).join('')
+      : `<div class="empty"><div style="font-size:32px;margin-bottom:8px">🍽</div>No spots match.</div>`;
+  },
+
+  renderDetail() {
+    const dp = document.getElementById('dp');
+    if (!this.sel) { dp.className=''; dp.innerHTML=''; return; }
+    const r = this.data.find(x=>x.id===this.sel); if (!r) { dp.className=''; return; }
+    const mob = window.innerWidth < 768;
+    dp.className = mob ? 'show-m' : 'show-d';
+
+    const stHtml = [1,2,3,4,5].map(i=>
+      `<span class="s" style="color:${i<=r.rating?'var(--accent)':'var(--border)'}" onclick="A.rate(${r.id},${i})">${i<=r.rating?'★':'☆'}</span>`
+    ).join('');
+    const maps = `https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}`;
+    const tags = (r.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+    const adm  = this.admin ? `<div class="adm-row"><button class="btn-s" onclick="A.openModal(${r.id})" style="flex:1">✏️ Edit</button><button class="btn-s btn-d" onclick="A.delRest(${r.id})" style="flex:1">🗑 Delete</button></div>` : '';
+
+    dp.innerHTML = `
+      ${mob?'<div class="dp-drag"><div class="dp-drag-bar"></div></div>':''}
+      <button class="dp-x" onclick="A.select(${r.id})">✕</button>
+      <div class="dp-photo">
+        <img src="${r.photo||FP(r.id)}" alt="${r.name}" onerror="this.src='${FP(r.id)}'"/>
+        <div class="dp-photo-grd"></div>
+        <div class="dp-photo-ttl">${r.name}</div>
+      </div>
+      <div class="dp-body">
+        <div class="dp-top">
+          <span class="dp-cuisine">${r.cuisine}</span>
+          <button class="spill ${r.status==='visited'?'vis':'wl'}" onclick="A.toggleSt(${r.id})">${r.status==='visited'?'✓ Visited':'♡ Wishlist'}</button>
+        </div>
+        <div class="dp-name">${r.name}</div>
+        <div class="dp-addr">📍 ${r.address}</div>
+        <div class="stars-row">${stHtml}<span class="s-lbl">${r.rating?`${r.rating}/5`:'Tap to rate'}</span></div>
+        <div class="mets">
+          <div class="met"><div class="met-l">Price</div><div class="met-v" style="color:var(--green)">${r.price}</div></div>
+          <div class="met"><div class="met-l">Quality</div><div class="met-v" style="color:var(--accent)">${r.quality?`${r.quality}<span style="font-size:10px;color:var(--muted)">/10</span>`:'—'}</div></div>
+          <div class="met"><div class="met-l">Vibe</div><div class="met-v">${VI[r.vibe]||'🍽'}</div></div>
+        </div>
+        ${tags?`<div class="tags-row">${tags}</div>`:''}
+        <div class="info-rows">
+          ${r.hours?`<div class="ir"><span>🕐</span><span style="color:var(--muted)">${r.hours}</span></div>`:''}
+          ${r.website?`<div class="ir"><span>🌐</span><a href="${r.website}" target="_blank" rel="noopener">${r.website.replace(/https?:\/\//,'')}</a></div>`:''}
+        </div>
+        <div class="notes-sec">
+          <div class="notes-lbl">Your Notes</div>
+          <div class="notes-txt${r.notes?'':' ph'}" onclick="A.openNotes(${r.id})">${r.notes||'Tap to add notes…'}</div>
+        </div>
+        <div class="acts">
+          <a class="btn-p" href="${maps}" target="_blank" rel="noopener">🗺 Directions</a>
+          ${r.resy?`<a class="btn-s" href="${r.resy}" target="_blank" rel="noopener">📅 Reserve</a>`:''}
+          ${r.website?`<a class="btn-s" href="${r.website}" target="_blank" rel="noopener">🌐 Website</a>`:''}
+        </div>
+        ${adm}
+      </div>`;
+  },
+
+  // ── Modal ──────────────────────────────────────────────────────────────────
+  openModal(id) {
+    if (!this.admin) return;
+    const r = id ? this.data.find(x=>x.id===id) : null;
+    this.eid = id||null; this.sp = r?.rating||0;
+    const opt = (arr,v) => arr.map(o=>`<option${o===v?' selected':''}>${o}</option>`).join('');
+    document.getElementById('mod').innerHTML = `
+      <div class="m-handle"><div class="m-handle-bar"></div></div>
+      <div class="m-title">${r?'Edit':'Add'} Restaurant</div>
+      <div class="fg"><label class="fl">Photo URL <span style="color:var(--border)">(optional — leave blank for auto)</span></label><input class="fi" id="f-photo" value="${r?.photo||''}" placeholder="https://…"/></div>
+      <div class="fr2">
+        <div><label class="fl">Name *</label><input class="fi" id="f-name" value="${r?.name||''}" placeholder="e.g. Uchi"/></div>
+        <div><label class="fl">Cuisine</label><input class="fi" id="f-cuisine" value="${r?.cuisine||''}" placeholder="e.g. Japanese"/></div>
+      </div>
+      <div class="fg"><label class="fl">Address</label><input class="fi" id="f-addr" value="${r?.address||''}" placeholder="Street, Austin TX"/></div>
+      <div class="fr3">
+        <div><label class="fl">Price</label><select class="fs" id="f-price">${opt(PRICE,r?.price||'$$')}</select></div>
+        <div><label class="fl">Status</label><select class="fs" id="f-status"><option value="visited"${r?.status==='visited'?' selected':''}>Visited</option><option value="wishlist"${r?.status==='wishlist'?' selected':''}>Wishlist</option></select></div>
+        <div><label class="fl">Emoji</label><input class="fi" id="f-emoji" value="${r?.emoji||'🍽'}" maxlength="4" style="text-align:center;font-size:18px;padding:7px 4px"/></div>
+      </div>
+      <div class="fg"><label class="fl">Rating</label><div class="sp" id="sp">${[1,2,3,4,5].map(i=>`<span class="${i<=this.sp?'on':''}" onclick="A.setSp(${i})">${i<=this.sp?'★':'☆'}</span>`).join('')}</div></div>
+      <div class="fr2">
+        <div><label class="fl">Quality (1–10)</label><input class="fi" id="f-qual" type="number" min="1" max="10" value="${r?.quality||''}" placeholder="8"/></div>
+        <div><label class="fl">Vibe</label><select class="fs" id="f-vibe">${opt(VIBES,r?.vibe||'Casual')}</select></div>
+      </div>
+      <div class="fg"><label class="fl">Hours</label><input class="fi" id="f-hours" value="${r?.hours||''}" placeholder="Mon–Sat 5–10pm"/></div>
+      <div class="fr2">
+        <div><label class="fl">Website URL</label><input class="fi" id="f-web" value="${r?.website||''}" placeholder="https://…"/></div>
+        <div><label class="fl">Reservation URL</label><input class="fi" id="f-resy" value="${r?.resy||''}" placeholder="Resy / OpenTable…"/></div>
+      </div>
+      <div class="fg"><label class="fl">Tags (comma-separated)</label><input class="fi" id="f-tags" value="${(r?.tags||[]).join(', ')}" placeholder="sushi, date night"/></div>
+      <div class="fg">
+        <label class="fl">Coordinates <span style="color:var(--border)">(right-click on Google Maps → "What's here")</span></label>
+        <div class="fr2" style="margin-bottom:0"><input class="fi" id="f-lat" type="number" step="any" value="${r?.lat||30.267}" placeholder="Latitude"/><input class="fi" id="f-lng" type="number" step="any" value="${r?.lng||-97.743}" placeholder="Longitude"/></div>
+      </div>
+      <div class="fg"><label class="fl">Notes</label><textarea class="fi ft" id="f-notes">${r?.notes||''}</textarea></div>
+      <div class="m-btns">
+        <button class="m-cancel" onclick="A.closeModal()">Cancel</button>
+        <button class="m-save" onclick="A.saveModal()">📍 ${r?'Save Changes':'Pin to Map'}</button>
+      </div>`;
+    document.getElementById('mov').classList.add('show');
+  },
+
+  setSp(v) {
+    this.sp = v;
+    document.querySelectorAll('#sp span').forEach((s,i) => { s.classList.toggle('on',i<v); s.textContent=i<v?'★':'☆'; });
+  },
+
+  closeModal() { document.getElementById('mov').classList.remove('show'); this.eid=null; },
+
+  saveModal() {
+    const name = document.getElementById('f-name')?.value.trim();
+    if (!name) { alert('Name is required'); return; }
+    const id = this.eid || Date.now();
+    const obj = {
+      id, name,
+      cuisine: document.getElementById('f-cuisine').value||'Restaurant',
+      emoji:   document.getElementById('f-emoji').value||'🍽',
+      address: document.getElementById('f-addr').value||'Austin, TX',
+      price:   document.getElementById('f-price').value,
+      status:  document.getElementById('f-status').value,
+      rating:  this.sp,
+      quality: parseInt(document.getElementById('f-qual').value)||0,
+      vibe:    document.getElementById('f-vibe').value,
+      hours:   document.getElementById('f-hours').value,
+      website: document.getElementById('f-web').value,
+      resy:    document.getElementById('f-resy').value,
+      tags:    document.getElementById('f-tags').value.split(',').map(t=>t.trim()).filter(Boolean),
+      notes:   document.getElementById('f-notes').value,
+      lat:     parseFloat(document.getElementById('f-lat').value)||30.267,
+      lng:     parseFloat(document.getElementById('f-lng').value)||-97.743,
+      photo:   document.getElementById('f-photo').value||FP(id),
+    };
+    const next = this.eid ? this.data.map(r=>r.id===this.eid?obj:r) : [...this.data,obj];
+    this._update(next); this.sel=obj.id; this.closeModal(); this.render();
+  },
+
+  // ── Mobile view ────────────────────────────────────────────────────────────
+  setView(v) {
+    this.view = v;
+    document.getElementById('lov').classList.toggle('show', v==='list');
+    document.getElementById('nb-map').classList.toggle('on', v==='map');
+    document.getElementById('nb-list').classList.toggle('on', v==='list');
+  },
+
+  _syncMobileView() {
+    document.getElementById('lov').classList.remove('show');
+    document.getElementById('nb-map').classList.add('on');
+    document.getElementById('nb-list').classList.remove('on');
+  },
+
+  // ── Events ─────────────────────────────────────────────────────────────────
+  _bindEvents() {
+    document.getElementById('search').addEventListener('input', e => { this.search=e.target.value; this.sel=null; this.render(); });
+    document.getElementById('admin-btn').addEventListener('click', () => this.toggleAdmin());
+    document.querySelectorAll('.pill').forEach(p => p.addEventListener('click', () => {
+      this.filter = p.dataset.f; this.sel=null;
+      document.querySelectorAll('.pill').forEach(x => x.classList.toggle('on', x===p));
+      this.render();
+    }));
+    window.addEventListener('resize', () => this.renderDetail());
+  },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SEED  (fallback if data.json not found)
+// ─────────────────────────────────────────────────────────────────────────────
+const SEED = [
+  {id:1,name:'Uchi',cuisine:'Japanese',emoji:'🍣',address:'801 S Lamar Blvd, Austin TX',price:'$$$',status:'visited',rating:5,quality:10,vibe:'Romantic',hours:'Mon–Sat 5–11pm · Sun 5–10pm',website:'https://uchirestaurants.com',resy:'https://resy.com/cities/aus/uchi',tags:['sushi','omakase','date night'],notes:'The foie gras nigiri is life-changing. Book 3 weeks ahead.',lat:30.2530,lng:-97.7613,photo:'https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=600&q=75'},
+  {id:2,name:'Franklin Barbecue',cuisine:'BBQ',emoji:'🥩',address:'900 E 11th St, Austin TX',price:'$$',status:'visited',rating:5,quality:10,vibe:'Lively',hours:'Tue–Sun 11am until sold out',website:'https://franklinbbq.com',resy:'',tags:['brisket','iconic','long wait'],notes:'Get there by 8am. Bring lawn chairs. 100% worth it.',lat:30.2700,lng:-97.7315,photo:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=75'},
+  {id:3,name:'Launderette',cuisine:'New American',emoji:'🥗',address:'2115 Holly St, Austin TX',price:'$$$',status:'visited',rating:4,quality:9,vibe:'Casual',hours:'Tue–Sun 5–10pm',website:'https://launderetteaustin.com',resy:'https://resy.com/cities/aus/launderette',tags:['brunch','patio','cocktails'],notes:'Great brunch. Chicken & waffles were excellent.',lat:30.2645,lng:-97.7200,photo:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=75'},
+  {id:4,name:'Veracruz All Natural',cuisine:'Mexican',emoji:'🌮',address:'1704 E Cesar Chavez St, Austin TX',price:'$',status:'visited',rating:5,quality:9,vibe:'Casual',hours:'Daily 8am–3pm',website:'https://veracruzallnatural.com',resy:'',tags:['tacos','migas','breakfast'],notes:'Migas taco is legendary. Line moves fast.',lat:30.2610,lng:-97.7152,photo:'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=75'},
+  {id:5,name:'Suerte',cuisine:'Modern Mexican',emoji:'🫔',address:'1800 E 6th St, Austin TX',price:'$$$',status:'wishlist',rating:0,quality:0,vibe:'Romantic',hours:'Tue–Sat 5–10pm',website:'https://suerteatx.com',resy:'https://resy.com/cities/aus/suerte',tags:['masa','cocktails','east 6th'],notes:'Masa program is supposed to be incredible.',lat:30.2640,lng:-97.7178,photo:'https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?w=600&q=75'},
+  {id:6,name:'Odd Duck',cuisine:'Farm-to-Table',emoji:'🦆',address:'1201 S Lamar Blvd, Austin TX',price:'$$$',status:'wishlist',rating:0,quality:0,vibe:'Cozy',hours:'Mon–Fri 5–10pm · Sat–Sun 10am–2pm & 5–10pm',website:'https://oddduckaustin.com',resy:'https://resy.com/cities/aus/odd-duck',tags:['farm to table','small plates','brunch'],notes:'Menu changes constantly. Need to try the duck fat fries.',lat:30.2510,lng:-97.7627,photo:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=75'},
+];
+
+// Boot
+A.init();
+</script>
+</body>
+</html>
