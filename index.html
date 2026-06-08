@@ -150,14 +150,14 @@ select option{background:white}
   display:block;position:absolute;bottom:18px;right:18px;
   width:360px;max-height:calc(100% - 36px);overflow-y:auto;
   background:white;border:1px solid var(--border);border-radius:18px;
-  box-shadow:var(--shadow-lg);animation:slideUp .2s ease;z-index:40;
+  box-shadow:var(--shadow-lg);z-index:40;
 }
 #dp.show-m{
   display:block;position:fixed;bottom:0;left:0;right:0;
   max-height:85vh;overflow-y:auto;
   background:white;border-top:1px solid var(--border);
   border-radius:22px 22px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,.12);
-  animation:slideUp .25s cubic-bezier(.32,.72,0,1);z-index:70;
+  z-index:70;
 }
 #dp::-webkit-scrollbar{width:0}
 .drag-handle{display:flex;justify-content:center;padding:10px 0 4px}
