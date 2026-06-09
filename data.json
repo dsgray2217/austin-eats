@@ -35,7 +35,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "http://www.vespaioristorante.com/",
-    "resy": "https://resy.com/cities/austin-tx/vespaio",
+    "resy": "",
     "tags": [
       "italian"
     ],
@@ -311,7 +311,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://emmerandrye.com/food-menus",
-    "resy": "https://resy.com/cities/austin-tx/emmer-and-rye",
+    "resy": "https://resy.com/cities/austin-tx/venues/emmer-and-rye",
     "tags": [
       "american"
     ],
@@ -1254,7 +1254,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "http://mattiesaustin.com/",
-    "resy": "",
+    "resy": "https://resy.com/cities/austin-tx/venues/matties",
     "tags": [
       "breakfast"
     ],
@@ -1553,7 +1553,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://nixtataqueria.square.site/s/order",
-    "resy": "https://resy.com/cities/austin-tx/nixta-taqueria",
+    "resy": "https://resy.com/cities/austin-tx/venues/nixta-taqueria",
     "tags": [
       "mexican"
     ],
@@ -1760,7 +1760,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://www.birdiesaustin.com/menus/",
-    "resy": "https://resy.com/cities/austin-tx/birdies",
+    "resy": "",
     "tags": [
       "italian"
     ],
@@ -1967,7 +1967,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://qiaustin.com/menu/",
-    "resy": "",
+    "resy": "https://resy.com/cities/austin-tx/venues/qi-austin",
     "tags": [
       "chinese"
     ],
@@ -2243,7 +2243,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "http://places.singleplatform.com/justines-brasserie/menu?ref=google",
-    "resy": "https://resy.com/cities/austin-tx/justines-brasserie",
+    "resy": "",
     "tags": [
       "french"
     ],
@@ -2251,7 +2251,7 @@
     "lat": 30.2532512,
     "lng": -97.7005728,
     "photo": "https://a.singleplatform.com/sp/justines-brasserie/fb_post_image.png",
-    "opentable": ""
+    "opentable": "https://www.opentable.com/r/justines-brasserie-austin"
   },
   {
     "id": 99,
@@ -2404,7 +2404,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "http://www.comedortx.com/",
-    "resy": "https://resy.com/cities/austin-tx/comedor",
+    "resy": "https://resy.com/cities/austin-tx/venues/comedor",
     "tags": [
       "mexican"
     ],
@@ -2427,7 +2427,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://www.billsoyster.com/menu",
-    "resy": "",
+    "resy": "https://resy.com/cities/austin-tx/venues/bills-oyster",
     "tags": [
       "seafood"
     ],
@@ -2473,7 +2473,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://www.clarksoysterbar.com/locations/austin#menus",
-    "resy": "https://resy.com/cities/austin-tx/clarks-oyster-bar",
+    "resy": "",
     "tags": [
       "seafood"
     ],
@@ -2565,7 +2565,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://www.interorestaurant.com/menus",
-    "resy": "https://resy.com/cities/austin-tx/intero",
+    "resy": "",
     "tags": [
       "italian"
     ],
@@ -2588,7 +2588,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://uchi.uchirestaurants.com/location/austin/menu/",
-    "resy": "https://resy.com/cities/austin-tx/uchi",
+    "resy": "https://resy.com/cities/austin-tx/venues/uchi",
     "tags": [
       "sushi"
     ],
@@ -2611,7 +2611,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "http://bartlettsaustin.com/menus/lunch",
-    "resy": "",
+    "resy": "https://resy.com/cities/austin-tx/venues/bartletts",
     "tags": [
       "steakhouse"
     ],
@@ -2634,7 +2634,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://www.suerteatx.com/menus/",
-    "resy": "https://resy.com/cities/austin-tx/suerte",
+    "resy": "https://resy.com/cities/austin-tx/venues/suerte",
     "tags": [
       "mexican"
     ],
@@ -2680,7 +2680,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://order.toasttab.com/online/foreign-domestic-food-drink",
-    "resy": "https://resy.com/cities/austin-tx/foreign-and-domestic",
+    "resy": "https://resy.com/cities/austin-tx/venues/foreign-and-domestic",
     "tags": [
       "american"
     ],
@@ -2749,7 +2749,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://eberlyaustin.com/",
-    "resy": "https://resy.com/cities/austin-tx/eberly",
+    "resy": "https://resy.com/cities/austin-tx/venues/eberly",
     "tags": [
       "american"
     ],
@@ -2795,7 +2795,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "http://hestiaaustin.com/",
-    "resy": "https://resy.com/cities/austin-tx/hestia",
+    "resy": "",
     "tags": [
       "american"
     ],
@@ -2803,7 +2803,7 @@
     "lat": 30.2667619,
     "lng": -97.7500736,
     "photo": "",
-    "opentable": ""
+    "opentable": "https://www.opentable.com/r/hestia-austin-2"
   },
   {
     "id": 123,
@@ -2841,7 +2841,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://www.garrisongrill.com/?utm_source=google+Maps&utm_medium=seo+maps&utm_campaign=seo+maps",
-    "resy": "https://resy.com/cities/austin-tx/garrison",
+    "resy": "",
     "tags": [
       "steakhouse"
     ],
@@ -2864,7 +2864,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "http://olamaieaustin.com/",
-    "resy": "https://resy.com/cities/austin-tx/olamaie",
+    "resy": "https://resy.com/cities/austin-tx/venues/olamaie",
     "tags": [
       "southern"
     ],
@@ -3025,7 +3025,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "https://www.welcometgh.com/austin/menu",
-    "resy": "",
+    "resy": "https://resy.com/cities/austin-tx/venues/the-guest-house",
     "tags": [
       "american"
     ],
