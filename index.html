@@ -144,20 +144,20 @@ select option{background:white}
 .pin-outer{display:flex;flex-direction:column;align-items:center;cursor:pointer}
 .pin-dot{width:12px;height:12px;border-radius:50%;border:2.5px solid white;box-shadow:0 1px 4px rgba(0,0,0,.25)}
 
-/* ── DETAIL PANEL ── */
+/* ── DETAIL PANEL (portal — appended to body) ── */
 #dp{display:none}
 #dp.show-d{
-  display:block;position:absolute;bottom:18px;right:18px;
-  width:360px;max-height:calc(100% - 36px);overflow-y:auto;
+  display:block;position:fixed;bottom:18px;right:18px;
+  width:360px;max-height:calc(100vh - var(--hdr) - var(--bar) - 36px);overflow-y:auto;
   background:white;border:1px solid var(--border);border-radius:18px;
-  box-shadow:var(--shadow-lg);z-index:40;
+  box-shadow:var(--shadow-lg);z-index:1000;
 }
 #dp.show-m{
   display:block;position:fixed;bottom:0;left:0;right:0;
   max-height:85vh;overflow-y:auto;
   background:white;border-top:1px solid var(--border);
   border-radius:22px 22px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,.12);
-  z-index:70;
+  z-index:1000;
 }
 #dp::-webkit-scrollbar{width:0}
 .drag-handle{display:flex;justify-content:center;padding:10px 0 4px}
@@ -332,9 +332,9 @@ select option{background:white}
   <div id="mc">
     <div id="map"></div>
     <div id="badge"><div class="badge-lbl">Restaurants</div><div class="badge-n" id="bn">0</div></div>
-    <div id="dp"></div>
   </div>
 </div>
+<div id="dp"></div>
 
 <nav id="nav">
   <button class="nb on" id="nb-map" onclick="A.setView('map')"><span class="nb-i">🗺</span><span class="nb-l">Map</span></button>
@@ -475,13 +475,17 @@ const A={
   },
   closePinDlg(){document.getElementById('pov').classList.remove('show')},
 
-  // ── Select
+  // ── Select / close
   select(id){
     const now=Date.now();
-    if(now-this._selAt<250)return;
+    if(now-this._selAt<350)return;
     this._selAt=now;
     this.sel=this.sel===id?null:id;
     if(this.sel){const r=this.data.find(x=>x.id===this.sel);this._panTo(r);if(window.innerWidth<768){this.view='map';this._syncMobileView()}}
+    this.renderDetail();this._drawMarkers();this.renderList();
+  },
+  closeDetail(){
+    this.sel=null;
     this.renderDetail();this._drawMarkers();this.renderList();
   },
 
@@ -584,7 +588,7 @@ const A={
 
     dp.innerHTML=`
       ${mob?'<div class="drag-handle"><div class="drag-bar"></div></div>':''}
-      <button class="dp-x" onclick="A.select(${r.id})">✕</button>
+      <button class="dp-x" onclick="A.closeDetail()">✕</button>
       <div class="dp-photo">
         <img src="${r.photo||FP(r.id)}" alt="${r.name}" onerror="this.src='${FP(r.id)}'"/>
         <div class="dp-photo-grd"></div>
