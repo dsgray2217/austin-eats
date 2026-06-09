@@ -112,7 +112,7 @@
     "lat": 30.2804385,
     "lng": -97.7592013,
     "photo": "https://jeffreysofaustin.com/wp-content/uploads/2018/10/MH_JEFFREYS_1765_FINAL-e1539639845295.png",
-    "opentable": "https://www.opentable.com/r/jeffreys-austin"
+    "opentable": "https://www.opentable.com/r/jeffreys-restaurant-austin"
   },
   {
     "id": 6,
@@ -158,7 +158,7 @@
     "lat": 30.2477764,
     "lng": -97.771262,
     "photo": "https://www.loroeats.com/wp-content/uploads/2023/03/loro-og-image.png",
-    "opentable": "https://www.opentable.com/r/loro-austin-austin"
+    "opentable": ""
   },
   {
     "id": 8,
@@ -2220,7 +2220,7 @@
     "vibe": "Casual",
     "hours": "",
     "website": "http://www.fondasanmiguel.com/menus",
-    "resy": "",
+    "resy": "https://resy.com/cities/austin-tx/venues/fonda-san-miguel",
     "tags": [
       "mexican"
     ],
@@ -2228,7 +2228,7 @@
     "lat": 30.3255666,
     "lng": -97.7433558,
     "photo": "",
-    "opentable": "https://www.opentable.com/r/fonda-san-miguel-austin"
+    "opentable": ""
   },
   {
     "id": 98,
@@ -2389,7 +2389,7 @@
     "lat": 30.2656199,
     "lng": -97.7478028,
     "photo": "",
-    "opentable": "https://www.opentable.com/r/la-condesa-austin"
+    "opentable": "https://www.opentable.com/la-condesa"
   },
   {
     "id": 105,
