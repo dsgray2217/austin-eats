@@ -319,6 +319,36 @@ select option{background:white}
 .nb-add{background:var(--accent);border-radius:14px;padding:8px 20px!important;margin:10px 6px;color:white!important}
 .nb-add:hover{background:var(--accent-dark)}
 
+/* ── RESERVATION BAR ── */
+#res-bar{
+  display:none;align-items:center;gap:8px;padding:8px 14px;
+  background:#FFF8F5;border-bottom:1px solid rgba(232,87,42,.18);
+  flex-wrap:wrap;flex-shrink:0;
+}
+#res-bar.show{display:flex}
+.res-lbl{font-size:12px;font-weight:600;color:var(--accent);white-space:nowrap;font-family:'DM Mono',monospace}
+.res-inp,.res-sel{
+  height:32px;border:1.5px solid rgba(232,87,42,.35);border-radius:20px;
+  padding:0 12px;font-size:12px;font-family:'DM Sans',sans-serif;
+  background:white;color:var(--ink);cursor:pointer;outline:none;
+  transition:border-color .15s;
+}
+.res-inp:focus,.res-sel:focus{border-color:var(--accent)}
+.res-inp{width:130px}
+.res-close{
+  background:none;border:none;font-size:16px;cursor:pointer;
+  color:var(--subtle);padding:2px 4px;margin-left:auto;line-height:1;
+}
+.res-note{font-size:11px;color:var(--subtle);margin-left:4px}
+#find-table-btn{
+  height:32px;padding:0 14px;border-radius:20px;
+  background:var(--accent);color:white;border:none;font-size:12px;
+  font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;
+  white-space:nowrap;transition:background .15s;flex-shrink:0;
+}
+#find-table-btn:hover{background:var(--accent-dark)}
+#find-table-btn.active{background:var(--accent-dark)}
+
 /* ── ANIMATIONS ── */
 @keyframes slideUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 </style>
@@ -354,6 +384,39 @@ select option{background:white}
     <option value="5">★★★★★ 5</option>
   </select>
   <span id="cnt"></span>
+  <button id="find-table-btn" onclick="A.toggleResMode()">🗓 Find a table</button>
+</div>
+
+<div id="res-bar">
+  <span class="res-lbl">📅</span>
+  <input class="res-inp" id="res-date" type="date" title="Date"/>
+  <span class="res-lbl">👥</span>
+  <select class="res-sel" id="res-party">
+    <option value="1">1 person</option>
+    <option value="2" selected>2 people</option>
+    <option value="3">3 people</option>
+    <option value="4">4 people</option>
+    <option value="5">5 people</option>
+    <option value="6">6 people</option>
+    <option value="7">7 people</option>
+    <option value="8">8 people</option>
+  </select>
+  <span class="res-lbl">🕗</span>
+  <select class="res-sel" id="res-time">
+    <option value="17:00">5:00 PM</option>
+    <option value="17:30">5:30 PM</option>
+    <option value="18:00">6:00 PM</option>
+    <option value="18:30">6:30 PM</option>
+    <option value="19:00" selected>7:00 PM</option>
+    <option value="19:30">7:30 PM</option>
+    <option value="20:00">8:00 PM</option>
+    <option value="20:30">8:30 PM</option>
+    <option value="21:00">9:00 PM</option>
+    <option value="21:30">9:30 PM</option>
+    <option value="22:00">10:00 PM</option>
+  </select>
+  <span class="res-note">Showing bookable restaurants only</span>
+  <button class="res-close" onclick="A.toggleResMode()" title="Close">✕</button>
 </div>
 
 <div id="main">
@@ -379,15 +442,48 @@ select option{background:white}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 'use strict';
-const LS='ae-data-v2', LP='ae-pin', SS='ae-admin';
+const LS='ae-data-v3', LP='ae-pin', SS='ae-admin';
 const PRICE=['$','$$','$$$','$$$$'];
 const VIBES=['Romantic','Family','Casual','Business','Lively','Cozy','Healthy','Trendy'];
 const VI={Romantic:'🕯',Family:'👨‍👩‍👧',Casual:'🍻',Business:'💼',Lively:'🎉',Cozy:'☕',Healthy:'🌿',Trendy:'✨'};
-const FP=id=>`https://picsum.photos/seed/ae${id}/600/300`;
+const CUISINE_PHOTOS={
+  'American':   ['photo-1414235077428-338989a2e8c0','photo-1484723091739-30990dd72db8','photo-1546069901-ba9599a7e63c','photo-1540189549336-e6e99eb4b1d3'],
+  'Asian':      ['photo-1617196034183-421b4040ed20','photo-1569050467447-ce54b3bbc37d','photo-1563245372-f21724e3856d','photo-1553621042-f6e147245754'],
+  'BBQ':        ['photo-1529694157872-4e0c0f3b238b','photo-1544025162-d76538f42e1e','photo-1558030006-450675393462','photo-1555397430-57791c75748a'],
+  'Breakfast':  ['photo-1533089860892-a7c6f0a88666','photo-1525351484163-7529414344d8','photo-1484723091739-30990dd72db8','photo-1496116218417-1a781b1c416c'],
+  'Burgers':    ['photo-1550547660-d9450f859349','photo-1568901346-4-photo-xk','photo-1553979459-d2229ba7433a','photo-1586816001966-79b736744398'],
+  'Cajun':      ['photo-1414235077428-338989a2e8c0','photo-1563245372-f21724e3856d','photo-1555396273-367ea4eb4db5','photo-1529694157872-4e0c0f3b238b'],
+  'Carribean':  ['photo-1540189549336-e6e99eb4b1d3','photo-1546069901-ba9599a7e63c','photo-1414235077428-338989a2e8c0','photo-1563245372-f21724e3856d'],
+  'Chinese':    ['photo-1563245372-f21724e3856d','photo-1569050467447-ce54b3bbc37d','photo-1617196034183-421b4040ed20','photo-1553621042-f6e147245754'],
+  'Coffee':     ['photo-1495474472287-4d71bcdd2085','photo-1509042239860-f550ce710b93','photo-1501339847302-ac426a4a7cbb','photo-1497935586047-9395ee2a7a65'],
+  'Deli':       ['photo-1414235077428-338989a2e8c0','photo-1533089860892-a7c6f0a88666','photo-1546069901-ba9599a7e63c','photo-1484723091739-30990dd72db8'],
+  'Food Truck': ['photo-1565299624946-b28f40a0ae38','photo-1552332386-f8dd00dc2f85','photo-1533089860892-a7c6f0a88666','photo-1546069901-ba9599a7e63c'],
+  'French':     ['photo-1414235077428-338989a2e8c0','photo-1555396273-367ea4eb4db5','photo-1498654896293-37aacf113fd9','photo-1473093295043-cdd812d0e601'],
+  'Italian':    ['photo-1555396273-367ea4eb4db5','photo-1498654896293-37aacf113fd9','photo-1473093295043-cdd812d0e601','photo-1572441713132-51c75654db73'],
+  'Japanese':   ['photo-1617196034183-421b4040ed20','photo-1553621042-f6e147245754','photo-1611143669185-af224c5e3252','photo-1569050467447-ce54b3bbc37d'],
+  'Mediteranean':['photo-1414235077428-338989a2e8c0','photo-1546069901-ba9599a7e63c','photo-1555396273-367ea4eb4db5','photo-1498654896293-37aacf113fd9'],
+  'Mexican':    ['photo-1552332386-f8dd00dc2f85','photo-1565299585323-38d6b0865b47','photo-1582234372722-50d7ccc30ebd','photo-1624300629298-e9f3deb9e7de'],
+  'Pizza':      ['photo-1565299624946-b28f40a0ae38','photo-1513104890138-7c749659a591','photo-1585238342024-78d387f4a707','photo-1571407970349-bc81e7e96d47'],
+  'Ramen':      ['photo-1569050467447-ce54b3bbc37d','photo-1617196034183-421b4040ed20','photo-1553621042-f6e147245754','photo-1563245372-f21724e3856d'],
+  'Seafood':    ['photo-1563245372-f21724e3856d','photo-1615141982883-c7ad0e69fd62','photo-1414235077428-338989a2e8c0','photo-1555396273-367ea4eb4db5'],
+  'Small Bites':['photo-1555396273-367ea4eb4db5','photo-1414235077428-338989a2e8c0','photo-1546069901-ba9599a7e63c','photo-1473093295043-cdd812d0e601'],
+  'Southern':   ['photo-1533089860892-a7c6f0a88666','photo-1529694157872-4e0c0f3b238b','photo-1544025162-d76538f42e1e','photo-1414235077428-338989a2e8c0'],
+  'Steakhouse': ['photo-1558030006-450675393462','photo-1546964124-0cce460ebe15','photo-1529693662653-9d480da3dc54','photo-1544025162-d76538f42e1e'],
+  'Sushi':      ['photo-1553621042-f6e147245754','photo-1611143669185-af224c5e3252','photo-1617196034183-421b4040ed20','photo-1569050467447-ce54b3bbc37d'],
+  'Tacos':      ['photo-1552332386-f8dd00dc2f85','photo-1565299585323-38d6b0865b47','photo-1624300629298-e9f3deb9e7de','photo-1582234372722-50d7ccc30ebd'],
+  'Tex Mex':    ['photo-1552332386-f8dd00dc2f85','photo-1565299585323-38d6b0865b47','photo-1582234372722-50d7ccc30ebd','photo-1624300629298-e9f3deb9e7de'],
+  'Vietnamese': ['photo-1569050467447-ce54b3bbc37d','photo-1617196034183-421b4040ed20','photo-1563245372-f21724e3856d','photo-1553621042-f6e147245754'],
+};
+const FP=r=>{
+  const pool=CUISINE_PHOTOS[r?.cuisine]||CUISINE_PHOTOS['American'];
+  return`https://images.unsplash.com/${pool[(r?.id||0)%pool.length]}?w=600&q=75&fit=crop`;
+};
+const FPE=id=>`https://picsum.photos/seed/ae${id}/600/300`;
 
 const A={
   data:[],sel:null,filter:'all',cuisineFilter:'',priceFilter:'',ratingFilter:0,
   search:'',admin:false,view:'map',
+  resMode:false,resDate:'',resParty:2,resTime:'19:00',
   lmap:null,markers:{},eid:null,sp:0,ntarea:null,stimer:null,
 
   async init(){
@@ -448,6 +544,7 @@ const A={
       if(this.cuisineFilter&&r.cuisine!==this.cuisineFilter)return false;
       if(this.priceFilter&&r.price!==this.priceFilter)return false;
       if(this.ratingFilter>0&&(r.rating||0)<this.ratingFilter)return false;
+      if(this.resMode&&!r.resy&&!r.opentable)return false;
       if(this.search){const q=this.search.toLowerCase();if(!r.name.toLowerCase().includes(q)&&!r.cuisine.toLowerCase().includes(q))return false}
       return true;
     });
@@ -516,6 +613,39 @@ const A={
   },
   closePinDlg(){document.getElementById('pov').classList.remove('show')},
 
+  // ── Reservation mode
+  toggleResMode(){
+    this.resMode=!this.resMode;
+    document.getElementById('res-bar').classList.toggle('show',this.resMode);
+    document.getElementById('find-table-btn').classList.toggle('active',this.resMode);
+    const RES_H=this.resMode?'48px':'0px';
+    document.getElementById('lov').style.top=`calc(var(--hdr) + var(--bar) + ${RES_H})`;
+    if(this.resMode&&!this.resDate){
+      const d=new Date();d.setDate(d.getDate()+1);
+      this.resDate=d.toISOString().slice(0,10);
+      document.getElementById('res-date').value=this.resDate;
+    }
+    this.sel=null;this.render();
+  },
+  _resLink(r){
+    const d=this.resDate||new Date().toISOString().slice(0,10);
+    const t=this.resTime||'19:00';
+    const p=this.resParty||2;
+    try{
+      if(r.resy){
+        const url=new URL(r.resy);
+        url.searchParams.set('date',d);url.searchParams.set('seats',p);
+        return url.toString();
+      }
+      if(r.opentable){
+        const url=new URL(r.opentable);
+        url.searchParams.set('datetime',`${d}T${t}:00`);url.searchParams.set('covers',p);
+        return url.toString();
+      }
+    }catch{}
+    return null;
+  },
+
   // ── Select / close
   select(id){
     const now=Date.now();
@@ -576,7 +706,7 @@ const A={
 
   _liHTML(r){
     return `<div class="li${this.sel===r.id?' on':''}" onclick="A.select(${r.id})">
-      <div class="li-img"><img src="${r.photo||FP(r.id)}" alt="${r.name}" onerror="this.src='${FP(r.id)}'" loading="lazy"/></div>
+      <div class="li-img"><img src="${r.photo||FP(r)}" alt="${r.name}" onerror="this.src='${FPE(r.id)}'" loading="lazy"/></div>
       <div style="flex:1;min-width:0">
         <div class="li-name">${r.name}</div>
         <div class="li-sub">
@@ -601,7 +731,7 @@ const A={
     const f=this._filtered();
     document.getElementById('lov').innerHTML=f.length
       ?f.map(r=>`<div class="li${this.sel===r.id?' on':''}" onclick="A.select(${r.id});A.setView('map')">
-          <div class="li-img"><img src="${r.photo||FP(r.id)}" alt="${r.name}" onerror="this.src='${FP(r.id)}'" loading="lazy"/></div>
+          <div class="li-img"><img src="${r.photo||FP(r)}" alt="${r.name}" onerror="this.src='${FPE(r.id)}'" loading="lazy"/></div>
           <div style="flex:1;min-width:0">
             <div class="li-name">${r.name}</div>
             <div class="li-sub"><span>${r.cuisine}</span><span style="color:var(--border)">·</span><span>${r.price}</span><span style="color:var(--border)">·</span>${this._badge(r)}</div>
@@ -631,7 +761,7 @@ const A={
       ${mob?'<div class="drag-handle"><div class="drag-bar"></div></div>':''}
       <button class="dp-x" onclick="A.closeDetail()">✕</button>
       <div class="dp-photo">
-        <img src="${r.photo||FP(r.id)}" alt="${r.name}" onerror="this.src='${FP(r.id)}'"/>
+        <img src="${r.photo||FP(r)}" alt="${r.name}" onerror="this.src='${FPE(r.id)}'"/>
         <div class="dp-photo-grd"></div>
         <div class="dp-photo-name">${r.name}</div>
       </div>
@@ -660,7 +790,12 @@ const A={
         </div>
         <div class="acts">
           <a class="btn-p" href="${maps}" target="_blank" rel="noopener">🗺 Directions</a>
-          ${r.resy?`<a class="btn-s" href="${r.resy}" target="_blank" rel="noopener">📅 Reserve</a>`:''}
+          ${(()=>{
+            const link=this._resLink(r);
+            if(link)return`<a class="btn-s" href="${link}" target="_blank" rel="noopener" style="background:var(--accent);color:white;border-color:var(--accent)">📅 Reserve${this.resMode?' →':''}</a>`;
+            if(r.resy||r.opentable)return`<a class="btn-s" href="${r.resy||r.opentable}" target="_blank" rel="noopener">📅 Reserve</a>`;
+            return'';
+          })()}
           ${r.website?`<a class="btn-s" href="${r.website}" target="_blank" rel="noopener">🌐 Website</a>`:''}
         </div>
         ${adm}
@@ -696,8 +831,9 @@ const A={
       <div class="fg"><label class="fl">Hours</label><input class="fi" id="f-hours" value="${r?.hours||''}" placeholder="Mon–Sat 5–10pm"/></div>
       <div class="fr2">
         <div><label class="fl">Website</label><input class="fi" id="f-web" value="${r?.website||''}" placeholder="https://…"/></div>
-        <div><label class="fl">Reservation</label><input class="fi" id="f-resy" value="${r?.resy||''}" placeholder="Resy / OpenTable…"/></div>
+        <div><label class="fl">Resy URL</label><input class="fi" id="f-resy" value="${r?.resy||''}" placeholder="https://resy.com/cities/austin/…"/></div>
       </div>
+      <div class="fg"><label class="fl">OpenTable URL</label><input class="fi" id="f-opentable" value="${r?.opentable||''}" placeholder="https://www.opentable.com/r/…"/></div>
       <div class="fg"><label class="fl">Tags (comma-separated)</label><input class="fi" id="f-tags" value="${(r?.tags||[]).join(', ')}" placeholder="sushi, date night, patio"/></div>
       <div class="fg">
         <label class="fl">Coordinates <span style="color:var(--border)">(right-click on Google Maps → "What's here")</span></label>
@@ -735,11 +871,12 @@ const A={
       hours:document.getElementById('f-hours').value,
       website:document.getElementById('f-web').value,
       resy:document.getElementById('f-resy').value,
+      opentable:document.getElementById('f-opentable').value,
       tags:document.getElementById('f-tags').value.split(',').map(t=>t.trim()).filter(Boolean),
       notes:document.getElementById('f-notes').value,
       lat:parseFloat(document.getElementById('f-lat').value)||30.267,
       lng:parseFloat(document.getElementById('f-lng').value)||-97.743,
-      photo:document.getElementById('f-photo').value||FP(id),
+      photo:document.getElementById('f-photo').value||'',
     };
     const next=this.eid?this.data.map(r=>r.id===this.eid?obj:r):[...this.data,obj];
     this._upd(next);this.sel=obj.id;this.closeModal();this.render();
@@ -778,6 +915,15 @@ const A={
     document.getElementById('fil-rating').addEventListener('change',e=>{
       this.ratingFilter=parseInt(e.target.value)||0;this.sel=null;
       e.target.classList.toggle('on',this.ratingFilter>0);this.render();
+    });
+    document.getElementById('res-date').addEventListener('change',e=>{
+      this.resDate=e.target.value;this.renderDetail();
+    });
+    document.getElementById('res-party').addEventListener('change',e=>{
+      this.resParty=parseInt(e.target.value);this.renderDetail();
+    });
+    document.getElementById('res-time').addEventListener('change',e=>{
+      this.resTime=e.target.value;this.renderDetail();
     });
     window.addEventListener('resize',()=>this.renderDetail());
     // After PIN unlock, open pending modal if any
