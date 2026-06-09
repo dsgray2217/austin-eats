@@ -86,6 +86,18 @@ select option{background:white}
 }
 .pill:hover{border-color:var(--accent);color:var(--accent)}
 .pill.on{border-color:var(--accent);background:var(--accent-light);color:var(--accent);font-weight:600}
+.bar-div{width:1px;height:20px;background:var(--border);flex-shrink:0;margin:0 2px}
+.bar-sel{
+  height:28px;padding:0 24px 0 10px;border-radius:20px;white-space:nowrap;
+  border:1.5px solid var(--border);background:transparent;color:var(--muted);
+  cursor:pointer;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;
+  transition:all .15s;flex-shrink:0;outline:none;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23A09488' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 9px center;
+}
+.bar-sel:hover{border-color:var(--accent);color:var(--accent)}
+.bar-sel.on{border-color:var(--accent);background-color:var(--accent-light);color:var(--accent);font-weight:600}
 #cnt{font-size:12px;color:var(--subtle);margin-left:auto;flex-shrink:0;font-family:'DM Mono',monospace}
 
 /* ── LAYOUT ── */
@@ -324,6 +336,23 @@ select option{background:white}
   <button class="pill on" data-f="all">All</button>
   <button class="pill" data-f="visited">✓ Visited</button>
   <button class="pill" data-f="wishlist">♡ Wishlist</button>
+  <div class="bar-div"></div>
+  <select class="bar-sel" id="fil-cuisine"><option value="">Cuisine</option></select>
+  <select class="bar-sel" id="fil-price">
+    <option value="">Price</option>
+    <option value="$">$</option>
+    <option value="$$">$$</option>
+    <option value="$$$">$$$</option>
+    <option value="$$$$">$$$$</option>
+  </select>
+  <select class="bar-sel" id="fil-rating">
+    <option value="0">Rating</option>
+    <option value="1">★ 1+</option>
+    <option value="2">★★ 2+</option>
+    <option value="3">★★★ 3+</option>
+    <option value="4">★★★★ 4+</option>
+    <option value="5">★★★★★ 5</option>
+  </select>
   <span id="cnt"></span>
 </div>
 
@@ -357,7 +386,8 @@ const VI={Romantic:'🕯',Family:'👨‍👩‍👧',Casual:'🍻',Business:'�
 const FP=id=>`https://picsum.photos/seed/ae${id}/600/300`;
 
 const A={
-  data:[],sel:null,filter:'all',search:'',admin:false,view:'map',
+  data:[],sel:null,filter:'all',cuisineFilter:'',priceFilter:'',ratingFilter:0,
+  search:'',admin:false,view:'map',
   lmap:null,markers:{},eid:null,sp:0,ntarea:null,stimer:null,
 
   async init(){
@@ -371,6 +401,7 @@ const A={
     if(!localStorage.getItem(LS))this._ls();
     this._initMap();
     this._events();
+    this._populateFilters();
     this.render();
   },
 
@@ -392,7 +423,7 @@ const A={
     list.forEach(r=>{
       const act=r.id===this.sel;
       const color=act?'#E8572A':(r.status==='visited'?'#E8572A':'#A09488');
-      const size=act?14:10;
+      const size=act?18:14;
       const ic=L.divIcon({
         className:'',
         html:`<div class="pin-outer" style="transform:scale(${act?1.3:1});transition:transform .2s">
@@ -414,6 +445,9 @@ const A={
     return this.data.filter(r=>{
       if(this.filter==='visited'&&r.status!=='visited')return false;
       if(this.filter==='wishlist'&&r.status!=='wishlist')return false;
+      if(this.cuisineFilter&&r.cuisine!==this.cuisineFilter)return false;
+      if(this.priceFilter&&r.price!==this.priceFilter)return false;
+      if(this.ratingFilter>0&&(r.rating||0)<this.ratingFilter)return false;
       if(this.search){const q=this.search.toLowerCase();if(!r.name.toLowerCase().includes(q)&&!r.cuisine.toLowerCase().includes(q))return false}
       return true;
     });
@@ -426,7 +460,14 @@ const A={
     this.stimer=setTimeout(()=>el.style.display='none',1500);
   },
 
-  _upd(next){this.data=next;this._ls()},
+  _upd(next){this.data=next;this._ls();this._populateFilters()},
+
+  _populateFilters(){
+    const cuisines=[...new Set(this.data.map(r=>r.cuisine).filter(Boolean))].sort();
+    const sel=document.getElementById('fil-cuisine');
+    const cur=sel.value;
+    sel.innerHTML='<option value="">Cuisine</option>'+cuisines.map(c=>`<option value="${c}"${c===cur?' selected':''}>${c}</option>`).join('');
+  },
 
   exportJSON(){
     const b=new Blob([JSON.stringify(this.data,null,2)],{type:'application/json'});
@@ -726,6 +767,18 @@ const A={
       document.querySelectorAll('.pill').forEach(x=>x.classList.toggle('on',x===p));
       this.render();
     }));
+    document.getElementById('fil-cuisine').addEventListener('change',e=>{
+      this.cuisineFilter=e.target.value;this.sel=null;
+      e.target.classList.toggle('on',!!e.target.value);this.render();
+    });
+    document.getElementById('fil-price').addEventListener('change',e=>{
+      this.priceFilter=e.target.value;this.sel=null;
+      e.target.classList.toggle('on',!!e.target.value);this.render();
+    });
+    document.getElementById('fil-rating').addEventListener('change',e=>{
+      this.ratingFilter=parseInt(e.target.value)||0;this.sel=null;
+      e.target.classList.toggle('on',this.ratingFilter>0);this.render();
+    });
     window.addEventListener('resize',()=>this.renderDetail());
     // After PIN unlock, open pending modal if any
     const origClose=this.closePinDlg.bind(this);
