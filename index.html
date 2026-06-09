@@ -402,7 +402,7 @@ const A={
         iconSize:[0,0],iconAnchor:[0,0]
       });
       const m=L.marker([r.lat,r.lng],{icon:ic}).addTo(this.lmap);
-      m.on('click',()=>this.select(r.id));
+      m.on('click',(e)=>{L.DomEvent.stopPropagation(e);this.select(r.id);});
       this.markers[r.id]=m;
     });
     document.getElementById('bn').textContent=list.length;
@@ -477,6 +477,9 @@ const A={
 
   // ── Select
   select(id){
+    const now=Date.now();
+    if(now-this._selAt<250)return;
+    this._selAt=now;
     this.sel=this.sel===id?null:id;
     if(this.sel){const r=this.data.find(x=>x.id===this.sel);this._panTo(r);if(window.innerWidth<768){this.view='map';this._syncMobileView()}}
     this.renderDetail();this._drawMarkers();this.renderList();
