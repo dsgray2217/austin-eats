@@ -1,5 +1,6 @@
-// One-off script: looks up each restaurant's Google Places place_id by name + address
-// and writes it to data.json as `googlePlaceId`. Skips restaurants that already have one.
+// One-off script: looks up each restaurant's Google Places ID via the Places API (New)
+// Text Search endpoint and writes it to data.json as `googlePlaceId`. Skips restaurants
+// that already have one.
 //
 // Usage:
 //   GOOGLE_PLACES_API_KEY=your_key_here node enrich-place-ids.js
@@ -14,27 +15,45 @@ if (!API_KEY) {
 }
 
 const DATA_PATH = path.join(__dirname, 'data.json');
-const FIND_PLACE_URL = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json';
+const SEARCH_URL = 'https://places.googleapis.com/v1/places:searchText';
 
-async function findPlaceId(restaurant) {
-  const input = `${restaurant.name}, ${restaurant.address}`;
-  const url = new URL(FIND_PLACE_URL);
-  url.searchParams.set('input', input);
-  url.searchParams.set('inputtype', 'textquery');
-  url.searchParams.set('fields', 'place_id');
-  url.searchParams.set('locationbias', `point:${restaurant.lat},${restaurant.lng}`);
-  url.searchParams.set('key', API_KEY);
+function normalize(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
 
-  const res = await fetch(url);
+function namesRoughlyMatch(a, b) {
+  const na = normalize(a);
+  const nb = normalize(b);
+  return na.includes(nb) || nb.includes(na);
+}
+
+async function searchPlace(restaurant) {
+  const res = await fetch(SEARCH_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Goog-Api-Key': API_KEY,
+      'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress',
+    },
+    body: JSON.stringify({
+      textQuery: `${restaurant.name} Austin TX`,
+      locationBias: {
+        circle: {
+          center: { latitude: restaurant.lat, longitude: restaurant.lng },
+          radius: 1000.0,
+        },
+      },
+    }),
+  });
+
   if (!res.ok) {
-    throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    throw new Error(`HTTP ${res.status}: ${text}`);
   }
+
   const json = await res.json();
-  if (json.status !== 'OK') {
-    return { status: json.status, placeId: null };
-  }
-  const candidate = json.candidates && json.candidates[0];
-  return { status: 'OK', placeId: candidate ? candidate.place_id : null };
+  const place = json.places && json.places[0];
+  return place || null;
 }
 
 async function main() {
@@ -43,6 +62,7 @@ async function main() {
   let updated = 0;
   let skipped = 0;
   let failed = 0;
+  let needsReview = 0;
 
   for (const restaurant of data) {
     if (restaurant.googlePlaceId) {
@@ -51,14 +71,20 @@ async function main() {
     }
 
     try {
-      const { status, placeId } = await findPlaceId(restaurant);
-      if (placeId) {
-        restaurant.googlePlaceId = placeId;
-        updated++;
-        console.log(`  OK    ${restaurant.name} -> ${placeId}`);
-      } else {
+      const place = await searchPlace(restaurant);
+      if (!place) {
         failed++;
-        console.log(`  MISS  ${restaurant.name} (${status})`);
+        console.log(`  NONE  ${restaurant.name}  (no results)`);
+      } else {
+        restaurant.googlePlaceId = place.id;
+        updated++;
+        const displayName = place.displayName?.text || '';
+        if (!namesRoughlyMatch(restaurant.name, displayName)) {
+          needsReview++;
+          console.log(`  REVIEW  ${restaurant.name} -> ${place.id}  (matched "${displayName}", ${place.formattedAddress || ''})`);
+        } else {
+          console.log(`  OK    ${restaurant.name} -> ${place.id}`);
+        }
       }
     } catch (err) {
       failed++;
@@ -66,11 +92,11 @@ async function main() {
     }
 
     // Stay comfortably under Google's QPS limits.
-    await new Promise(r => setTimeout(r, 150));
+    await new Promise(r => setTimeout(r, 200));
   }
 
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2) + '\n', 'utf8');
-  console.log(`\nDone. Updated: ${updated}, skipped (already had ID): ${skipped}, failed: ${failed}`);
+  console.log(`\nDone. Updated: ${updated}, skipped (already had ID): ${skipped}, failed: ${failed}, needs review: ${needsReview}`);
 }
 
 main();
