@@ -348,6 +348,22 @@ select option{background:white}
 }
 #find-table-btn:hover{background:var(--accent-dark)}
 #find-table-btn.active{background:var(--accent-dark)}
+#surprise-btn{
+  height:32px;padding:0 14px;border-radius:20px;
+  background:var(--accent-light);color:var(--accent);border:none;font-size:12px;
+  font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;
+  white-space:nowrap;transition:background .15s,color .15s;flex-shrink:0;
+}
+#surprise-btn:hover{background:var(--accent);color:white}
+
+#toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:#2a2a2a;color:#fff;padding:10px 18px;border-radius:20px;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:3000;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ── ANIMATIONS ── */
 @keyframes slideUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -384,6 +400,7 @@ select option{background:white}
     <option value="5">★★★★★ 5</option>
   </select>
   <span id="cnt"></span>
+  <button id="surprise-btn" onclick="A.surpriseMe()">🎲 Surprise Me</button>
   <button id="find-table-btn" onclick="A.toggleResMode()">🗓 Find a table</button>
 </div>
 
@@ -427,6 +444,7 @@ select option{background:white}
   </div>
 </div>
 <div id="dp"></div>
+<div id="toast"></div>
 
 <nav id="nav">
   <button class="nb on" id="nb-map" onclick="A.setView('map')"><span class="nb-i">🗺</span><span class="nb-l">Map</span></button>
@@ -658,6 +676,24 @@ const A={
   closeDetail(){
     this.sel=null;
     this.renderDetail();this._drawMarkers();this.renderList();
+  },
+
+  showToast(msg){
+    const el=document.getElementById('toast');
+    el.textContent=msg;
+    el.classList.add('show');
+    clearTimeout(this._toastTimer);
+    this._toastTimer=setTimeout(()=>el.classList.remove('show'),2500);
+  },
+
+  surpriseMe(){
+    const matches=this._filtered();
+    if(!matches.length){this.showToast('No restaurants match your filters — try loosening them.');return}
+    const r=matches[Math.floor(Math.random()*matches.length)];
+    this.sel=r.id;
+    this.renderDetail();this._drawMarkers();this.renderList();
+    if(window.innerWidth<768){this.view='map';this._syncMobileView()}
+    this.lmap.flyTo([r.lat,r.lng],15,{animate:true,duration:.75});
   },
 
   // ── Quick actions
