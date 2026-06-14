@@ -196,6 +196,8 @@ select option{background:white}
 .status-toggle.vis{background:var(--green-light);color:var(--green)}
 .status-toggle.wl{background:#FFF7ED;color:#C2410C}
 .dp-addr{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.4}
+.dp-lastvisited{font-size:12px;font-weight:600;margin:-8px 0 14px}
+.last-visited{font-size:inherit;font-weight:inherit}
 .stars-row{display:flex;align-items:center;gap:6px;margin-bottom:14px}
 .star-btn{font-size:20px;cursor:pointer;line-height:1;background:none;border:none;padding:2px;transition:transform .1s}
 .star-btn:hover{transform:scale(1.25)}
@@ -458,6 +460,7 @@ select option{background:white}
 <div id="pov" onclick="if(event.target===this)A.closePinDlg()"><div id="pdlg"></div></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
 <script>
 'use strict';
 const LS='ae-data-v3', LP='ae-pin', SS='ae-admin';
@@ -497,6 +500,14 @@ const FP=r=>{
   return`https://images.unsplash.com/${pool[(r?.id||0)%pool.length]}?w=600&q=75&fit=crop`;
 };
 const FPE=id=>`https://picsum.photos/seed/ae${id}/600/300`;
+
+const lastVisitedHTML=r=>{
+  if(!r.lastVisited)return '';
+  const days=(Date.now()-new Date(r.lastVisited).getTime())/86400000;
+  const color=days<90?'var(--green)':days<=180?'var(--amber)':'#DC2626';
+  const txt=dateFns.formatDistanceToNow(new Date(r.lastVisited),{addSuffix:true});
+  return `<span class="last-visited" style="color:${color}">Visited ${txt}</span>`;
+};
 
 const A={
   data:[],sel:null,filter:'all',cuisineFilter:'',priceFilter:'',ratingFilter:0,
@@ -749,6 +760,7 @@ const A={
           <span>${r.cuisine}</span><span style="color:var(--border)">·</span>
           <span style="color:${r.price==='$$$$'?'#7C3AED':r.price==='$$$'?'#B45309':r.price==='$$'?'#065F46':'var(--green)'}">${r.price}</span>
           <span style="color:var(--border)">·</span>${this._badge(r)}
+          ${r.lastVisited?`<span style="color:var(--border)">·</span>${lastVisitedHTML(r)}`:''}
         </div>
       </div>
       <div class="li-stars" style="color:var(--amber)">${r.rating?'★'.repeat(r.rating):'—'}</div>
@@ -809,6 +821,7 @@ const A={
           </button>
         </div>
         <div class="dp-addr">📍 ${r.address}</div>
+        ${r.lastVisited?`<div class="dp-lastvisited">${lastVisitedHTML(r)}</div>`:''}
         <div class="stars-row">${stars}<span class="star-lbl">${r.rating?`${r.rating}/5`:'Tap to rate'}</span></div>
         <div class="mets">
           <div class="met"><div class="met-l">Price</div><div class="met-v" style="color:${priceColor}">${r.price}</div></div>
@@ -859,6 +872,7 @@ const A={
         <div><label class="fl">Status</label><select class="fs" id="f-status"><option value="visited"${r?.status==='visited'?' selected':''}>Visited</option><option value="wishlist"${r?.status==='wishlist'?' selected':''}>Wishlist</option></select></div>
         <div><label class="fl">Emoji</label><input class="fi" id="f-emoji" value="${r?.emoji||'🍽'}" maxlength="4" style="text-align:center;font-size:18px;padding:0 4px"/></div>
       </div>
+      <div class="fg"><label class="fl">Last Visited <span style="color:var(--border)">(optional)</span></label><input class="fi" id="f-lastvisited" type="date" value="${r?.lastVisited?r.lastVisited.slice(0,10):''}"/></div>
       <div class="fg"><label class="fl">Your Rating</label><div class="sp" id="sp">${[1,2,3,4,5].map(i=>`<button class="${i<=this.sp?'on':''}" onclick="A.setSp(${i})">${i<=this.sp?'★':'☆'}</button>`).join('')}</div></div>
       <div class="fr2">
         <div><label class="fl">Quality (1–10)</label><input class="fi" id="f-qual" type="number" min="1" max="10" value="${r?.quality||''}" placeholder="8"/></div>
@@ -896,6 +910,7 @@ const A={
     if(!name){alert('Name is required');return}
     const id=this.eid||Date.now();
     const obj={
+      ...(r||{}),
       id,name,
       cuisine:document.getElementById('f-cuisine').value||'Restaurant',
       emoji:document.getElementById('f-emoji').value||'🍽',
@@ -913,6 +928,7 @@ const A={
       lat:parseFloat(document.getElementById('f-lat').value)||30.267,
       lng:parseFloat(document.getElementById('f-lng').value)||-97.743,
       photo:document.getElementById('f-photo').value||'',
+      lastVisited:document.getElementById('f-lastvisited').value||'',
     };
     const next=this.eid?this.data.map(r=>r.id===this.eid?obj:r):[...this.data,obj];
     this._upd(next);this.sel=obj.id;this.closeModal();this.render();
