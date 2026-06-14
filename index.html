@@ -357,6 +357,14 @@ select option{background:white}
   white-space:nowrap;transition:background .15s,color .15s;flex-shrink:0;
 }
 #surprise-btn:hover{background:var(--accent);color:white}
+#open-now-btn{
+  height:32px;padding:0 14px;border-radius:20px;
+  background:var(--green-light);color:var(--green);border:none;font-size:12px;
+  font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;
+  white-space:nowrap;transition:background .15s,color .15s;flex-shrink:0;
+}
+#open-now-btn:hover{background:var(--green);color:white}
+#open-now-btn.active{background:var(--green);color:white}
 
 #toast{
   position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
@@ -402,6 +410,7 @@ select option{background:white}
     <option value="5">★★★★★ 5</option>
   </select>
   <span id="cnt"></span>
+  <button id="open-now-btn" onclick="A.toggleOpenNow()">🟢 Open Now</button>
   <button id="surprise-btn" onclick="A.surpriseMe()">🎲 Surprise Me</button>
   <button id="find-table-btn" onclick="A.toggleResMode()">🗓 Find a table</button>
 </div>
@@ -513,6 +522,7 @@ const A={
   data:[],sel:null,filter:'all',cuisineFilter:'',priceFilter:'',ratingFilter:0,
   search:'',admin:false,view:'map',
   resMode:false,resDate:'',resParty:2,resTime:'19:00',
+  openNowFilter:false,placesCache:null,
   lmap:null,markers:{},eid:null,sp:0,ntarea:null,stimer:null,
 
   async init(){
@@ -524,9 +534,44 @@ const A={
     }
     if(!this.data.length)this.data=[];
     if(!localStorage.getItem(LS))this._ls();
+    try{const r=await fetch('placesCache.json');if(r.ok)this.placesCache=await r.json()}catch{}
     this._initMap();
     this._events();
     this._populateFilters();
+    this.render();
+  },
+
+  // ── Open Now
+  // regularOpeningHours.periods entries: {open:{day,hour,minute}, close:{day,hour,minute}}
+  // day: 0=Sunday..6=Saturday. Returns true/false, or null if unknown.
+  isOpenNow(r){
+    const entry=this.placesCache?.places?.[r.googlePlaceId];
+    const periods=entry?.regularOpeningHours?.periods;
+    if(!periods||!periods.length)return null;
+    const now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Chicago'}));
+    const day=now.getDay(),mins=now.getHours()*60+now.getMinutes();
+    for(const p of periods){
+      if(!p.open)continue;
+      const openDay=p.open.day,openMins=p.open.hour*60+(p.open.minute||0);
+      if(!p.close){
+        if(day===openDay&&mins>=openMins)return true;
+        continue;
+      }
+      let closeDay=p.close.day,closeMins=p.close.hour*60+(p.close.minute||0);
+      if(closeDay===openDay&&closeMins<=openMins)closeDay=(openDay+1)%7;
+      if(day===openDay&&mins>=openMins){
+        if(closeDay===openDay){if(mins<closeMins)return true}
+        else return true;
+      }else if(day===closeDay&&closeDay!==openDay){
+        if(mins<closeMins)return true;
+      }
+    }
+    return false;
+  },
+
+  toggleOpenNow(){
+    this.openNowFilter=!this.openNowFilter;
+    document.getElementById('open-now-btn').classList.toggle('active',this.openNowFilter);
     this.render();
   },
 
@@ -574,6 +619,7 @@ const A={
       if(this.priceFilter&&r.price!==this.priceFilter)return false;
       if(this.ratingFilter>0&&(r.rating||0)<this.ratingFilter)return false;
       if(this.resMode&&!r.resy&&!r.opentable)return false;
+      if(this.openNowFilter&&!this.isOpenNow(r))return false;
       if(this.search){const q=this.search.toLowerCase();if(!r.name.toLowerCase().includes(q)&&!r.cuisine.toLowerCase().includes(q))return false}
       return true;
     });

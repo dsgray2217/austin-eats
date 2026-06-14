@@ -1,0 +1,16 @@
+name: Refresh Places Cache
+
+on:
+  schedule:
+    # Every Monday at 08:00 UTC
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call /api/refresh-places
+        run: |
+          curl --fail-with-body -X POST "https://${{ secrets.SITE_DOMAIN }}/api/refresh-places" \
+            -H "x-refresh-secret: ${{ secrets.REFRESH_SECRET }}"
