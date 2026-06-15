@@ -373,6 +373,14 @@ select option{background:white}
   white-space:nowrap;transition:background .15s,color .15s;flex-shrink:0;
 }
 #surprise-btn:hover{background:var(--accent);color:white}
+#open-now-btn{
+  height:32px;padding:0 14px;border-radius:20px;
+  background:var(--accent-light);color:var(--accent);border:none;font-size:12px;
+  font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;
+  white-space:nowrap;transition:background .15s,color .15s;flex-shrink:0;
+}
+#open-now-btn:hover{background:var(--accent);color:white}
+#open-now-btn.active{background:var(--accent);color:white}
 
 #toast{
   position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
@@ -418,6 +426,7 @@ select option{background:white}
     <option value="5">★★★★★ 5</option>
   </select>
   <span id="cnt"></span>
+  <button id="open-now-btn" onclick="A.toggleOpenNow()">🕐 Open Now</button>
   <button id="surprise-btn" onclick="A.surpriseMe()">🎲 Surprise Me</button>
   <button id="find-table-btn" onclick="A.toggleResMode()">🗓 Find a table</button>
 </div>
@@ -536,6 +545,31 @@ const starRow=rating=>{
   }).join('');
 };
 
+// Checks whether a restaurant is currently open, using cached
+// regularOpeningHours and the current time in America/Chicago.
+// Returns false (not open) if there's no cached hours data — never throws.
+const isOpenNow=(r,placesCache)=>{
+  try{
+    const periods=placesCache?.places?.[r?.googlePlaceId]?.regularOpeningHours?.periods;
+    if(!periods||!periods.length)return false;
+    const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+    const map={};parts.forEach(p=>map[p.type]=p.value);
+    const day=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(map.weekday);
+    const nowMin=day*1440+(parseInt(map.hour,10)%24)*60+parseInt(map.minute,10);
+    return periods.some(p=>{
+      if(!p.open)return false;
+      const openMin=p.open.day*1440+(p.open.hour||0)*60+(p.open.minute||0);
+      let closeMin=p.close?p.close.day*1440+(p.close.hour||0)*60+(p.close.minute||0):openMin+1440;
+      if(closeMin<=openMin)closeMin+=7*1440;
+      let n=nowMin;
+      if(n<openMin)n+=7*1440;
+      return n>=openMin&&n<closeMin;
+    });
+  }catch{
+    return false;
+  }
+};
+
 // Builds the Google rating + top reviews block for a restaurant's detail panel.
 // Returns '' if there's no cached rating/review data — never throws.
 const googleRatingHTML=(r,placesCache)=>{
@@ -586,6 +620,7 @@ const A={
   data:[],sel:null,filter:'all',cuisineFilter:'',priceFilter:'',ratingFilter:0,
   search:'',admin:false,view:'map',
   resMode:false,resDate:'',resParty:2,resTime:'19:00',
+  openNowFilter:false,
   placesCache:null,
   lmap:null,markers:{},eid:null,sp:0,ntarea:null,stimer:null,
 
@@ -649,6 +684,7 @@ const A={
       if(this.priceFilter&&r.price!==this.priceFilter)return false;
       if(this.ratingFilter>0&&(r.rating||0)<this.ratingFilter)return false;
       if(this.resMode&&!r.resy&&!r.opentable)return false;
+      if(this.openNowFilter&&!isOpenNow(r,this.placesCache))return false;
       if(this.search){const q=this.search.toLowerCase();if(!r.name.toLowerCase().includes(q)&&!r.cuisine.toLowerCase().includes(q))return false}
       return true;
     });
@@ -716,6 +752,12 @@ const A={
     }
   },
   closePinDlg(){document.getElementById('pov').classList.remove('show')},
+
+  toggleOpenNow(){
+    this.openNowFilter=!this.openNowFilter;
+    document.getElementById('open-now-btn').classList.toggle('active',this.openNowFilter);
+    this.sel=null;this.render();
+  },
 
   // ── Reservation mode
   toggleResMode(){
