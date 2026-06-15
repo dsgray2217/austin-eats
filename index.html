@@ -125,6 +125,9 @@ select option{background:white}
 .li-img img{width:100%;height:100%;object-fit:cover}
 .li-name{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
 .li-sub{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.li-hours{font-size:11px;margin-top:2px}
+.hours-status.open{color:var(--green)}
+.hours-status.closed{color:#DC2626}
 .li-stars{font-size:11px;color:var(--amber);flex-shrink:0;letter-spacing:1px}
 .empty{padding:48px 20px;text-align:center;color:var(--muted);font-size:14px;line-height:1.8}
 
@@ -570,6 +573,29 @@ const isOpenNow=(r,placesCache)=>{
   }
 };
 
+// Builds a short "Open · 11:30 AM–10:00 PM" / "Closed" badge from cached
+// regularOpeningHours. Returns '' if there's no cached hours data — never throws.
+const fmtClock=t=>{
+  const h=t.hour||0,m=t.minute||0;
+  const ampm=h>=12?'PM':'AM';
+  const h12=h%12===0?12:h%12;
+  return m===0?`${h12}${ampm}`:`${h12}:${String(m).padStart(2,'0')}${ampm}`;
+};
+const hoursStatusHTML=(r,placesCache)=>{
+  try{
+    const periods=placesCache?.places?.[r?.googlePlaceId]?.regularOpeningHours?.periods;
+    if(!periods||!periods.length)return '';
+    const open=isOpenNow(r,placesCache);
+    const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',weekday:'short'}).formatToParts(new Date());
+    const day=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(parts.find(p=>p.type==='weekday').value);
+    const today=periods.filter(p=>p.open&&p.open.day===day);
+    const range=today.length?today.map(p=>`${fmtClock(p.open)}–${p.close?fmtClock(p.close):'late'}`).join(', '):'Closed today';
+    return `<span class="hours-status ${open?'open':'closed'}">${open?'Open':'Closed'} · ${range}</span>`;
+  }catch{
+    return '';
+  }
+};
+
 // Builds the Google rating + top reviews block for a restaurant's detail panel.
 // Returns '' if there's no cached rating/review data — never throws.
 const googleRatingHTML=(r,placesCache)=>{
@@ -888,6 +914,7 @@ const A={
           <span style="color:var(--border)">·</span>${this._badge(r)}
           ${r.lastVisited?`<span style="color:var(--border)">·</span>${lastVisitedHTML(r)}`:''}
         </div>
+        ${hoursStatusHTML(r,this.placesCache)?`<div class="li-hours">${hoursStatusHTML(r,this.placesCache)}</div>`:''}
       </div>
       <div class="li-stars" style="color:var(--amber)">${r.rating?'★'.repeat(r.rating):'—'}</div>
     </div>`;
@@ -909,6 +936,7 @@ const A={
           <div style="flex:1;min-width:0">
             <div class="li-name">${r.name}</div>
             <div class="li-sub"><span>${r.cuisine}</span><span style="color:var(--border)">·</span><span>${r.price}</span><span style="color:var(--border)">·</span>${this._badge(r)}</div>
+            ${hoursStatusHTML(r,this.placesCache)?`<div class="li-hours">${hoursStatusHTML(r,this.placesCache)}</div>`:''}
           </div>
           <div class="li-stars" style="color:var(--amber)">${r.rating?'★'.repeat(r.rating):'—'}</div>
         </div>`).join('')
