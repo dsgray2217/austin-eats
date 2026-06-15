@@ -300,6 +300,37 @@ select option{background:white}
 .m-save{flex:2;height:44px;border-radius:12px;border:none;background:var(--accent);color:white;cursor:pointer;font-size:13px;font-weight:600;letter-spacing:.02em;transition:background .15s}
 .m-save:hover{background:var(--accent-dark)}
 
+/* ── DISCOVER ── */
+#dov{
+  position:fixed;inset:0;background:rgba(0,0,0,.4);
+  z-index:250;display:none;flex-direction:column;align-items:center;
+  backdrop-filter:blur(4px);padding:20px;
+}
+#dov.show{display:flex}
+.dov-hdr{width:100%;max-width:420px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dov-ttl{font-family:'Playfair Display',serif;font-size:22px;color:white}
+.dov-x{background:rgba(255,255,255,.15);border:none;color:white;width:32px;height:32px;border-radius:50%;font-size:14px;cursor:pointer}
+#dov-stack{position:relative;width:100%;max-width:420px;flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.d-card{
+  position:absolute;width:100%;max-width:420px;max-height:100%;
+  background:white;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);
+  display:flex;flex-direction:column;touch-action:none;cursor:grab;
+  transition:transform .25s ease,opacity .25s ease;
+}
+.d-card.dragging{transition:none}
+.d-photo{width:100%;aspect-ratio:4/3;background:var(--bg);flex-shrink:0}
+.d-photo img{width:100%;height:100%;object-fit:cover}
+.d-body{padding:16px 18px;overflow-y:auto}
+.d-name{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:4px}
+.d-sub{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.d-addr{font-size:12px;color:var(--subtle)}
+.d-btns{display:flex;gap:10px;padding:14px 18px;border-top:1px solid var(--border)}
+.d-skip{flex:1;height:46px;border-radius:12px;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-size:14px;font-weight:600}
+.d-skip:hover{border-color:#DC2626;color:#DC2626}
+.d-add{flex:1;height:46px;border-radius:12px;border:none;background:var(--accent);color:white;cursor:pointer;font-size:14px;font-weight:600}
+.d-add:hover{background:var(--accent-dark)}
+.d-empty{color:white;text-align:center;font-size:14px;line-height:1.8;padding:0 20px}
+
 /* ── PIN DIALOG ── */
 #pov{
   position:fixed;inset:0;background:rgba(0,0,0,.4);
@@ -384,6 +415,13 @@ select option{background:white}
 }
 #open-now-btn:hover{background:var(--accent);color:white}
 #open-now-btn.active{background:var(--accent);color:white}
+#discover-btn{
+  height:32px;padding:0 14px;border-radius:20px;
+  background:var(--accent-light);color:var(--accent);border:none;font-size:12px;
+  font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;
+  white-space:nowrap;transition:background .15s,color .15s;flex-shrink:0;
+}
+#discover-btn:hover{background:var(--accent);color:white}
 
 #toast{
   position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
@@ -432,6 +470,7 @@ select option{background:white}
   <button id="open-now-btn" onclick="A.toggleOpenNow()">🕐 Open Now</button>
   <button id="surprise-btn" onclick="A.surpriseMe()">🎲 Surprise Me</button>
   <button id="find-table-btn" onclick="A.toggleResMode()">🗓 Find a table</button>
+  <button id="discover-btn" onclick="A.openDiscover()">✨ Discover</button>
 </div>
 
 <div id="res-bar">
@@ -487,11 +526,19 @@ select option{background:white}
 <div id="mov" onclick="if(event.target===this)A.closeModal()"><div id="mod"></div></div>
 <div id="pov" onclick="if(event.target===this)A.closePinDlg()"><div id="pdlg"></div></div>
 
+<div id="dov">
+  <div class="dov-hdr">
+    <div class="dov-ttl">✨ Discover</div>
+    <button class="dov-x" onclick="A.closeDiscover()">✕</button>
+  </div>
+  <div id="dov-stack"></div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 'use strict';
-const LS='ae-data-v4', LP='ae-pin', SS='ae-admin';
+const LS='ae-data-v4', LP='ae-pin', SS='ae-admin', LD='ae-discover-skipped';
 const PRICE=['$','$$','$$$','$$$$'];
 const VIBES=['Romantic','Family','Casual','Business','Lively','Cozy','Healthy','Trendy'];
 const VI={Romantic:'🕯',Family:'👨‍👩‍👧',Casual:'🍻',Business:'💼',Lively:'🎉',Cozy:'☕',Healthy:'🌿',Trendy:'✨'};
@@ -648,6 +695,7 @@ const A={
   resMode:false,resDate:'',resParty:2,resTime:'19:00',
   openNowFilter:false,
   placesCache:null,
+  discoverCache:null,discoverQueue:[],discoverSkipped:[],
   lmap:null,markers:{},eid:null,sp:0,ntarea:null,stimer:null,
 
   async init(){
@@ -660,6 +708,8 @@ const A={
     if(!this.data.length)this.data=[];
     if(!localStorage.getItem(LS))this._ls();
     try{const r=await fetch('placesCache.json');if(r.ok)this.placesCache=await r.json()}catch{}
+    try{const r=await fetch('discoverCache.json');if(r.ok)this.discoverCache=await r.json()}catch{}
+    try{this.discoverSkipped=JSON.parse(localStorage.getItem(LD))||[]}catch{this.discoverSkipped=[]}
     this._initMap();
     this._events();
     this._populateFilters();
@@ -778,6 +828,102 @@ const A={
     }
   },
   closePinDlg(){document.getElementById('pov').classList.remove('show')},
+
+  // ── Discover
+  _discoverList(){
+    const known=new Set(this.data.map(r=>r.googlePlaceId).filter(Boolean));
+    const skipped=new Set(this.discoverSkipped);
+    return (this.discoverCache?.places||[]).filter(p=>!known.has(p.id)&&!skipped.has(p.id));
+  },
+
+  openDiscover(){
+    this.discoverQueue=this._discoverList();
+    document.getElementById('dov').classList.add('show');
+    this._renderDiscoverStack();
+  },
+
+  closeDiscover(){
+    document.getElementById('dov').classList.remove('show');
+  },
+
+  _renderDiscoverStack(){
+    const stack=document.getElementById('dov-stack');
+    const queue=this.discoverQueue;
+    if(!queue.length){
+      stack.innerHTML='<div class="d-empty">🎉 You\'ve seen everything we found.<br>Check back after the next weekly refresh.</div>';
+      return;
+    }
+    const PRICE_MAP={PRICE_LEVEL_FREE:'',PRICE_LEVEL_INEXPENSIVE:'$',PRICE_LEVEL_MODERATE:'$$',PRICE_LEVEL_EXPENSIVE:'$$$',PRICE_LEVEL_VERY_EXPENSIVE:'$$$$'};
+    stack.innerHTML=queue.slice(0,2).reverse().map((p,i,arr)=>{
+      const top=i===arr.length-1;
+      const photo=p.photoName?`/api/place-photo?name=${encodeURIComponent(p.photoName)}&w=480`:null;
+      const price=PRICE_MAP[p.priceLevel]||'';
+      return `<div class="d-card" data-id="${esc(p.id)}" style="transform:scale(${top?1:0.96}) translateY(${top?0:10}px);opacity:${top?1:.6};z-index:${i}">
+        <div class="d-photo">${photo?`<img src="${photo}" alt="${esc(p.name)}" loading="lazy"/>`:''}</div>
+        <div class="d-body">
+          <div class="d-name">${esc(p.name)}</div>
+          <div class="d-sub">
+            ${p.rating!=null?`<span class="g-stars">${starRow(p.rating)}</span><span class="g-rating-num">${p.rating}</span>`:''}
+            ${p.userRatingCount!=null?`<span class="g-rating-count">${p.userRatingCount.toLocaleString()} reviews</span>`:''}
+            ${price?`<span style="color:var(--border)">·</span><span>${price}</span>`:''}
+            ${p.cuisine?`<span style="color:var(--border)">·</span><span>${esc(p.cuisine)}</span>`:''}
+          </div>
+          <div class="d-addr">📍 ${esc(p.address)}</div>
+        </div>
+        <div class="d-btns">
+          <button class="d-skip" onclick="A.discoverSkip()">✕ Skip</button>
+          <button class="d-add" onclick="A.discoverAdd()">➕ Add to list</button>
+        </div>
+      </div>`;
+    }).join('');
+    const top=stack.querySelector('.d-card:last-child');
+    if(top)this._bindDiscoverSwipe(top);
+  },
+
+  _bindDiscoverSwipe(card){
+    let startX=0,dx=0,dragging=false;
+    const onDown=e=>{
+      dragging=true;startX=(e.touches?e.touches[0].clientX:e.clientX);
+      card.classList.add('dragging');
+    };
+    const onMove=e=>{
+      if(!dragging)return;
+      const x=(e.touches?e.touches[0].clientX:e.clientX);
+      dx=x-startX;
+      card.style.transform=`translateX(${dx}px) rotate(${dx/20}deg)`;
+    };
+    const onUp=()=>{
+      if(!dragging)return;
+      dragging=false;card.classList.remove('dragging');
+      if(dx>100)this.discoverAdd();
+      else if(dx<-100)this.discoverSkip();
+      else card.style.transform='';
+      dx=0;
+    };
+    card.addEventListener('pointerdown',onDown);
+    card.addEventListener('pointermove',onMove);
+    card.addEventListener('pointerup',onUp);
+    card.addEventListener('pointerleave',onUp);
+  },
+
+  discoverSkip(){
+    const p=this.discoverQueue.shift();
+    if(p){
+      this.discoverSkipped.push(p.id);
+      localStorage.setItem(LD,JSON.stringify(this.discoverSkipped));
+    }
+    this._renderDiscoverStack();
+  },
+
+  discoverAdd(){
+    const p=this.discoverQueue[0];
+    if(!p)return;
+    this.closeDiscover();
+    this.openModal(undefined,{
+      name:p.name,address:p.address,lat:p.lat,lng:p.lng,
+      cuisine:p.cuisine,googlePlaceId:p.id,
+    });
+  },
 
   toggleOpenNow(){
     this.openNowFilter=!this.openNowFilter;
@@ -1007,44 +1153,48 @@ const A={
   },
 
   // ── Modal
-  openModal(id){
+  openModal(id,prefill){
     // If not admin, ask for PIN first, then reopen modal after unlock
-    if(!this.admin){this._pendingModal=id??'new';this.openPinDlg();return}
+    if(!this.admin){this._pendingModal=id??'new';this._pendingPrefill=prefill||null;this.openPinDlg();return}
     const r=id?this.data.find(x=>x.id===id):null;
+    const pf=r?null:(prefill||null);
+    const d=r||pf||{};
     this.eid=id??null;this.sp=r?.rating??0;
+    this._prefillPlaceId=d.googlePlaceId||null;
     const opt=(arr,v)=>arr.map(o=>`<option${o===v?' selected':''}>${o}</option>`).join('');
+    const defStatus=d.status||(pf?'wishlist':'visited');
     document.getElementById('mod').innerHTML=`
       <div class="m-handle"><div class="m-handle-bar"></div></div>
       <div class="m-ttl">${r?'Edit':'Add'} <span>${r?r.name:'Restaurant'}</span></div>
-      <div class="fg"><label class="fl">Photo URL <span style="color:var(--border)">(optional)</span></label><input class="fi" id="f-photo" value="${r?.photo||''}" placeholder="https://… or leave blank for auto"/></div>
+      <div class="fg"><label class="fl">Photo URL <span style="color:var(--border)">(optional)</span></label><input class="fi" id="f-photo" value="${d.photo||''}" placeholder="https://… or leave blank for auto"/></div>
       <div class="fr2">
-        <div><label class="fl">Name *</label><input class="fi" id="f-name" value="${r?.name||''}" placeholder="Restaurant name"/></div>
-        <div><label class="fl">Cuisine</label><input class="fi" id="f-cuisine" value="${r?.cuisine||''}" placeholder="e.g. Italian"/></div>
+        <div><label class="fl">Name *</label><input class="fi" id="f-name" value="${d.name||''}" placeholder="Restaurant name"/></div>
+        <div><label class="fl">Cuisine</label><input class="fi" id="f-cuisine" value="${d.cuisine||''}" placeholder="e.g. Italian"/></div>
       </div>
-      <div class="fg"><label class="fl">Address</label><input class="fi" id="f-addr" value="${r?.address||''}" placeholder="Street, Austin TX"/></div>
+      <div class="fg"><label class="fl">Address</label><input class="fi" id="f-addr" value="${d.address||''}" placeholder="Street, Austin TX"/></div>
       <div class="fr3">
-        <div><label class="fl">Price</label><select class="fs" id="f-price">${opt(PRICE,r?.price||'$$')}</select></div>
-        <div><label class="fl">Status</label><select class="fs" id="f-status"><option value="visited"${r?.status==='visited'?' selected':''}>Visited</option><option value="wishlist"${r?.status==='wishlist'?' selected':''}>Wishlist</option></select></div>
-        <div><label class="fl">Emoji</label><input class="fi" id="f-emoji" value="${r?.emoji||'🍽'}" maxlength="4" style="text-align:center;font-size:18px;padding:0 4px"/></div>
+        <div><label class="fl">Price</label><select class="fs" id="f-price">${opt(PRICE,d.price||'$$')}</select></div>
+        <div><label class="fl">Status</label><select class="fs" id="f-status"><option value="visited"${defStatus==='visited'?' selected':''}>Visited</option><option value="wishlist"${defStatus==='wishlist'?' selected':''}>Wishlist</option></select></div>
+        <div><label class="fl">Emoji</label><input class="fi" id="f-emoji" value="${d.emoji||'🍽'}" maxlength="4" style="text-align:center;font-size:18px;padding:0 4px"/></div>
       </div>
-      <div class="fg"><label class="fl">Last Visited <span style="color:var(--border)">(optional)</span></label><input class="fi" id="f-lastvisited" type="date" value="${r?.lastVisited?r.lastVisited.slice(0,10):''}"/></div>
+      <div class="fg"><label class="fl">Last Visited <span style="color:var(--border)">(optional)</span></label><input class="fi" id="f-lastvisited" type="date" value="${d.lastVisited?d.lastVisited.slice(0,10):''}"/></div>
       <div class="fg"><label class="fl">Your Rating</label><div class="sp" id="sp">${[1,2,3,4,5].map(i=>`<button class="${i<=this.sp?'on':''}" onclick="A.setSp(${i})">${i<=this.sp?'★':'☆'}</button>`).join('')}</div></div>
       <div class="fr2">
-        <div><label class="fl">Quality (1–10)</label><input class="fi" id="f-qual" type="number" min="1" max="10" value="${r?.quality||''}" placeholder="8"/></div>
-        <div><label class="fl">Vibe</label><select class="fs" id="f-vibe">${opt(VIBES,r?.vibe||'Casual')}</select></div>
+        <div><label class="fl">Quality (1–10)</label><input class="fi" id="f-qual" type="number" min="1" max="10" value="${d.quality||''}" placeholder="8"/></div>
+        <div><label class="fl">Vibe</label><select class="fs" id="f-vibe">${opt(VIBES,d.vibe||'Casual')}</select></div>
       </div>
-      <div class="fg"><label class="fl">Hours</label><input class="fi" id="f-hours" value="${r?.hours||''}" placeholder="Mon–Sat 5–10pm"/></div>
+      <div class="fg"><label class="fl">Hours</label><input class="fi" id="f-hours" value="${d.hours||''}" placeholder="Mon–Sat 5–10pm"/></div>
       <div class="fr2">
-        <div><label class="fl">Website</label><input class="fi" id="f-web" value="${r?.website||''}" placeholder="https://…"/></div>
-        <div><label class="fl">Resy URL</label><input class="fi" id="f-resy" value="${r?.resy||''}" placeholder="https://resy.com/cities/austin/…"/></div>
+        <div><label class="fl">Website</label><input class="fi" id="f-web" value="${d.website||''}" placeholder="https://…"/></div>
+        <div><label class="fl">Resy URL</label><input class="fi" id="f-resy" value="${d.resy||''}" placeholder="https://resy.com/cities/austin/…"/></div>
       </div>
-      <div class="fg"><label class="fl">OpenTable URL</label><input class="fi" id="f-opentable" value="${r?.opentable||''}" placeholder="https://www.opentable.com/r/…"/></div>
-      <div class="fg"><label class="fl">Tags (comma-separated)</label><input class="fi" id="f-tags" value="${(r?.tags||[]).join(', ')}" placeholder="sushi, date night, patio"/></div>
+      <div class="fg"><label class="fl">OpenTable URL</label><input class="fi" id="f-opentable" value="${d.opentable||''}" placeholder="https://www.opentable.com/r/…"/></div>
+      <div class="fg"><label class="fl">Tags (comma-separated)</label><input class="fi" id="f-tags" value="${(d.tags||[]).join(', ')}" placeholder="sushi, date night, patio"/></div>
       <div class="fg">
         <label class="fl">Coordinates <span style="color:var(--border)">(right-click on Google Maps → "What's here")</span></label>
-        <div class="fr2" style="margin-bottom:0"><input class="fi" id="f-lat" type="number" step="any" value="${r?.lat||30.267}" placeholder="Lat"/><input class="fi" id="f-lng" type="number" step="any" value="${r?.lng||-97.743}" placeholder="Lng"/></div>
+        <div class="fr2" style="margin-bottom:0"><input class="fi" id="f-lat" type="number" step="any" value="${d.lat||30.267}" placeholder="Lat"/><input class="fi" id="f-lng" type="number" step="any" value="${d.lng||-97.743}" placeholder="Lng"/></div>
       </div>
-      <div class="fg"><label class="fl">Notes</label><textarea class="fi ft" id="f-notes">${r?.notes||''}</textarea></div>
+      <div class="fg"><label class="fl">Notes</label><textarea class="fi ft" id="f-notes">${d.notes||''}</textarea></div>
       <div class="m-btns">
         <button class="m-cancel" onclick="A.closeModal()">Cancel</button>
         <button class="m-save" onclick="A.saveModal()">📍 ${r?'Save Changes':'Pin to Map'}</button>
@@ -1058,12 +1208,13 @@ const A={
     document.querySelectorAll('#sp button').forEach((b,i)=>{b.classList.toggle('on',i<v);b.textContent=i<v?'★':'☆'});
   },
 
-  closeModal(){document.getElementById('mov').classList.remove('show');this.eid=null;this._pendingModal=null},
+  closeModal(){document.getElementById('mov').classList.remove('show');this.eid=null;this._pendingModal=null;this._pendingPrefill=null;this._prefillPlaceId=null},
 
   saveModal(){
     const name=document.getElementById('f-name')?.value.trim();
     if(!name){alert('Name is required');return}
     const id=this.eid||Date.now();
+    const r=this.eid?this.data.find(x=>x.id===this.eid):null;
     const obj={
       ...(r||{}),
       id,name,
@@ -1085,7 +1236,12 @@ const A={
       photo:document.getElementById('f-photo').value||'',
       lastVisited:document.getElementById('f-lastvisited').value||'',
     };
-    const next=this.eid?this.data.map(r=>r.id===this.eid?obj:r):[...this.data,obj];
+    if(this._prefillPlaceId&&!obj.googlePlaceId)obj.googlePlaceId=this._prefillPlaceId;
+    if(this._prefillPlaceId){
+      this.discoverSkipped.push(this._prefillPlaceId);
+      localStorage.setItem(LD,JSON.stringify(this.discoverSkipped));
+    }
+    const next=this.eid?this.data.map(x=>x.id===this.eid?obj:x):[...this.data,obj];
     this._upd(next);this.sel=obj.id;this.closeModal();this.render();
   },
 
@@ -1138,8 +1294,8 @@ const A={
     this.closePinDlg=()=>{
       origClose();
       if(this.admin&&this._pendingModal!==null&&this._pendingModal!==undefined){
-        const m=this._pendingModal;this._pendingModal=null;
-        setTimeout(()=>this.openModal(m==='new'?undefined:m),50);
+        const m=this._pendingModal,pf=this._pendingPrefill;this._pendingModal=null;this._pendingPrefill=null;
+        setTimeout(()=>this.openModal(m==='new'?undefined:m,pf),50);
       }
     };
   },
