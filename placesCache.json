@@ -1,9 +1,9 @@
 {
-  "lastRefreshed": "2026-06-15T03:37:28.429Z",
+  "lastRefreshed": "2026-06-15T20:36:01.243Z",
   "places": {
     "ChIJDSfb3Dq1RIYR6BUfB7JSNRU": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -99,10 +99,10 @@
           "Saturday: 11:30 AM – 1:00 AM",
           "Sunday: 11:30 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:30:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.8,
-      "userRatingCount": 2059,
+      "userRatingCount": 2060,
       "reviews": [
         {
           "name": "places/ChIJDSfb3Dq1RIYR6BUfB7JSNRU/reviews/Ci9DQUlRQUNvZENodHljRjlvT25CYWJVWmZjVUZpVGt3d2Nrd3pZVXcwTm1oMU9VRRAB",
@@ -325,7 +325,7 @@
     },
     "ChIJrWlIEea1RIYRdLjavaYqIdM": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -421,7 +421,7 @@
           "Saturday: 8:00 AM – 10:00 PM",
           "Sunday: 8:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 972,
@@ -535,7 +535,7 @@
     },
     "ChIJdVYqeuO1RIYRxgSyjoYDkAg": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -631,7 +631,7 @@
           "Saturday: 9:00 AM – 11:00 PM",
           "Sunday: 9:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.7,
       "userRatingCount": 1538,
@@ -745,7 +745,7 @@
     },
     "ChIJn64e4Wu1RIYRGNdMhqJ5jNk": {
       "regularOpeningHours": {
-        "openNow": true,
+        "openNow": false,
         "periods": [
           {
             "open": {
@@ -841,7 +841,7 @@
           "Saturday: 4:30 – 11:00 PM",
           "Sunday: 4:30 – 11:00 PM"
         ],
-        "nextCloseTime": "2026-06-15T04:00:00Z"
+        "nextOpenTime": "2026-06-15T21:30:00Z"
       },
       "rating": 4.7,
       "userRatingCount": 1174,
@@ -961,7 +961,7 @@
     },
     "ChIJH3w8zB61RIYRhKc2dFxr5bs": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -1057,10 +1057,10 @@
           "Saturday: 11:00 AM – 11:00 PM",
           "Sunday: 11:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
-      "userRatingCount": 5628,
+      "userRatingCount": 5629,
       "reviews": [
         {
           "name": "places/ChIJH3w8zB61RIYRhKc2dFxr5bs/reviews/Ci9DQUlRQUNvZENodHljRjlvT21KYVZIRnFhME50WjJ0RGMyNUxhazVJWDFOcVRWRRAB",
@@ -1267,7 +1267,7 @@
           "Saturday: 8:00 AM – 3:00 PM",
           "Sunday: 8:00 AM – 3:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextOpenTime": "2026-06-16T13:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 260,
@@ -1381,7 +1381,7 @@
     },
     "ChIJX4QR7WC1RIYRyi3tZ_4UrhI": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -1477,7 +1477,7 @@
           "Saturday: 7:00 AM – 5:00 PM",
           "Sunday: 7:00 AM – 5:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-15T22:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 242,
@@ -1687,7 +1687,7 @@
           "Saturday: 7:00 AM – 3:00 PM",
           "Sunday: 7:00 AM – 3:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextOpenTime": "2026-06-16T12:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 1273,
@@ -1897,7 +1897,7 @@
           "Saturday: 7:30 AM – 9:00 PM",
           "Sunday: 7:30 AM – 3:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:30:00Z"
+        "nextOpenTime": "2026-06-16T12:30:00Z"
       },
       "rating": 4.7,
       "userRatingCount": 2433,
@@ -2305,7 +2305,7 @@
           "Saturday: 8:00 AM – 4:00 PM",
           "Sunday: Closed"
         ],
-        "nextOpenTime": "2026-06-15T12:30:00Z"
+        "nextOpenTime": "2026-06-16T12:30:00Z"
       },
       "rating": 4.7,
       "userRatingCount": 552,
@@ -2713,117 +2713,11 @@
           "Saturday: 11:30 AM – 3:00 AM",
           "Sunday: 11:30 AM – 12:00 AM"
         ],
-        "nextCloseTime": "2026-06-15T05:00:00Z"
+        "nextCloseTime": "2026-06-16T05:00:00Z"
       },
-      "rating": 4.1,
-      "userRatingCount": 706,
-      "reviews": [
-        {
-          "name": "places/ChIJH8uytJO1RIYRiWUoYA51N5U/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pCNVdYZzBiRkpoUm1ka2JEWlZYMGhLYjFGUVIyYxAB",
-          "relativePublishTimeDescription": "4 months ago",
-          "rating": 5,
-          "text": {
-            "text": "One of the best burgers I've ever had.  This takes In and Out to the next level. The burgers aren't loaded with unnecessary ingredients so the flavor of the meat stood out.  The Beast Mode fries were crispy and fried perfectly.   They didn't get soggy like fries from other places.  I'll definitely be back next time I'm in Austin.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "One of the best burgers I've ever had.  This takes In and Out to the next level. The burgers aren't loaded with unnecessary ingredients so the flavor of the meat stood out.  The Beast Mode fries were crispy and fried perfectly.   They didn't get soggy like fries from other places.  I'll definitely be back next time I'm in Austin.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Frank Carrillo",
-            "uri": "https://www.google.com/maps/contrib/103682066723013759034/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX1BiGFBUBqvSSW2z3bmxAFZXnlQUipbkwMWb8XO5OesL8hTyst_w=s128-c0x00000000-cc-rp-mo-ba4"
-          },
-          "publishTime": "2026-01-18T19:59:02.695560691Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2pCNVdYZzBiRkpoUm1ka2JEWlZYMGhLYjFGUVIyYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pCNVdYZzBiRkpoUm1ka2JEWlZYMGhLYjFGUVIyYxAB!2m1!1s0x8644b593b4b2cb1f:0x9537750e60286589"
-        },
-        {
-          "name": "places/ChIJH8uytJO1RIYRiWUoYA51N5U/reviews/Ci9DQUlRQUNvZENodHljRjlvT2s1eWNYbzVTRWQ0ZG05UWRYVkxlR0ZyUWs5aGFVRRAB",
-          "relativePublishTimeDescription": "3 months ago",
-          "rating": 4,
-          "text": {
-            "text": "Ordered from Uber Eats this weekend.\n\nWas very good. Probably need to go to the location next time as the delivery is a bit far from my house but it was still a very enjoyable burger and fries.\n\nThe first experience I had was better but they do make an exception burger.\n\nI don’t usually eat onion or peppers on my burger but I devoured the NADC burger.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "Ordered from Uber Eats this weekend.\n\nWas very good. Probably need to go to the location next time as the delivery is a bit far from my house but it was still a very enjoyable burger and fries.\n\nThe first experience I had was better but they do make an exception burger.\n\nI don’t usually eat onion or peppers on my burger but I devoured the NADC burger.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Damion W",
-            "uri": "https://www.google.com/maps/contrib/103775874828269747990/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVv1gWe-zpNfnUxEp2t-SRdo-3p6V2p5d26m6WfYOUpdqOdkKWfig=s128-c0x00000000-cc-rp-mo-ba5"
-          },
-          "publishTime": "2026-02-17T17:07:11.911553024Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2s1eWNYbzVTRWQ0ZG05UWRYVkxlR0ZyUWs5aGFVRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2s1eWNYbzVTRWQ0ZG05UWRYVkxlR0ZyUWs5aGFVRRAB!2m1!1s0x8644b593b4b2cb1f:0x9537750e60286589"
-        },
-        {
-          "name": "places/ChIJH8uytJO1RIYRiWUoYA51N5U/reviews/Ci9DQUlRQUNvZENodHljRjlvT2tWeVVFdFFMV054ZVROUmRIVkNTbVpEZGpOR1RtYxAB",
-          "relativePublishTimeDescription": "6 months ago",
-          "rating": 5,
-          "text": {
-            "text": "This is the best burger I’ve had in my life. I don’t take that lightly. I’m not stranger to a cheeseburger. This joint has it down. The NADC burger is a masterpiece. They have 4 items on the menu, it’s a science at this point. The patties were perfectly tender, and sourced from wagyu beef. This pair with the fantastic soft cheese was pure bliss upon the first bite. The monster fries were a solid play as well, but no match for that perfection of a burger. You get to see the whole cooking process performed in a clean kitchen. Not to mention, the friendly staff were playing some Project Pat and Young Dolph in the background. This is my new spot to impress my friends who are visiting Austin for the first time. Is there any way I won’t be back here ASAP? Not a damn chance.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "This is the best burger I’ve had in my life. I don’t take that lightly. I’m not stranger to a cheeseburger. This joint has it down. The NADC burger is a masterpiece. They have 4 items on the menu, it’s a science at this point. The patties were perfectly tender, and sourced from wagyu beef. This pair with the fantastic soft cheese was pure bliss upon the first bite. The monster fries were a solid play as well, but no match for that perfection of a burger. You get to see the whole cooking process performed in a clean kitchen. Not to mention, the friendly staff were playing some Project Pat and Young Dolph in the background. This is my new spot to impress my friends who are visiting Austin for the first time. Is there any way I won’t be back here ASAP? Not a damn chance.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Zach Jones",
-            "uri": "https://www.google.com/maps/contrib/102824111933617676726/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUzncE1PtNXYvOk22kjkKtesUz3L6_1Qk8C-q7dVTDS62Z31lXduA=s128-c0x00000000-cc-rp-mo-ba5"
-          },
-          "publishTime": "2025-12-05T05:14:29.466017919Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2tWeVVFdFFMV054ZVROUmRIVkNTbVpEZGpOR1RtYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2tWeVVFdFFMV054ZVROUmRIVkNTbVpEZGpOR1RtYxAB!2m1!1s0x8644b593b4b2cb1f:0x9537750e60286589"
-        },
-        {
-          "name": "places/ChIJH8uytJO1RIYRiWUoYA51N5U/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xCdWNGaDBOV2RCYmpWcFJHOUZWR05KTVVGd1oxRRAB",
-          "relativePublishTimeDescription": "3 months ago",
-          "rating": 5,
-          "text": {
-            "text": "Every burger lover should try these out if they have a chance. These are not the run of the mill “cafe” burgers with garnishes and extras. It is seasoned and sauced to perfection. Really really good, ended up having 2.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "Every burger lover should try these out if they have a chance. These are not the run of the mill “cafe” burgers with garnishes and extras. It is seasoned and sauced to perfection. Really really good, ended up having 2.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "ming yang wong",
-            "uri": "https://www.google.com/maps/contrib/114058947749796549654/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLSc6jwAaiSoO6WEk4nQcCdLtgVHVX3TMIYn6BgCRl8iPKleg=s128-c0x00000000-cc-rp-mo-ba2"
-          },
-          "publishTime": "2026-02-24T17:28:48.665318497Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xCdWNGaDBOV2RCYmpWcFJHOUZWR05KTVVGd1oxRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xCdWNGaDBOV2RCYmpWcFJHOUZWR05KTVVGd1oxRRAB!2m1!1s0x8644b593b4b2cb1f:0x9537750e60286589"
-        },
-        {
-          "name": "places/ChIJH8uytJO1RIYRiWUoYA51N5U/reviews/Ci9DQUlRQUNvZENodHljRjlvT205ME1rVXRla3QxVURCNVNtUm5hREY2VEMxdE0wRRAB",
-          "relativePublishTimeDescription": "7 months ago",
-          "rating": 5,
-          "text": {
-            "text": "Big shoutout to Sachi! Not only was the food absolutely delicious, but the service was fast and amazing. For how busy it was — the line was still moving quickly. Sachi was very fast, efficient, and professional. When I picked up my order, he even addressed me by my name, which made the experience feel personal and welcoming. He also gave great recommendations, and the burger was incredible — perfectly grilled on the outside but still juicy and moist on the inside, never dry. The vibe of the place is fun, energetic, and just overall top-tier. Highly recommend!",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "Big shoutout to Sachi! Not only was the food absolutely delicious, but the service was fast and amazing. For how busy it was — the line was still moving quickly. Sachi was very fast, efficient, and professional. When I picked up my order, he even addressed me by my name, which made the experience feel personal and welcoming. He also gave great recommendations, and the burger was incredible — perfectly grilled on the outside but still juicy and moist on the inside, never dry. The vibe of the place is fun, energetic, and just overall top-tier. Highly recommend!",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Reina Y",
-            "uri": "https://www.google.com/maps/contrib/111761659082146135423/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjV7lFRHcgsCoHQFCCdURhHKSQ-vQNDCIU3ZusnAIwd3xw22kJXD2w=s128-c0x00000000-cc-rp-mo-ba4"
-          },
-          "publishTime": "2025-11-12T15:29:17.200151048Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT205ME1rVXRla3QxVURCNVNtUm5hREY2VEMxdE0wRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT205ME1rVXRla3QxVURCNVNtUm5hREY2VEMxdE0wRRAB!2m1!1s0x8644b593b4b2cb1f:0x9537750e60286589"
-        }
-      ]
+      "rating": null,
+      "userRatingCount": null,
+      "reviews": []
     },
     "ChIJ4ys7OrK1RIYRUYamRxM0adg": {
       "regularOpeningHours": {
@@ -3235,7 +3129,7 @@
     },
     "ChIJ25jniq61RIYRKMcppfZ-Rv0": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -3331,7 +3225,7 @@
           "Saturday: 7:00 AM – 9:00 PM",
           "Sunday: 7:00 AM – 4:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-15T21:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 2219,
@@ -3541,14 +3435,14 @@
           "Saturday: 7:00 AM – 3:00 PM",
           "Sunday: 7:00 AM – 3:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextOpenTime": "2026-06-16T12:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 656,
       "reviews": [
         {
           "name": "places/ChIJUbhQoKe1RIYR2Ltf3qyiy-A/reviews/Ci9DQUlRQUNvZENodHljRjlvT2sxNlgyMDFiVkY0ZWtkUlgzaG1kbE0zY3pOUVlXYxAB",
-          "relativePublishTimeDescription": "2 weeks ago",
+          "relativePublishTimeDescription": "3 weeks ago",
           "rating": 4,
           "text": {
             "text": "I tried out the Toasty Badger with my wife for brunch. We really enjoyed the cozy atmosphere, tasty food, and friendly service. The hash browns and pancakes were absolutely delicious and the rectangle shape was a unique twist (for hash browns). The French toast was good…though a bit overdone. The portions are understandably on the smaller side, except the massive pancakes. It is very popular, so expect to wait. Overall, a great place for some brekky!",
@@ -3751,7 +3645,7 @@
           "Saturday: 7:00 AM – 12:00 AM",
           "Sunday: 7:00 AM – 11:00 PM"
         ],
-        "nextCloseTime": "2026-06-15T04:00:00Z"
+        "nextCloseTime": "2026-06-16T05:00:00Z"
       },
       "rating": 4.6,
       "userRatingCount": 3963,
@@ -3952,7 +3846,7 @@
         "nextOpenTime": "2026-06-17T22:00:00Z"
       },
       "rating": 4.3,
-      "userRatingCount": 1334,
+      "userRatingCount": 1335,
       "reviews": [
         {
           "name": "places/ChIJqfpPuy20RIYR5ZmPEVDeVuo/reviews/Ci9DQUlRQUNvZENodHljRjlvT2toU1lWZExOazFCWW5ReFEyWmhhM2QyUzI5UGFuYxAB",
@@ -4063,7 +3957,7 @@
     },
     "ChIJSYGiSUu1RIYRoLnPJ6YUvz4": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -4159,7 +4053,7 @@
           "Saturday: 7:00 AM – 10:00 PM",
           "Sunday: 7:00 AM – 7:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-16T00:00:00Z"
       },
       "rating": 4.6,
       "userRatingCount": 1208,
@@ -4555,10 +4449,10 @@
           "Saturday: 7:00 AM – 2:00 PM",
           "Sunday: 7:00 AM – 2:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T11:00:00Z"
+        "nextOpenTime": "2026-06-16T11:00:00Z"
       },
       "rating": 4.6,
-      "userRatingCount": 445,
+      "userRatingCount": 446,
       "reviews": [
         {
           "name": "places/ChIJ8d5ms561RIYRXIC1COvs_y4/reviews/Ci9DQUlRQUNvZENodHljRjlvT2t4MWJYbFhTWFZxTW5KcVVGSnFkMWN6TVdsNmJsRRAB",
@@ -4604,7 +4498,7 @@
         },
         {
           "name": "places/ChIJ8d5ms561RIYRXIC1COvs_y4/reviews/Ci9DQUlRQUNvZENodHljRjlvT2tzMFEwUkxTMVZOUmxwMVZIRTVkekZ3WjBaa2FHYxAB",
-          "relativePublishTimeDescription": "5 months ago",
+          "relativePublishTimeDescription": "6 months ago",
           "rating": 5,
           "text": {
             "text": "I am on a quest to find the best cinnamon roll in Austin, and the one from Teal House is up there. It has the perfect balance of cinnamon and just enough icing. Mine was fresh out of the oven, and I almost started doing cartwheels from excitement.\n\nI also had the Andi croissant roll which had a delicate crunch. Love the vibes here and can't wait to visit again!",
@@ -4669,7 +4563,7 @@
     },
     "ChIJ18sUiDa1RIYRyhyP76NeCE0": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -4765,7 +4659,7 @@
           "Saturday: 7:00 AM – 4:00 PM",
           "Sunday: 7:00 AM – 4:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-15T21:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 850,
@@ -5173,10 +5067,10 @@
           "Saturday: 8:00 AM – 8:00 PM",
           "Sunday: 8:00 AM – 3:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextOpenTime": "2026-06-16T13:00:00Z"
       },
       "rating": 4.5,
-      "userRatingCount": 192,
+      "userRatingCount": 193,
       "reviews": [
         {
           "name": "places/ChIJf0QRHKRNW4YRLPaxTpf0JfE/reviews/Ci9DQUlRQUNvZENodHljRjlvT21sMlV6VTJhSEJET0ROcFQyMVRNV3RxYmpRek0zYxAB",
@@ -5383,7 +5277,7 @@
           "Saturday: 7:00 AM – 1:30 PM",
           "Sunday: 7:00 AM – 1:30 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextOpenTime": "2026-06-16T12:00:00Z"
       },
       "rating": 4.8,
       "userRatingCount": 829,
@@ -5453,7 +5347,7 @@
         },
         {
           "name": "places/ChIJcfPlAQC1RIYRjitW4SDog1M/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xkdFh6TTRZbkpOU2xWNlExSm5hVFJvVW5OR1dIYxAB",
-          "relativePublishTimeDescription": "7 months ago",
+          "relativePublishTimeDescription": "8 months ago",
           "rating": 4,
           "text": {
             "text": "Food truck located with other food trucks in a shady area along the street.\n\nOrder taking was fast and efficient, I waited about 15 minutes for the food. My favorite part was the iced coffee which they kept cold as orders were prepared. Coffee tasted above average, very good coffee taste, surprising.\n\nBreakfast sandwich was pretty good, I can’t say I fell in love with it, but it was a decent execution. I liked the compact presentation and the sausage. For me, the cheese was the weakest part, I prefer a natural tasting cheese vs the processed one used here.\n\nPleasant area to eat under the trees which provided shade on a very hot day when we were there.\n\nOverall, recommended place if you are in the area.\n\nP.S.: if this review was helpful, please leave a 👍, thank you 🙏",
@@ -5500,27 +5394,6 @@
       "rating": 4.5,
       "userRatingCount": 1501,
       "reviews": [
-        {
-          "name": "places/ChIJh91qhvy0RIYRBzoQTNhuG-4/reviews/Ci9DQUlRQUNvZENodHljRjlvT25Kbll6UndOVkpUWmxGTlpERkVaMWcyYTAxb05tYxAB",
-          "relativePublishTimeDescription": "8 months ago",
-          "rating": 5,
-          "text": {
-            "text": "Our waitress today- JULIANA✨  was absolutely pleasant and bubbly! Loved that! She made sure we had excellent service and constantly checked us without being overbearing. The food was also great! The portion was bigger than I thought and presentation was 10/10! Will be back again- Jon and Gloria Lope 10/12/2025",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "Our waitress today- JULIANA✨  was absolutely pleasant and bubbly! Loved that! She made sure we had excellent service and constantly checked us without being overbearing. The food was also great! The portion was bigger than I thought and presentation was 10/10! Will be back again- Jon and Gloria Lope 10/12/2025",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "GloryAngie",
-            "uri": "https://www.google.com/maps/contrib/117832591545955610085/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLhG9ZpINhx49l880GqlWq535X3evxeCMM6Dm3xBIZ5sx6n6g=s128-c0x00000000-cc-rp-mo"
-          },
-          "publishTime": "2025-10-12T14:59:59.528611687Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25Kbll6UndOVkpUWmxGTlpERkVaMWcyYTAxb05tYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25Kbll6UndOVkpUWmxGTlpERkVaMWcyYTAxb05tYxAB!2m1!1s0x8644b4fc866add87:0xee1b6ed84c103a07"
-        },
         {
           "name": "places/ChIJh91qhvy0RIYRBzoQTNhuG-4/reviews/Ci9DQUlRQUNvZENodHljRjlvT214NVVqSnJNWFp4YlVOZmMzTjFWMnc0TlROcloyYxAB",
           "relativePublishTimeDescription": "5 months ago",
@@ -5604,6 +5477,27 @@
           "publishTime": "2025-10-08T15:25:48.980181560Z",
           "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25VNE5EZE5lbUp3YW1acVZXUnZVMG80YVhKUk1uYxAB&d=17924085&t=1",
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25VNE5EZE5lbUp3YW1acVZXUnZVMG80YVhKUk1uYxAB!2m1!1s0x8644b4fc866add87:0xee1b6ed84c103a07"
+        },
+        {
+          "name": "places/ChIJh91qhvy0RIYRBzoQTNhuG-4/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xORmEwcHdlR1JzYWtKR2FEQmtlRU5tZDNjelMxRRAB",
+          "relativePublishTimeDescription": "10 months ago",
+          "rating": 5,
+          "text": {
+            "text": "Dog friendly on the patio! Very friendly service. Had great fresh ground coffee. The food tasted freshly preapred with great flavor and portion size. Almost too much food. Nice music and ambiance. Shaded patio on congress makes for great people watching and then close to shopping or restaurant hopping. Will definitely be back to try other menu items or just simply a black iced coffee...",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Dog friendly on the patio! Very friendly service. Had great fresh ground coffee. The food tasted freshly preapred with great flavor and portion size. Almost too much food. Nice music and ambiance. Shaded patio on congress makes for great people watching and then close to shopping or restaurant hopping. Will definitely be back to try other menu items or just simply a black iced coffee...",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Cason R",
+            "uri": "https://www.google.com/maps/contrib/101340679674823913286/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXtqr6FTKXLaONBBqkgO_lUuisZabPDsncCi0-BLUTTrA4s-3ao=s128-c0x00000000-cc-rp-mo-ba5"
+          },
+          "publishTime": "2025-08-17T16:57:48.503737914Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xORmEwcHdlR1JzYWtKR2FEQmtlRU5tZDNjelMxRRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xORmEwcHdlR1JzYWtKR2FEQmtlRU5tZDNjelMxRRAB!2m1!1s0x8644b4fc866add87:0xee1b6ed84c103a07"
         }
       ]
     },
@@ -5819,7 +5713,7 @@
     },
     "ChIJ2bR1XEi1RIYRiHGZTuau2yU": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -5915,14 +5809,14 @@
           "Saturday: 7:00 AM – 5:00 PM",
           "Sunday: 7:00 AM – 5:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-15T22:00:00Z"
       },
       "rating": 4.1,
       "userRatingCount": 1043,
       "reviews": [
         {
           "name": "places/ChIJ2bR1XEi1RIYRiHGZTuau2yU/reviews/Ci9DQUlRQUNvZENodHljRjlvT21wNlMwRnlZblZmYUhwTGVsbzFjSEV6TVhKUlkwRRAB",
-          "relativePublishTimeDescription": "2 weeks ago",
+          "relativePublishTimeDescription": "3 weeks ago",
           "rating": 5,
           "text": {
             "text": "We went back to this place for lunch twice because the food was so good. Highly recommend the pesto chicken salad sandwich. Really great matcha too! The food came out quick and line for ordering moved fast.",
@@ -6029,7 +5923,7 @@
     },
     "ChIJhW2TpRu1RIYRq1ErlAiHj-A": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -6125,7 +6019,7 @@
           "Saturday: 10:00 AM – 10:00 PM",
           "Sunday: 10:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 2697,
@@ -6174,7 +6068,7 @@
         },
         {
           "name": "places/ChIJhW2TpRu1RIYRq1ErlAiHj-A/reviews/Ci9DQUlRQUNvZENodHljRjlvT21oaVpUYzJXblUyUWtOZmJGRjRSMlZ0UVdwbllsRRAB",
-          "relativePublishTimeDescription": "5 months ago",
+          "relativePublishTimeDescription": "6 months ago",
           "rating": 4,
           "text": {
             "text": "Cute Mexican food spot. I went with a large group of about 20 people. They sat us at two large tables. We got the queso and guac as appetizers. I ended up getting a mocktail and the mail quail dish with mole sauce. The service was absolutely fantastic. Sometimes with groups of our size service is slow and the food takes forever, but they seemed to be well-staffed, as the food did not take long to come out and the waitstaff made regular rounds to check on drinks, take orders, etc.",
@@ -6335,7 +6229,7 @@
           "Saturday: 8:00 AM – 3:00 PM",
           "Sunday: 8:00 AM – 3:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextOpenTime": "2026-06-16T13:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 320,
@@ -6545,7 +6439,7 @@
           "Saturday: 8:00 AM – 11:00 PM",
           "Sunday: 8:00 AM – 8:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextOpenTime": "2026-06-16T13:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 1800,
@@ -6573,7 +6467,7 @@
         },
         {
           "name": "places/ChIJAZKGeRS1RIYRebMjcJtuk9A/reviews/Ci9DQUlRQUNvZENodHljRjlvT2tOaGQxRm5RM1JKTm5Gc05uWkNRamN4WVV4elVGRRAB",
-          "relativePublishTimeDescription": "a week ago",
+          "relativePublishTimeDescription": "2 weeks ago",
           "rating": 5,
           "text": {
             "text": "First time coming here! I’ve heard great things and it lived up to all the hype!\nGreat brunch options until 3pm. Definitely check out their pastries! I had the orange cruller and their breakfast sandwich with sausage plus a rosemary lavender latte (:",
@@ -6659,7 +6553,7 @@
     },
     "ChIJa-cK1hK1RIYRZs8b1ulfJ6U": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -6755,7 +6649,7 @@
           "Saturday: 11:00 AM – 11:00 PM",
           "Sunday: 11:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 430,
@@ -7049,7 +6943,7 @@
           "Saturday: 11:30 AM – 2:30 PM, 4:00 – 11:00 PM",
           "Sunday: 11:30 AM – 2:30 PM, 4:00 – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:30:00Z"
+        "nextOpenTime": "2026-06-15T21:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 607,
@@ -7074,27 +6968,6 @@
           "publishTime": "2025-12-09T01:29:25.360475202Z",
           "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xWRVduZEhablJLYVRaTVgwZFVVV2x1UVVZd1lrRRAB&d=17924085&t=1",
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xWRVduZEhablJLYVRaTVgwZFVVV2x1UVVZd1lrRRAB!2m1!1s0x8644b51d89cf1fcf:0xcb154d057cadec4c"
-        },
-        {
-          "name": "places/ChIJzx_PiR21RIYRTOytfAVNFcs/reviews/Ci9DQUlRQUNvZENodHljRjlvT213NWFYZzRaWEphVjFoTU1TMUxkVVZFVmpsWWQxRRAB",
-          "relativePublishTimeDescription": "4 months ago",
-          "rating": 5,
-          "text": {
-            "text": "It was my sister and I’s first night in Austin and we are so happy we decided to make a last minute reservation at Uchiba! Our server Rita and all the other staff made this dinner exceptional! Rita’s attentiveness to our pallette  & her reccomendations were a great pairing. We loved her vibe and kindess! We thoroughly enjoyed and appreciated how each server explained each dish when it arrived to the table. The music was very mood fitting and made the ambience top tier. Oh! & the food was amazing! From the sweet potato tempura, yuca chips with edamame hummus, and  hamma chilli to start! Then you can’t go wrong with any nigiri! Highly reccommend everyone to make a stop here! Also, they have amazing heaters in the patio & offer blankets!\n\npictured below one of our favorites of the night, hirame (flounder) nigiri! (Thanks to Rita!)",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "It was my sister and I’s first night in Austin and we are so happy we decided to make a last minute reservation at Uchiba! Our server Rita and all the other staff made this dinner exceptional! Rita’s attentiveness to our pallette  & her reccomendations were a great pairing. We loved her vibe and kindess! We thoroughly enjoyed and appreciated how each server explained each dish when it arrived to the table. The music was very mood fitting and made the ambience top tier. Oh! & the food was amazing! From the sweet potato tempura, yuca chips with edamame hummus, and  hamma chilli to start! Then you can’t go wrong with any nigiri! Highly reccommend everyone to make a stop here! Also, they have amazing heaters in the patio & offer blankets!\n\npictured below one of our favorites of the night, hirame (flounder) nigiri! (Thanks to Rita!)",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Eliza Dalmacio",
-            "uri": "https://www.google.com/maps/contrib/117498228491171158116/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUuPJPr4vFJsXKyF3l9iQeJVfiiM-iIjQcQEOqNi5C8ml0sspM=s128-c0x00000000-cc-rp-mo"
-          },
-          "publishTime": "2026-01-17T04:34:33.016312790Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT213NWFYZzRaWEphVjFoTU1TMUxkVVZFVmpsWWQxRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT213NWFYZzRaWEphVjFoTU1TMUxkVVZFVmpsWWQxRRAB!2m1!1s0x8644b51d89cf1fcf:0xcb154d057cadec4c"
         },
         {
           "name": "places/ChIJzx_PiR21RIYRTOytfAVNFcs/reviews/Ci9DQUlRQUNvZENodHljRjlvT2tKWGJUUnpWV05LTnpKNFdHTnVUVWh5UW01a1NuYxAB",
@@ -7158,6 +7031,27 @@
           "publishTime": "2026-01-10T15:51:00.120669786Z",
           "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25aaFRFMVJTekYxVFRreVVITlhWRk5ITFZWWU0yYxAB&d=17924085&t=1",
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25aaFRFMVJTekYxVFRreVVITlhWRk5ITFZWWU0yYxAB!2m1!1s0x8644b51d89cf1fcf:0xcb154d057cadec4c"
+        },
+        {
+          "name": "places/ChIJzx_PiR21RIYRTOytfAVNFcs/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pkdVVFVkpTbmd3U1ROSWJWSk1TbFk1TVVOQ1ZXYxAB",
+          "relativePublishTimeDescription": "8 months ago",
+          "rating": 4,
+          "text": {
+            "text": "I had a good experience at Uchiba overall and enjoyed the food, though I wasn’t completely blown away. They do offer some solid vegan options, but the experience had a few drawbacks.\n\nI was seated at the sushi bar, which I didn’t mind, but as a vegan it’s not exactly impressive to stare at a wall of refrigerated raw fish. It was also pretty loud, and sometimes hard to hear my server who was working behind the counter.\n\nI started with a drink: the old fashioned with Japanese whiskey was light, delicate, and excellent. For food, the yucca chips appetizer was very good, and the eggplant bao was awesome (though not fully vegan). The menu created some confusion: the online menu clearly lists vegetarian/vegan options, the paper menu does not, and some dishes marked “vegan option available” apparently couldn’t be made vegan. That led to a slightly awkward ordering process.\n\nFrom the sushi bar recommendations, I tried the watermelon nigiri, mushroom nigiri, and tofu avocado maki. Everything was good, but the mushroom nigiri was outstanding, possibly the best vegan sushi I’ve ever had. The tofu avocado maki, on the other hand, was a bit odd, with brown avocado that took away from the experience.\n\nFor dessert, I went with the strawberry sorbet. It leaned more toward shaved ice than sorbet, but it was creative and refreshing. Unfortunately, it took about 25 minutes to arrive.\n\nOverall, a mixed but enjoyable visit. I’d definitely come back to explore more of the menu, but when it comes to vegan sushi specifically, I’d probably lean toward other spots in town.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "I had a good experience at Uchiba overall and enjoyed the food, though I wasn’t completely blown away. They do offer some solid vegan options, but the experience had a few drawbacks.\n\nI was seated at the sushi bar, which I didn’t mind, but as a vegan it’s not exactly impressive to stare at a wall of refrigerated raw fish. It was also pretty loud, and sometimes hard to hear my server who was working behind the counter.\n\nI started with a drink: the old fashioned with Japanese whiskey was light, delicate, and excellent. For food, the yucca chips appetizer was very good, and the eggplant bao was awesome (though not fully vegan). The menu created some confusion: the online menu clearly lists vegetarian/vegan options, the paper menu does not, and some dishes marked “vegan option available” apparently couldn’t be made vegan. That led to a slightly awkward ordering process.\n\nFrom the sushi bar recommendations, I tried the watermelon nigiri, mushroom nigiri, and tofu avocado maki. Everything was good, but the mushroom nigiri was outstanding, possibly the best vegan sushi I’ve ever had. The tofu avocado maki, on the other hand, was a bit odd, with brown avocado that took away from the experience.\n\nFor dessert, I went with the strawberry sorbet. It leaned more toward shaved ice than sorbet, but it was creative and refreshing. Unfortunately, it took about 25 minutes to arrive.\n\nOverall, a mixed but enjoyable visit. I’d definitely come back to explore more of the menu, but when it comes to vegan sushi specifically, I’d probably lean toward other spots in town.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "David Kwartler",
+            "uri": "https://www.google.com/maps/contrib/110997816164797451743/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUgI9m_Klbf8zffDILxLyxnDWRmGn9BPUEazL2IBJ_hcI9EtES0tw=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2025-09-30T18:01:16.602331309Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2pkdVVFVkpTbmd3U1ROSWJWSk1TbFk1TVVOQ1ZXYxAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pkdVVFVkpTbmd3U1ROSWJWSk1TbFk1TVVOQ1ZXYxAB!2m1!1s0x8644b51d89cf1fcf:0xcb154d057cadec4c"
         }
       ]
     },
@@ -7631,7 +7525,7 @@
           "Saturday: 7:00 AM – 8:00 PM",
           "Sunday: 7:00 AM – 8:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextOpenTime": "2026-06-16T12:00:00Z"
       },
       "rating": 4.2,
       "userRatingCount": 148,
@@ -7745,7 +7639,7 @@
     },
     "ChIJ0bLjUDO1RIYRU6LKZZfg5Gg": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -7841,7 +7735,7 @@
           "Saturday: 9:00 AM – 7:00 PM",
           "Sunday: 9:00 AM – 7:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextCloseTime": "2026-06-16T00:00:00Z"
       },
       "rating": 4.3,
       "userRatingCount": 401,
@@ -8099,7 +7993,7 @@
           "Saturday: 9:00 AM – 10:00 PM",
           "Sunday: 9:00 AM – 5:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T14:00:00Z"
+        "nextOpenTime": "2026-06-15T22:00:00Z"
       },
       "rating": 4,
       "userRatingCount": 101,
@@ -8213,7 +8107,7 @@
     },
     "ChIJmQeC4IbKRIYRAnWFTn8f358": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -8309,7 +8203,7 @@
           "Saturday: 9:00 AM – 7:00 PM",
           "Sunday: 9:00 AM – 3:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-16T00:00:00Z"
       },
       "rating": 4.6,
       "userRatingCount": 365,
@@ -8358,7 +8252,7 @@
         },
         {
           "name": "places/ChIJmQeC4IbKRIYRAnWFTn8f358/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xZeGFUVTBPSFZXVXpSS2JsRlJjMkpOUlZoVlRXYxAB",
-          "relativePublishTimeDescription": "5 months ago",
+          "relativePublishTimeDescription": "6 months ago",
           "rating": 5,
           "text": {
             "text": "Absolutely one of my favorite places to be! So many delish options on the menu. My go to are The Natalia , yogurt bowl and I can’t leave out on of my favorite cookies in Austin! Aside from the delish foods the people are even more yummy with their fun and welcoming personalities. If you haven’t been yet, you are for sure missing out.",
@@ -8423,7 +8317,7 @@
     },
     "ChIJa79gEjO0RIYRFArTKm9J_s0": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -8519,7 +8413,7 @@
           "Saturday: 7:00 AM – 3:00 PM",
           "Sunday: 7:00 AM – 4:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-15T21:00:00Z"
       },
       "rating": 4.8,
       "userRatingCount": 383,
@@ -8844,7 +8738,7 @@
         },
         {
           "name": "places/ChIJsx9cWey1RIYRpeZVdPR4YtA/reviews/Ci9DQUlRQUNvZENodHljRjlvT205d1JraE5XVXMyVGtZMFpESkVTMGxMYUZsdFgyYxAB",
-          "relativePublishTimeDescription": "6 months ago",
+          "relativePublishTimeDescription": "7 months ago",
           "rating": 5,
           "text": {
             "text": "I ended up going with the Pastrami Reuben as an appetizer, and I cannot lie. It was one of the best in the city.  The pastrami was sliced thin and generously stacked along with sauerkraut on grilled rye bread. However, tradition stops there because Swiss cheese is swapped out for pepperjack, and the dressing, normally a thousand island or Russian, is replaced with a beet 1,000 island sauce.\n\nIt is a sloppy sandwich and we ended up knife and forking it, but the goeyness of all those flavors melding together started the night out right.\n\nThere is not a lot of seafood on the menu here, that is not Dai Due's focus.  We did try the Gulf Brown Shrimp as an appetizer. Four large shrimp are skewered and served with charred tomatoes and a garlic vinaigrette.  My wife and I agreed we could have eaten three of those.\n\nO.K. back to the meat.  When I previewed the menu, I focused in on their Cold Meat Board. It did not disappoint.  Wild Boar was the star of the show, presented in three different forms - a rillette, a pecan country pâté and a summer sausage.  A smoked duck breast and a chicken liver mousse with cherry mostarda rounded out the proteins on the board.  The dish was completed with pickles, Fireman's #4 mustard and an enormous mountain of grilled sprouted rye bread.\n\nThat's a lot to unpack!  The three wild board creations really showcased the talent of the kitchen.  I liked the pecan country pâté the best.  In the picture, it's the meat that looks like a slice of Spam. No, I am not comparing the taste to Spam, just the visual image.  The pecans do come through and with their buttery and slightly sweet taste mixing well with the rich, pork taste of the boar.  I liked to use the mustard on top of it too.  Definitely try it without the mustard first to see if you can taste all those flavors.  The boar summer sausage was equally tasty.  It had a slight, smokey, peppery flavor to it.  The rillette seemed a bit meh compared to the other items.  Maybe my taste buds were overwhelmed by the time I got to it.\n\nWhile the wild boar was the featured meat, I felt the chicken liver mousse stole the show.  Mousse when done right has a smooth almost velvety mouth-feel, and yes it was done right.  Then the Dai Due kitchen topped the mousse with cherry mostarda, and the sweetness of the Italian condiment perfectly complimented the savoriness of the chicken.\n\nI liked the mouse so much, I almost, forgot about one of my favorite charcuteries, the smoked duck breast.  The delicate cuts of smokey duck were shaved thin, and the taste, pure decadence!\n\nA last note on the meat board, the bread.  So, I started off saying they served the meats with a mountain of bread.  Quite the opposite of many places that always seem to give you not nearly  enough crackers, crostinis or bread to get through the dish.  I laughed at first because it seemed like there was way too much.  Um, no.  As I got toward the end of the board I had to ration out the last two pieces.  Apparently, they know what they're doing -  like there was ever a doubt.\n\nTheir pudding is served in a small glass jar with whipped cream and candied pecans.  Even if you are full like I was, you can and should use this as an ending to your meal.  I also encourage you to try the Texas Valkyrie's Kiss which is a Wildflower Mead.\n\nOverall it was a great experience at Dai Due.  I do not know what their other seasonal menus look like, but for what they have now, if you don't like meat this may not be your place.\n\nI love the options, but know that going in meat is king at Dai Due.  Wonderful appetizers and sides, so like us, you can create a lighter meal if desired.\n\nIf you appreciate creative, fresh food that tastes incredible this is your place.  Service is impeccable.  What a gem for Austin.",
@@ -8867,7 +8761,7 @@
     },
     "ChIJ83GM6mm1RIYRjyop3djInw0": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -8963,7 +8857,7 @@
           "Saturday: 7:00 AM – 10:00 PM",
           "Sunday: 7:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.6,
       "userRatingCount": 212,
@@ -9054,7 +8948,7 @@
         },
         {
           "name": "places/ChIJ83GM6mm1RIYRjyop3djInw0/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pSdU1WOW5kSFJVYzNsTmFtcE9jVVpGUkUxcVpWRRAB",
-          "relativePublishTimeDescription": "12 months ago",
+          "relativePublishTimeDescription": "a year ago",
           "rating": 3,
           "text": {
             "text": "Happy Hour menu and cocktails are the best deal in town.   The staff are very friendly. Cute interior.  As far as the food, it's a bit bland and somewhat lack luster... We had the avocado toast. It was good but a bit strange with the sweetness of the marscapone spread. The hummus plate was OK. Not much flavor there. The truffle Mac-n-cheese grew on me after several bites... I would definitely come back for the cocktails.",
@@ -9077,7 +8971,7 @@
     },
     "ChIJ-VcECPXKRIYRwvzvRevcQm0": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -9161,7 +9055,7 @@
           "Saturday: 9:00 AM – 9:00 PM",
           "Sunday: 9:00 AM – 3:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T15:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 1082,
@@ -9275,7 +9169,7 @@
     },
     "ChIJUx3pXfu0RIYRHYxsf5OVPMw": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -9371,10 +9265,10 @@
           "Saturday: 9:00 AM – 10:00 PM",
           "Sunday: 9:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
-      "userRatingCount": 1305,
+      "userRatingCount": 1306,
       "reviews": [
         {
           "name": "places/ChIJUx3pXfu0RIYRHYxsf5OVPMw/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pOYVNUUkVjbFpZVEZScldFOUZlVWxRWVRkSU0zYxAB",
@@ -9620,7 +9514,7 @@
         "nextOpenTime": "2026-06-15T21:30:00Z"
       },
       "rating": 4.4,
-      "userRatingCount": 690,
+      "userRatingCount": 691,
       "reviews": [
         {
           "name": "places/ChIJwTzX0ym1RIYRx_vsxHlQ2Sw/reviews/Ci9DQUlRQUNvZENodHljRjlvT2toaGRqTjVWelYwYkhaaVFYRnRZeTB6T1ZsdWVVRRAB",
@@ -9827,7 +9721,7 @@
           "Saturday: 9:00 AM – 3:00 PM",
           "Sunday: 9:00 AM – 3:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextOpenTime": "2026-06-16T13:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 2956,
@@ -9941,7 +9835,7 @@
     },
     "ChIJfXfxR921RIYRk5MtpU6Q4ws": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -10037,7 +9931,7 @@
           "Saturday: 7:00 AM – 11:00 PM",
           "Sunday: 7:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.2,
       "userRatingCount": 456,
@@ -10151,7 +10045,7 @@
     },
     "ChIJ64l6_4A1W4YRk0FqV7uB9Do": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -10247,7 +10141,7 @@
           "Saturday: 10:30 AM – 10:00 PM",
           "Sunday: 10:30 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 1393,
@@ -10361,7 +10255,7 @@
     },
     "ChIJ14ud0cO1RIYRY88BIQ_C-OY": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -10457,117 +10351,11 @@
           "Saturday: 8:00 AM – 9:30 PM",
           "Sunday: 8:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T14:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
-      "rating": 4.4,
-      "userRatingCount": 948,
-      "reviews": [
-        {
-          "name": "places/ChIJ14ud0cO1RIYRY88BIQ_C-OY/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pObWQwdHJPWEpaTURsdFdWYzRiRkUzZVdsc1dVRRAB",
-          "relativePublishTimeDescription": "4 months ago",
-          "rating": 5,
-          "text": {
-            "text": "Delicious Wagyu steak, wish it was a bigger portion though. Chimichurri sause was one of the best I've had, so flavorful and fresh. I also got bone broth and it was good but a bit too fatty per my taste. My friend got a salad with chicken and loved it, so fresh and tasty and really good portion. Ambiance is very cute with indoor and outdoor seating available.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "Delicious Wagyu steak, wish it was a bigger portion though. Chimichurri sause was one of the best I've had, so flavorful and fresh. I also got bone broth and it was good but a bit too fatty per my taste. My friend got a salad with chicken and loved it, so fresh and tasty and really good portion. Ambiance is very cute with indoor and outdoor seating available.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Katerina",
-            "uri": "https://www.google.com/maps/contrib/102896721017991320372/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVM0pEIpdNwB_4ZAIb35lZUtUFVYjiUyeKpqfzbmARrs5TcNm3qtQ=s128-c0x00000000-cc-rp-mo-ba6"
-          },
-          "publishTime": "2026-02-10T04:14:09.398274195Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2pObWQwdHJPWEpaTURsdFdWYzRiRkUzZVdsc1dVRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pObWQwdHJPWEpaTURsdFdWYzRiRkUzZVdsc1dVRRAB!2m1!1s0x8644b5c3d19d8bd7:0xe6f8c20f2101cf63"
-        },
-        {
-          "name": "places/ChIJ14ud0cO1RIYRY88BIQ_C-OY/reviews/Ci9DQUlRQUNvZENodHljRjlvT25WRGRHbHdjakJEV21scmFDMUxUM1pMWmtOd1VHYxAB",
-          "relativePublishTimeDescription": "4 months ago",
-          "rating": 5,
-          "text": {
-            "text": "The Well was one of my favorite Austin experiences! It’s so hard to find a restaurant that accommodates more than just one dietary restriction. This is THE place to bring that guest that you feel like can never find anything to eat on the menu without customizing it. We desperately need more restaurants with dedicated gluten-free kitchens or fryers. Our server was such a sweet guy, and he was super relatable. The drinks were good but pretty pricey. A $20 cocktail is the norm in Austin, but I hate to see food menu items cost less than some drinks. I can’t say enough about the beautiful atmosphere. Top notch seating, excellent lighting, vibrant plants, open layout. I highly recommend!",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "The Well was one of my favorite Austin experiences! It’s so hard to find a restaurant that accommodates more than just one dietary restriction. This is THE place to bring that guest that you feel like can never find anything to eat on the menu without customizing it. We desperately need more restaurants with dedicated gluten-free kitchens or fryers. Our server was such a sweet guy, and he was super relatable. The drinks were good but pretty pricey. A $20 cocktail is the norm in Austin, but I hate to see food menu items cost less than some drinks. I can’t say enough about the beautiful atmosphere. Top notch seating, excellent lighting, vibrant plants, open layout. I highly recommend!",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Dominique Sweat",
-            "uri": "https://www.google.com/maps/contrib/100966413745911164767/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVjF0JnI7LufZ51ufChSjEwnCm13JW2EzrIxLX9OW_iKn9F7Q6C=s128-c0x00000000-cc-rp-mo-ba4"
-          },
-          "publishTime": "2026-02-04T03:26:25.866207915Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25WRGRHbHdjakJEV21scmFDMUxUM1pMWmtOd1VHYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25WRGRHbHdjakJEV21scmFDMUxUM1pMWmtOd1VHYxAB!2m1!1s0x8644b5c3d19d8bd7:0xe6f8c20f2101cf63"
-        },
-        {
-          "name": "places/ChIJ14ud0cO1RIYRY88BIQ_C-OY/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xkck5WVjRkazFxTXpaSFRXeG1ZVE14Vm1VdGRFRRAB",
-          "relativePublishTimeDescription": "5 months ago",
-          "rating": 5,
-          "text": {
-            "text": "We have eaten at this dedicated GF restaurant many times and have never been disappointed.  The service is always good and the food is amazing.\n\nTonight, we had dinner on their dog friendly patio.  They use avocado oil for many of their meals, and they were able to easily accommodate my avocado allergy.   We had the Thai Lettuce Wraps with chicken, Spinach Pesto Pasta, Apple Crumble, and mimosa flight.  Delicious!!!",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "We have eaten at this dedicated GF restaurant many times and have never been disappointed.  The service is always good and the food is amazing.\n\nTonight, we had dinner on their dog friendly patio.  They use avocado oil for many of their meals, and they were able to easily accommodate my avocado allergy.   We had the Thai Lettuce Wraps with chicken, Spinach Pesto Pasta, Apple Crumble, and mimosa flight.  Delicious!!!",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Chris Bursk",
-            "uri": "https://www.google.com/maps/contrib/113116807502541964745/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVkN6ybkPhWKbtsez1J_QN88WtwuyRGtDq85S1uWo0YiVbCQIek=s128-c0x00000000-cc-rp-mo-ba4"
-          },
-          "publishTime": "2026-01-03T21:36:27.377532967Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xkck5WVjRkazFxTXpaSFRXeG1ZVE14Vm1VdGRFRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xkck5WVjRkazFxTXpaSFRXeG1ZVE14Vm1VdGRFRRAB!2m1!1s0x8644b5c3d19d8bd7:0xe6f8c20f2101cf63"
-        },
-        {
-          "name": "places/ChIJ14ud0cO1RIYRY88BIQ_C-OY/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xWYVptTjNUWGhoV1d0V1ZtRlhXRkJWVUdreWMzYxAB",
-          "relativePublishTimeDescription": "2 weeks ago",
-          "rating": 5,
-          "text": {
-            "text": "⭐⭐⭐⭐⭐\n\nThe first time we visited The Well, we accidentally did the wrong thing — and honestly, I’m laughing about it now because the hostess told us it apparently happens all the time.\n\nWe walked into what we thought was the main entrance, ordered food on the takeout screen, and then proceeded over to the hostess stand… only to realize afterward that we should have entered through the other door. Once you get there, you’ll probably understand exactly what I mean. There’s definitely an opportunity for a larger “Main Entrance” sign or clearer direction at the front.\n\nThat small confusion aside, the rest of our experience was absolutely wonderful.\n\nEvery staff member we interacted with was warm, friendly, patient, and genuinely happy to help. The initial mix-up was quickly forgotten once we settled into a cozy booth with a great view of the restaurant.\n\nThe space itself is beautifully designed — modern, calming, thoughtfully decorated, and visually inviting without feeling overly trendy or forced. Everything feels intentional.\n\nThen the food arrived.\n\nOur dish was beautifully plated, incredibly fresh, and packed with flavor. What impressed us even more was learning how focused The Well is on creating a highly customizable, health-forward, and allergen-friendly dining experience. Nearly every dish can be made vegan, nut-free, dairy-free, or gluten-free.\n\nEven more impressive, their menu is entirely free of:\n• Gluten\n• Dairy\n• Seed oils\n• Soy\n• Refined sugar\n• GMOs\n\nWe actually didn’t realize all of that going in, but after tasting the quality and thoughtfulness behind the food, we were seriously impressed.\n\nThe Well manages to create healthy food that still feels indulgent, satisfying, and beautifully crafted — which is not always easy to do.\n\nWe’ll absolutely be back and can’t wait to continue exploring more of the menu. Not pictured here, we also ordered one oat milk latte, and one Cortado— the coffee is also delicious.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "⭐⭐⭐⭐⭐\n\nThe first time we visited The Well, we accidentally did the wrong thing — and honestly, I’m laughing about it now because the hostess told us it apparently happens all the time.\n\nWe walked into what we thought was the main entrance, ordered food on the takeout screen, and then proceeded over to the hostess stand… only to realize afterward that we should have entered through the other door. Once you get there, you’ll probably understand exactly what I mean. There’s definitely an opportunity for a larger “Main Entrance” sign or clearer direction at the front.\n\nThat small confusion aside, the rest of our experience was absolutely wonderful.\n\nEvery staff member we interacted with was warm, friendly, patient, and genuinely happy to help. The initial mix-up was quickly forgotten once we settled into a cozy booth with a great view of the restaurant.\n\nThe space itself is beautifully designed — modern, calming, thoughtfully decorated, and visually inviting without feeling overly trendy or forced. Everything feels intentional.\n\nThen the food arrived.\n\nOur dish was beautifully plated, incredibly fresh, and packed with flavor. What impressed us even more was learning how focused The Well is on creating a highly customizable, health-forward, and allergen-friendly dining experience. Nearly every dish can be made vegan, nut-free, dairy-free, or gluten-free.\n\nEven more impressive, their menu is entirely free of:\n• Gluten\n• Dairy\n• Seed oils\n• Soy\n• Refined sugar\n• GMOs\n\nWe actually didn’t realize all of that going in, but after tasting the quality and thoughtfulness behind the food, we were seriously impressed.\n\nThe Well manages to create healthy food that still feels indulgent, satisfying, and beautifully crafted — which is not always easy to do.\n\nWe’ll absolutely be back and can’t wait to continue exploring more of the menu. Not pictured here, we also ordered one oat milk latte, and one Cortado— the coffee is also delicious.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Naomi Torres",
-            "uri": "https://www.google.com/maps/contrib/115023118788441925515/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUYscVmctZkPC6gvqt0Bm2RYek9_ezKqOWhL0mhcvmWAU4khDx_SA=s128-c0x00000000-cc-rp-mo-ba4"
-          },
-          "publishTime": "2026-05-28T12:54:10.800912706Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xWYVptTjNUWGhoV1d0V1ZtRlhXRkJWVUdreWMzYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xWYVptTjNUWGhoV1d0V1ZtRlhXRkJWVUdreWMzYxAB!2m1!1s0x8644b5c3d19d8bd7:0xe6f8c20f2101cf63"
-        },
-        {
-          "name": "places/ChIJ14ud0cO1RIYRY88BIQ_C-OY/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xsS2NIcFNVR2hwZFdaYVEzSjVjelo2YkVsWVExRRAB",
-          "relativePublishTimeDescription": "7 months ago",
-          "rating": 5,
-          "text": {
-            "text": "My wife has issues with gluten so this place was a great find. We started with the Wagyu Beef tartare. In my opinion, this was the weakest of the dishes, served ground, nicely seasoned with potato chips.\n\nMy wife had chicken tacos which she said I would not have liked because the chicken was not moist or tender. I had the salmon which was wonderfully prepared and served skin on, which was easily removed. We shared the sweet potato mushroom combination which tasty and had a bit of heat.\n\nFor desert, we had the chocolate cake which was a small serving but the cake was rich and not sweet with some berries on top.\n\nThe espresso martini was rich and excellent.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "My wife has issues with gluten so this place was a great find. We started with the Wagyu Beef tartare. In my opinion, this was the weakest of the dishes, served ground, nicely seasoned with potato chips.\n\nMy wife had chicken tacos which she said I would not have liked because the chicken was not moist or tender. I had the salmon which was wonderfully prepared and served skin on, which was easily removed. We shared the sweet potato mushroom combination which tasty and had a bit of heat.\n\nFor desert, we had the chocolate cake which was a small serving but the cake was rich and not sweet with some berries on top.\n\nThe espresso martini was rich and excellent.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Harris S.",
-            "uri": "https://www.google.com/maps/contrib/110861535104153225654/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUCKviqRzgstRmLM857Vayu9GLGUNwDNHeldxd0-lYjeg0eXyk_=s128-c0x00000000-cc-rp-mo-ba5"
-          },
-          "publishTime": "2025-11-11T04:33:03.027777082Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xsS2NIcFNVR2hwZFdaYVEzSjVjelo2YkVsWVExRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xsS2NIcFNVR2hwZFdaYVEzSjVjelo2YkVsWVExRRAB!2m1!1s0x8644b5c3d19d8bd7:0xe6f8c20f2101cf63"
-        }
-      ]
+      "rating": null,
+      "userRatingCount": null,
+      "reviews": []
     },
     "ChIJc8VGEN-0RIYR_47qj-CsoQw": {
       "regularOpeningHours": {
@@ -10667,7 +10455,7 @@
           "Saturday: 11:00 AM – 2:00 AM",
           "Sunday: 11:00 AM – 2:00 AM"
         ],
-        "nextCloseTime": "2026-06-15T07:00:00Z"
+        "nextCloseTime": "2026-06-16T07:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 598,
@@ -10781,7 +10569,7 @@
     },
     "ChIJm3RkX2m1RIYRa7ofUVcc4zQ": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -10877,7 +10665,7 @@
           "Saturday: 9:00 AM – 10:00 PM",
           "Sunday: 9:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T14:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 1047,
@@ -11285,10 +11073,10 @@
           "Saturday: 7:30 AM – 2:30 PM",
           "Sunday: 7:30 AM – 2:30 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextOpenTime": "2026-06-16T12:00:00Z"
       },
       "rating": 4.8,
-      "userRatingCount": 859,
+      "userRatingCount": 860,
       "reviews": [
         {
           "name": "places/ChIJe183tCW1RIYRegUwl5jCcx0/reviews/Ci9DQUlRQUNvZENodHljRjlvT201RFVHeHdNRjlMVkcwM2NHTlhMVTU0U0VsSWRFRRAB",
@@ -11495,7 +11283,7 @@
           "Saturday: 7:00 AM – 1:30 PM",
           "Sunday: 7:00 AM – 1:30 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextOpenTime": "2026-06-16T12:00:00Z"
       },
       "rating": 4.7,
       "userRatingCount": 603,
@@ -11609,7 +11397,7 @@
     },
     "ChIJh91qhvy0RIYRqlF6u8rGJ3M": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -11705,7 +11493,7 @@
           "Saturday: 7:00 AM – 7:00 PM",
           "Sunday: 7:00 AM – 7:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-16T00:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 753,
@@ -11903,7 +11691,7 @@
           "Saturday: 8:00 AM – 2:00 PM",
           "Sunday: 8:00 AM – 2:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextOpenTime": "2026-06-17T12:00:00Z"
       },
       "rating": 4.8,
       "userRatingCount": 245,
@@ -11994,7 +11782,7 @@
         },
         {
           "name": "places/ChIJ2b80N5TNRIYRz75PknHy5B8/reviews/Ci9DQUlRQUNvZENodHljRjlvT2preE1pMUJhMGxOTFRoaU0wdFJaRGRLV1VoNFQwRRAB",
-          "relativePublishTimeDescription": "2 weeks ago",
+          "relativePublishTimeDescription": "3 weeks ago",
           "rating": 5,
           "text": {
             "text": "Found Dame Coffee on social media and had to stop by. It’s a cute little spot with a great vibe, quick service, and several food trucks nearby, which makes it even better. I tried the coconut cloud drink, or whatever the exact name is, and it was honestly so good. Smooth, refreshing, and worth coming back for. Definitely recommend checking them out. Five stars.",
@@ -12017,7 +11805,7 @@
     },
     "ChIJkUX0vBZLW4YRPdmeN46CJFU": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -12113,7 +11901,7 @@
           "Saturday: 7:30 AM – 7:00 PM",
           "Sunday: 7:30 AM – 7:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T11:30:00Z"
+        "nextCloseTime": "2026-06-16T01:00:00Z"
       },
       "rating": 4.6,
       "userRatingCount": 763,
@@ -12227,7 +12015,7 @@
     },
     "ChIJ463t9Gu3RIYRTvENJaT-w6I": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -12323,7 +12111,7 @@
           "Saturday: 7:00 AM – 11:00 PM",
           "Sunday: 7:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T12:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.7,
       "userRatingCount": 403,
@@ -12533,7 +12321,7 @@
           "Saturday: 9:00 AM – 12:00 AM",
           "Sunday: 9:00 AM – 12:00 AM"
         ],
-        "nextCloseTime": "2026-06-15T05:00:00Z"
+        "nextCloseTime": "2026-06-16T05:00:00Z"
       },
       "rating": 4.3,
       "userRatingCount": 642,
@@ -12647,7 +12435,7 @@
     },
     "ChIJA7CVXZW0RIYRVSZIlvlwJbA": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -12743,7 +12531,7 @@
           "Saturday: 8:00 AM – 12:00 AM",
           "Sunday: 8:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.7,
       "userRatingCount": 4335,
@@ -12982,7 +12770,7 @@
           "authorAttribution": {
             "displayName": "Mariel C",
             "uri": "https://www.google.com/maps/contrib/113182136530120923962/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLPYsbhqbCLh2r4GhG6NiLZvFkyqC8zCF4bSVz-1_JmsnI-Vw=s128-c0x00000000-cc-rp-mo"
+            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLPYsbhqbCLh2r4GhG6NiLZvFkyqC8zCF4bSVz-1_JmsnI-Vw=s128-c0x00000000-cc-rp-mo-ba6"
           },
           "publishTime": "2026-01-28T04:46:00.469488398Z",
           "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT21rdExWQnFjbEpWYlhsbGF6Y3RORmRSTUVaNlgzYxAB&d=17924085&t=1",
@@ -13055,7 +12843,7 @@
     },
     "ChIJ95AF5WrLRIYR7oUGX4-hdtM": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -13151,7 +12939,7 @@
           "Saturday: 9:00 AM – 9:00 PM",
           "Sunday: 9:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T15:45:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 540,
@@ -14144,7 +13932,7 @@
         "nextOpenTime": "2026-06-16T21:00:00Z"
       },
       "rating": 4.7,
-      "userRatingCount": 595,
+      "userRatingCount": 594,
       "reviews": [
         {
           "name": "places/ChIJRWtmd7m1RIYRRs72_rQG1_g/reviews/Ci9DQUlRQUNvZENodHljRjlvT20xSmQxRmFXRWhPVWtkRmJtcEVMWFJFV2xkV2VFRRAB",
@@ -14255,7 +14043,7 @@
     },
     "ChIJxf9Xor21RIYR5W5Ozek_a0E": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -14351,7 +14139,7 @@
           "Saturday: 10:00 AM – 10:00 PM",
           "Sunday: 10:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 1028,
@@ -14470,7 +14258,7 @@
           {
             "open": {
               "day": 0,
-              "hour": 12,
+              "hour": 17,
               "minute": 0
             },
             "close": {
@@ -14487,7 +14275,7 @@
             },
             "close": {
               "day": 1,
-              "hour": 21,
+              "hour": 22,
               "minute": 0
             }
           },
@@ -14499,7 +14287,7 @@
             },
             "close": {
               "day": 2,
-              "hour": 21,
+              "hour": 22,
               "minute": 0
             }
           },
@@ -14511,7 +14299,7 @@
             },
             "close": {
               "day": 3,
-              "hour": 21,
+              "hour": 22,
               "minute": 0
             }
           },
@@ -14523,7 +14311,7 @@
             },
             "close": {
               "day": 4,
-              "hour": 21,
+              "hour": 22,
               "minute": 0
             }
           },
@@ -14553,18 +14341,18 @@
           }
         ],
         "weekdayDescriptions": [
-          "Monday: 5:00 – 9:00 PM",
-          "Tuesday: 5:00 – 9:00 PM",
-          "Wednesday: 5:00 – 9:00 PM",
-          "Thursday: 5:00 – 9:00 PM",
+          "Monday: 5:00 – 10:00 PM",
+          "Tuesday: 5:00 – 10:00 PM",
+          "Wednesday: 5:00 – 10:00 PM",
+          "Thursday: 5:00 – 10:00 PM",
           "Friday: 4:00 – 10:00 PM",
           "Saturday: 12:00 – 10:00 PM",
-          "Sunday: 12:00 – 9:00 PM"
+          "Sunday: 5:00 – 9:00 PM"
         ],
         "nextOpenTime": "2026-06-15T22:00:00Z"
       },
       "rating": 4.5,
-      "userRatingCount": 305,
+      "userRatingCount": 304,
       "reviews": [
         {
           "name": "places/ChIJf9qrlIa1RIYRFRQIeSUaF0g/reviews/Ci9DQUlRQUNvZENodHljRjlvT21SV2VVWnVTRlpmVUZOS1RVaFhZVk56YVhrNVQyYxAB",
@@ -14675,7 +14463,7 @@
     },
     "ChIJn2czdom1RIYR9F6XLPzus2I": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -14771,7 +14559,7 @@
           "Saturday: 11:00 AM – 11:00 PM",
           "Sunday: 11:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 798,
@@ -14984,8 +14772,29 @@
         "nextOpenTime": "2026-06-15T22:00:00Z"
       },
       "rating": 4.6,
-      "userRatingCount": 516,
+      "userRatingCount": 515,
       "reviews": [
+        {
+          "name": "places/ChIJCTBEeTS1RIYRZ3XVvyoxf1A/reviews/Ci9DQUlRQUNvZENodHljRjlvT2tSQ1kyOTBWRTlCTjJ0clZXOUVVemRsVTA5eWFHYxAB",
+          "relativePublishTimeDescription": "2 months ago",
+          "rating": 5,
+          "text": {
+            "text": "First time going to La Volta Pizza club was a success. Well, the second time. Don't make the mistake of going here on a busy weekend night without a reservation. It's going to take a while to get sat, which after eating here, I can see why this is a small little pizza shop. It doesn't have a lot of capacity. Came back on a Monday night with the reservation and it was smooth sailing.\nStarted off with an order of the meatballs. Amazing, great rich meatballs with a perfect sauce to balance it out. Then decide to share the hot girl pasta with the table. I will say this rigatoni alla vodka with sausage was a little bit spicy but we aren't the biggest spice people. Still it was delicious. Then the vodka pizza came out. We were a little scared that the vodka on the pizza would be just as spicy. It really didn't seem to be, the cheese balanced the vodka sauce very well and you couldn't notice the spice anymore. The crust on these pizzas is phenomenal. I think some of the best in Austin. Next we ordered the classic pie with extra sauce. That was a great and subtle difference compared to the vodka pie. Again, another all around amazing pizza. These pies are pretty dang big, you could definitely share one with three to four people. But there's no problem with leftover pizza for me. Great work guys",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "First time going to La Volta Pizza club was a success. Well, the second time. Don't make the mistake of going here on a busy weekend night without a reservation. It's going to take a while to get sat, which after eating here, I can see why this is a small little pizza shop. It doesn't have a lot of capacity. Came back on a Monday night with the reservation and it was smooth sailing.\nStarted off with an order of the meatballs. Amazing, great rich meatballs with a perfect sauce to balance it out. Then decide to share the hot girl pasta with the table. I will say this rigatoni alla vodka with sausage was a little bit spicy but we aren't the biggest spice people. Still it was delicious. Then the vodka pizza came out. We were a little scared that the vodka on the pizza would be just as spicy. It really didn't seem to be, the cheese balanced the vodka sauce very well and you couldn't notice the spice anymore. The crust on these pizzas is phenomenal. I think some of the best in Austin. Next we ordered the classic pie with extra sauce. That was a great and subtle difference compared to the vodka pie. Again, another all around amazing pizza. These pies are pretty dang big, you could definitely share one with three to four people. But there's no problem with leftover pizza for me. Great work guys",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Grant Becker",
+            "uri": "https://www.google.com/maps/contrib/110836286597646065832/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWJvmEAT_Jp34BbYJOPMoyATFf4kuiwU_yNeuuIrcu-KlQ1z1SWjA=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2026-04-07T16:36:05.427506697Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2tSQ1kyOTBWRTlCTjJ0clZXOUVVemRsVTA5eWFHYxAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2tSQ1kyOTBWRTlCTjJ0clZXOUVVemRsVTA5eWFHYxAB!2m1!1s0x8644b53479443009:0x507f312abfd57567"
+        },
         {
           "name": "places/ChIJCTBEeTS1RIYRZ3XVvyoxf1A/reviews/Ci9DQUlRQUNvZENodHljRjlvT2kxWlVGSTNiMnhPTVRGMlZVWmZXVmQyWWxsYVozYxAB",
           "relativePublishTimeDescription": "4 weeks ago",
@@ -15069,33 +14878,12 @@
           "publishTime": "2025-10-05T23:30:13.727946014Z",
           "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xKbmVUbG1kMDlQYldKV1pYaExTbVJoVXpreFEwRRAB&d=17924085&t=1",
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xKbmVUbG1kMDlQYldKV1pYaExTbVJoVXpreFEwRRAB!2m1!1s0x8644b53479443009:0x507f312abfd57567"
-        },
-        {
-          "name": "places/ChIJCTBEeTS1RIYRZ3XVvyoxf1A/reviews/Ci9DQUlRQUNvZENodHljRjlvT2taWk5FeHlWbW81Um14RFZWOVBSRTVFZVd0SVZHYxAB",
-          "relativePublishTimeDescription": "7 months ago",
-          "rating": 5,
-          "text": {
-            "text": "Yall this is by far the best pizza in Austin. Not only that but the vibes are unmatched, service is 10/10 and the staff is the chillest. Like genuinely one of the most Austin vibe places in town and one of the best pizzas you’ll ever get. We had a mistake with our order (honestly I messed up) and the staff went completely above and beyond to get it right. Crazy to gush about a pizza place this hard but it’s not a pizza place. It’s a damn pizza club.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "Yall this is by far the best pizza in Austin. Not only that but the vibes are unmatched, service is 10/10 and the staff is the chillest. Like genuinely one of the most Austin vibe places in town and one of the best pizzas you’ll ever get. We had a mistake with our order (honestly I messed up) and the staff went completely above and beyond to get it right. Crazy to gush about a pizza place this hard but it’s not a pizza place. It’s a damn pizza club.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Neil",
-            "uri": "https://www.google.com/maps/contrib/107783518762889693409/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUME-dSlSIZAHjkQjMRd36OJ_dQtzNw8enVAN_gxFrSJ182DvU=s128-c0x00000000-cc-rp-mo-ba4"
-          },
-          "publishTime": "2025-11-14T00:53:44.948624679Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2taWk5FeHlWbW81Um14RFZWOVBSRTVFZVd0SVZHYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2taWk5FeHlWbW81Um14RFZWOVBSRTVFZVd0SVZHYxAB!2m1!1s0x8644b53479443009:0x507f312abfd57567"
         }
       ]
     },
     "ChIJy7DAoe21RIYR8g_OUyJeW6w": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -15191,7 +14979,7 @@
           "Saturday: 9:00 AM – 10:00 PM",
           "Sunday: 9:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.1,
       "userRatingCount": 320,
@@ -15305,7 +15093,7 @@
     },
     "ChIJTa-xYgDLRIYRldg0OoZ8O60": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -15401,7 +15189,7 @@
           "Saturday: 11:00 AM – 10:00 PM",
           "Sunday: 11:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4,
       "userRatingCount": 78,
@@ -15887,7 +15675,7 @@
     },
     "ChIJAc52Rka1RIYRmieKpI4E3Ng": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -15983,7 +15771,7 @@
           "Saturday: 11:00 AM – 1:00 AM",
           "Sunday: 11:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 923,
@@ -16074,7 +15862,7 @@
         },
         {
           "name": "places/ChIJAc52Rka1RIYRmieKpI4E3Ng/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pGdVQyVnFiazE0VjNaV05rWnFlRVZHVVhWVWVVRRAB",
-          "relativePublishTimeDescription": "a week ago",
+          "relativePublishTimeDescription": "2 weeks ago",
           "rating": 3,
           "text": {
             "text": "Margs are just too expensive for how small they are. Close to $40 for two margs after tip and they're probably 5-6oz at best. Rent and taxes here have to be insane but man, I'd probably spend a lot more here in the long run if the value was marginally better.\n\nThat said -- great location and employees were very friendly.",
@@ -16097,7 +15885,7 @@
     },
     "ChIJAR7m4ZS1RIYRHB6RITAk13A": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -16193,7 +15981,7 @@
           "Saturday: 9:00 AM – 10:00 PM",
           "Sunday: 9:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T14:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 2375,
@@ -16452,7 +16240,7 @@
         },
         {
           "name": "places/ChIJ61i-aZO1RIYRKgxgoJHJc28/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pkWmEyWjZlVlV6U0ZkSmRqYzJjRXg1U3pKSmNsRRAB",
-          "relativePublishTimeDescription": "a week ago",
+          "relativePublishTimeDescription": "2 weeks ago",
           "rating": 5,
           "text": {
             "text": "Love the happy hour! Best fries in the city. They have many staple, classic entrées that have consistently been great for years. The fish, the beef shoulder, the Caesar salad. The list goes on and on how great this place is.",
@@ -16751,7 +16539,7 @@
     },
     "ChIJczZ2Deq1RIYR07zQNp0TLyk": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -16847,7 +16635,7 @@
           "Saturday: 12:00 PM – 1:00 AM",
           "Sunday: 12:00 – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T20:00:00Z"
+        "nextCloseTime": "2026-06-16T05:00:00Z"
       },
       "rating": 4,
       "userRatingCount": 79,
@@ -17048,7 +16836,7 @@
         "nextOpenTime": "2026-06-16T16:00:00Z"
       },
       "rating": 4.4,
-      "userRatingCount": 384,
+      "userRatingCount": 385,
       "reviews": [
         {
           "name": "places/ChIJTXv2VQDLRIYRnrHMl98vETc/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xKNFpETm5SMUZwZWtNd2NtMVZaemhmTkZNNVUyYxAB",
@@ -17537,7 +17325,7 @@
           "Saturday: 10:30 AM – 3:00 PM, 4:30 – 11:00 PM",
           "Sunday: 10:30 AM – 3:00 PM, 4:30 – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextOpenTime": "2026-06-15T21:30:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 971,
@@ -17651,7 +17439,7 @@
     },
     "ChIJWyfc5uK0RIYRq5-s4p2EOkc": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -17747,7 +17535,7 @@
           "Saturday: 8:00 AM – 10:00 PM",
           "Sunday: 8:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.3,
       "userRatingCount": 2587,
@@ -18809,7 +18597,7 @@
           "Saturday: 11:00 AM – 10:00 PM",
           "Sunday: 11:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextOpenTime": "2026-06-15T22:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 2774,
@@ -19019,7 +18807,7 @@
           "Saturday: 11:30 AM – 2:00 AM",
           "Sunday: 11:30 AM – 2:00 AM"
         ],
-        "nextCloseTime": "2026-06-15T07:00:00Z"
+        "nextCloseTime": "2026-06-16T07:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 4411,
@@ -19133,7 +18921,7 @@
     },
     "ChIJVVUFcoXKRIYR5Y30lvKPu5E": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -19229,7 +19017,7 @@
           "Saturday: 10:00 AM – 8:00 PM",
           "Sunday: 10:00 AM – 6:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T15:00:00Z"
+        "nextCloseTime": "2026-06-16T01:00:00Z"
       },
       "rating": 4.2,
       "userRatingCount": 142,
@@ -19442,7 +19230,7 @@
         "nextOpenTime": "2026-06-15T22:00:00Z"
       },
       "rating": 4.4,
-      "userRatingCount": 701,
+      "userRatingCount": 700,
       "reviews": [
         {
           "name": "places/ChIJ_WWpQBe1RIYRGvDZJ7tgkqM/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xwa1RFczNYME5UV2tOYVJrOTZjWFEzTlRCdFpIYxAB",
@@ -19751,7 +19539,7 @@
     },
     "ChIJrRT8_Cq0RIYRw5JlWkpX0aY": {
       "regularOpeningHours": {
-        "openNow": true,
+        "openNow": false,
         "periods": [
           {
             "open": {
@@ -19835,10 +19623,10 @@
           "Saturday: 6:00 PM – 1:00 AM",
           "Sunday: 6:00 PM – 12:00 AM"
         ],
-        "nextCloseTime": "2026-06-15T05:00:00Z"
+        "nextOpenTime": "2026-06-15T23:00:00Z"
       },
       "rating": 4.4,
-      "userRatingCount": 1888,
+      "userRatingCount": 1889,
       "reviews": [
         {
           "name": "places/ChIJrRT8_Cq0RIYRw5JlWkpX0aY/reviews/Ci9DQUlRQUNvZENodHljRjlvT25SYWVHbzNTVFk1YjFWa2JsZEJXa3N6WmsxaloxRRAB",
@@ -20654,7 +20442,7 @@
         "nextOpenTime": "2026-06-15T21:30:00Z"
       },
       "rating": 4.4,
-      "userRatingCount": 625,
+      "userRatingCount": 626,
       "reviews": [
         {
           "name": "places/ChIJFdtTXEW1RIYRTubTA-zwYnQ/reviews/Ci9DQUlRQUNvZENodHljRjlvT2twZlgxUmlNSGgwWWxkdU5GQjNjR3B2WW1wYWVsRRAB",
@@ -20699,27 +20487,6 @@
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT21ReWFVZE5iemxvTVVwQ1VuSmhOalJ0TlhOUlRrRRAB!2m1!1s0x8644b5455c53db15:0x7462f0ec03d3e64e"
         },
         {
-          "name": "places/ChIJFdtTXEW1RIYRTubTA-zwYnQ/reviews/Ci9DQUlRQUNvZENodHljRjlvT21kT2JtdFBXREpGTVdzNGRGSkJla1UwYkd4NWFVRRAB",
-          "relativePublishTimeDescription": "4 months ago",
-          "rating": 5,
-          "text": {
-            "text": "TenTen in downtown Austin delivers an exceptional omakase experience. Each course was thoughtfully prepared, beautifully presented, and incredibly fresh. The progression of flavors felt intentional, highlighting the quality of the fish and the chef’s precision without being overdone. Service was attentive and knowledgeable, making the experience feel personal and elevated. If you’re looking for a high-end sushi experience in Austin, TenTen’s omakase is absolutely worth it.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "TenTen in downtown Austin delivers an exceptional omakase experience. Each course was thoughtfully prepared, beautifully presented, and incredibly fresh. The progression of flavors felt intentional, highlighting the quality of the fish and the chef’s precision without being overdone. Service was attentive and knowledgeable, making the experience feel personal and elevated. If you’re looking for a high-end sushi experience in Austin, TenTen’s omakase is absolutely worth it.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Jesse Vera",
-            "uri": "https://www.google.com/maps/contrib/102544185646670764879/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU2AhO2fI-SASpjKUQ0FKrK8Der_wCsnaUVB6PlSoSCV5WKR5hf=s128-c0x00000000-cc-rp-mo-ba5"
-          },
-          "publishTime": "2026-01-27T00:33:42.881382404Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT21kT2JtdFBXREpGTVdzNGRGSkJla1UwYkd4NWFVRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT21kT2JtdFBXREpGTVdzNGRGSkJla1UwYkd4NWFVRRAB!2m1!1s0x8644b5455c53db15:0x7462f0ec03d3e64e"
-        },
-        {
           "name": "places/ChIJFdtTXEW1RIYRTubTA-zwYnQ/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xCMlpFeDRaakJLU0VReVlYcERNVVZuTm5CU1MyYxAB",
           "relativePublishTimeDescription": "3 months ago",
           "rating": 4,
@@ -20760,12 +20527,33 @@
           "publishTime": "2026-03-27T14:40:04.369019013Z",
           "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2w5cWNsaEJaM0pZUzFORFJFUTNaM2R2U21zelNIYxAB&d=17924085&t=1",
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2w5cWNsaEJaM0pZUzFORFJFUTNaM2R2U21zelNIYxAB!2m1!1s0x8644b5455c53db15:0x7462f0ec03d3e64e"
+        },
+        {
+          "name": "places/ChIJFdtTXEW1RIYRTubTA-zwYnQ/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xvNU9IUkpTRVExTlZsUFYwOVJXakpRYlZsa05GRRAB",
+          "relativePublishTimeDescription": "4 months ago",
+          "rating": 4,
+          "text": {
+            "text": "Food was great. Atmosphere super sexy, romantic, moody. Service was really kind of disappointing. Is that a thing now? Where the servers act like they couldn’t care less? Are people into that? It honestly kills the vibe for me. I love a server that’s engaged and excited about the food and experience. Maybe it’s just me. The food was actually really good though. Loved the cucumber salad. The rolls were cute and put together skillfully. All the fish tasted fresh and was pretty. The deserts were light and fun to eat. I’d totally go here again on a date, maybe we just had an off night? Parking is super tricky. I’d recommend a ride share. The garage nearby is expensive.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Food was great. Atmosphere super sexy, romantic, moody. Service was really kind of disappointing. Is that a thing now? Where the servers act like they couldn’t care less? Are people into that? It honestly kills the vibe for me. I love a server that’s engaged and excited about the food and experience. Maybe it’s just me. The food was actually really good though. Loved the cucumber salad. The rolls were cute and put together skillfully. All the fish tasted fresh and was pretty. The deserts were light and fun to eat. I’d totally go here again on a date, maybe we just had an off night? Parking is super tricky. I’d recommend a ride share. The garage nearby is expensive.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Sarah Haight",
+            "uri": "https://www.google.com/maps/contrib/117242565929369358331/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXD0nTp1k3cos0E3yvIe96aARYWUWsVLdCcxOoGp-3BKb3Q_6JF=s128-c0x00000000-cc-rp-mo-ba5"
+          },
+          "publishTime": "2026-01-22T16:42:10.526774564Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xvNU9IUkpTRVExTlZsUFYwOVJXakpRYlZsa05GRRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xvNU9IUkpTRVExTlZsUFYwOVJXakpRYlZsa05GRRAB!2m1!1s0x8644b5455c53db15:0x7462f0ec03d3e64e"
         }
       ]
     },
     "ChIJzUdwV661RIYRgWz16zdUB_Q": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -20861,7 +20649,7 @@
           "Saturday: 11:00 AM – 11:00 PM",
           "Sunday: 11:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 258,
@@ -21284,7 +21072,7 @@
         "nextOpenTime": "2026-06-15T22:00:00Z"
       },
       "rating": 4.4,
-      "userRatingCount": 1070,
+      "userRatingCount": 1071,
       "reviews": [
         {
           "name": "places/ChIJgywubmi1RIYRQlw1yAejkGA/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pCcVVXMXpSalZwWW10QlJHaEVVVVpvVmtaSVJIYxAB",
@@ -21395,7 +21183,7 @@
     },
     "ChIJ5_gMvNe1RIYRsn6AxNEpiOM": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -21491,117 +21279,11 @@
           "Saturday: 10:30 AM – 10:00 PM",
           "Sunday: 10:30 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:30:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
-      "rating": 4.4,
-      "userRatingCount": 307,
-      "reviews": [
-        {
-          "name": "places/ChIJ5_gMvNe1RIYRsn6AxNEpiOM/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pKNlNtWTNVSEY1VDFnMk0xaExWMmxvWmxGa1dIYxAB",
-          "relativePublishTimeDescription": "4 months ago",
-          "rating": 4,
-          "text": {
-            "text": "This place is a nice little spot, with seating inside and nice on the front patio as well (hopefully they get more comfortable chairs for the inside one day) Its a nice vibe and pretty solid spot for a date. The service was pretty good and they were all nice and very accommodating. I wanted to give the food 5 star because some of it i do rate very highly but some others weren't quite there. To start the shrimp cocktail was good, the shrimp are massive and both sauces served with them are good as well. Bills burger (no tomato and grill the onions) is a Top 5 burger I have ever had, the patties are made with brisket and short rib and those things are flavor packed, and you combine that with great cheese, sauce and a great bun and its hard to beat. The chicken fried steak was a bit on the tougher side but not terrible, and the crawfish Mac & cheese was solid but not quite as good as I expected but was still solid for sure. I cant wait to go back and try more stuff! The burger I give a 9.0/10 and Overall I give the place an 8.1/10",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "This place is a nice little spot, with seating inside and nice on the front patio as well (hopefully they get more comfortable chairs for the inside one day) Its a nice vibe and pretty solid spot for a date. The service was pretty good and they were all nice and very accommodating. I wanted to give the food 5 star because some of it i do rate very highly but some others weren't quite there. To start the shrimp cocktail was good, the shrimp are massive and both sauces served with them are good as well. Bills burger (no tomato and grill the onions) is a Top 5 burger I have ever had, the patties are made with brisket and short rib and those things are flavor packed, and you combine that with great cheese, sauce and a great bun and its hard to beat. The chicken fried steak was a bit on the tougher side but not terrible, and the crawfish Mac & cheese was solid but not quite as good as I expected but was still solid for sure. I cant wait to go back and try more stuff! The burger I give a 9.0/10 and Overall I give the place an 8.1/10",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Sam Warren",
-            "uri": "https://www.google.com/maps/contrib/109592085684557112145/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVcjIcRkKozXpScI_dxeDLjn_wRD6fK3gJaYW9MqvYZFDvg5433gQ=s128-c0x00000000-cc-rp-mo-ba4"
-          },
-          "publishTime": "2026-02-12T05:37:17.022739707Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2pKNlNtWTNVSEY1VDFnMk0xaExWMmxvWmxGa1dIYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pKNlNtWTNVSEY1VDFnMk0xaExWMmxvWmxGa1dIYxAB!2m1!1s0x8644b5d7bc0cf8e7:0xe38829d1c4807eb2"
-        },
-        {
-          "name": "places/ChIJ5_gMvNe1RIYRsn6AxNEpiOM/reviews/Ci9DQUlRQUNvZENodHljRjlvT201b2IySmpUa2RyYlhSak5IQk5lRmN3VlU0eU1VRRAB",
-          "relativePublishTimeDescription": "6 months ago",
-          "rating": 5,
-          "text": {
-            "text": "We’ve had our eyes on Bill’s Oyster for a long time, and we’re happy to report they are absolutely worth the hype everyone talks about! We originally knew them for their insanely fresh seafood (and yes, it really is that fresh), but what we weren’t expecting was how incredible their brunch would be!\n\nFrom the moment we walked in, our host Aubrey set the tone. He was incredibly attentive, knowledgeable, and friendly, exactly the kind of person you want guiding you through a menu full of heavy hitters and what feels like big decisions in the moment!\n\nWe made reservations ahead of time since the space is on the smaller side and wanted to ensure we get an inside spot since we were celebrating our anniversary. It wasn’t packed when we arrived, but I’d still recommend booking a reservation just to be safe. They also have a super cute and quaint patio which looks like it would be incredible when the whether cooperates!\n\nNow… the food. We’ve seen and heard lots about their seafood, happy hour and of course their famous burger, but hardly saw anything about brunch so we knew that was what we wanted to hit! Cause we're different like that!\n\nHonestly, brunch is where they surprised us the most. Every single dish was high quality, beautifully executed, and full of flavor!\n\nThe oysters, seasonal crudo, and michelada clams (coming from a non michelada person) lived up to their reputation, but the brunch menu? Next level!\n\nWe got the Chicken Fried Waygu Steak topped with a crawfish tasso gravy which was large, in charge and incredibly crispy! It was the hubby's fav!\n\nI had my eye on the Johnny Cakes topped with Smoked Salmon and the Banana Foster Stuffed French Toast and YUP, those were the stars for me!\n\nThe Johnny Cakes aka basically an incredibly delicious fluffy cornbread muffin felt so light and refreshing paired with their salmon and creme fraiche.\n\nBut honestly if you go, you HAVE to try the Bananas Foster stuffed French Toast. (Whether you want it as your main or dessert, not only is the presentation beautiful, the bruleed bananas on top, the luxurious filling, fluffy brioche, everything about it was like heaven sent an angel to my plate) It was hands down one of the best we’ve had in Austin! Absolute must-order!\n\nDrink wise, we're tequila and beer people and absolutely LOVED the Mexican martini! This was my second ever Mexican Martini and I can officially say I might be converted from a margarita lover! Perfectly balanced in flavors, but you might not be walking perfectly balanced after two of them (in the best way of course) haha!\n\nSince we were celebrating our anniversary they even brought us a slice of cheesecake (they made sure to ask if we still had room in the tank) and YUP, also worth it! They even fly it in straight from the bronx! Its like no other cheesecake we've ever had, seriously! If you love cheesecake and you want a taste of the east coast, then you better pull the trigger on this! Eat it there or take it to go, you won't regret it!\n\nWhether you’re here for brunch, seafood, or both, Bill’s delivers on EVERY FRONT! We left full, happy, and already know we need to head back for more! Highly recommend!",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "We’ve had our eyes on Bill’s Oyster for a long time, and we’re happy to report they are absolutely worth the hype everyone talks about! We originally knew them for their insanely fresh seafood (and yes, it really is that fresh), but what we weren’t expecting was how incredible their brunch would be!\n\nFrom the moment we walked in, our host Aubrey set the tone. He was incredibly attentive, knowledgeable, and friendly, exactly the kind of person you want guiding you through a menu full of heavy hitters and what feels like big decisions in the moment!\n\nWe made reservations ahead of time since the space is on the smaller side and wanted to ensure we get an inside spot since we were celebrating our anniversary. It wasn’t packed when we arrived, but I’d still recommend booking a reservation just to be safe. They also have a super cute and quaint patio which looks like it would be incredible when the whether cooperates!\n\nNow… the food. We’ve seen and heard lots about their seafood, happy hour and of course their famous burger, but hardly saw anything about brunch so we knew that was what we wanted to hit! Cause we're different like that!\n\nHonestly, brunch is where they surprised us the most. Every single dish was high quality, beautifully executed, and full of flavor!\n\nThe oysters, seasonal crudo, and michelada clams (coming from a non michelada person) lived up to their reputation, but the brunch menu? Next level!\n\nWe got the Chicken Fried Waygu Steak topped with a crawfish tasso gravy which was large, in charge and incredibly crispy! It was the hubby's fav!\n\nI had my eye on the Johnny Cakes topped with Smoked Salmon and the Banana Foster Stuffed French Toast and YUP, those were the stars for me!\n\nThe Johnny Cakes aka basically an incredibly delicious fluffy cornbread muffin felt so light and refreshing paired with their salmon and creme fraiche.\n\nBut honestly if you go, you HAVE to try the Bananas Foster stuffed French Toast. (Whether you want it as your main or dessert, not only is the presentation beautiful, the bruleed bananas on top, the luxurious filling, fluffy brioche, everything about it was like heaven sent an angel to my plate) It was hands down one of the best we’ve had in Austin! Absolute must-order!\n\nDrink wise, we're tequila and beer people and absolutely LOVED the Mexican martini! This was my second ever Mexican Martini and I can officially say I might be converted from a margarita lover! Perfectly balanced in flavors, but you might not be walking perfectly balanced after two of them (in the best way of course) haha!\n\nSince we were celebrating our anniversary they even brought us a slice of cheesecake (they made sure to ask if we still had room in the tank) and YUP, also worth it! They even fly it in straight from the bronx! Its like no other cheesecake we've ever had, seriously! If you love cheesecake and you want a taste of the east coast, then you better pull the trigger on this! Eat it there or take it to go, you won't regret it!\n\nWhether you’re here for brunch, seafood, or both, Bill’s delivers on EVERY FRONT! We left full, happy, and already know we need to head back for more! Highly recommend!",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Samantha Jogoleff",
-            "uri": "https://www.google.com/maps/contrib/107493710427096544131/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVAL6VV6Gz66UDw5FknBrbJ1DGUFLeF1R_rRaqmKx83bu1bOdqa=s128-c0x00000000-cc-rp-mo-ba5"
-          },
-          "publishTime": "2025-12-01T19:44:54.061183586Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT201b2IySmpUa2RyYlhSak5IQk5lRmN3VlU0eU1VRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT201b2IySmpUa2RyYlhSak5IQk5lRmN3VlU0eU1VRRAB!2m1!1s0x8644b5d7bc0cf8e7:0xe38829d1c4807eb2"
-        },
-        {
-          "name": "places/ChIJ5_gMvNe1RIYRsn6AxNEpiOM/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pSdmFuQnJXRkZvTlVkeWIyaG9ZVFpCYlRkWllVRRAB",
-          "relativePublishTimeDescription": "3 months ago",
-          "rating": 5,
-          "text": {
-            "text": "Made a reservation for my sisters Bach this past weekend and OH MY GOD. Service was so nice and our server Chloe was so kind! Food was AMAZING (especially the crab cake) and my sister ate like 12 oysters and was in heaven lol. 10/10 RECOMMEND!",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "Made a reservation for my sisters Bach this past weekend and OH MY GOD. Service was so nice and our server Chloe was so kind! Food was AMAZING (especially the crab cake) and my sister ate like 12 oysters and was in heaven lol. 10/10 RECOMMEND!",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Mia Gunn",
-            "uri": "https://www.google.com/maps/contrib/107891277198655532049/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocKgvjvcHysB9h1_5J6Yf-Qw8YevAqdiC-uehAPpXHcim5zp7Q=s128-c0x00000000-cc-rp-mo"
-          },
-          "publishTime": "2026-03-09T18:00:31.248979828Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2pSdmFuQnJXRkZvTlVkeWIyaG9ZVFpCYlRkWllVRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pSdmFuQnJXRkZvTlVkeWIyaG9ZVFpCYlRkWllVRRAB!2m1!1s0x8644b5d7bc0cf8e7:0xe38829d1c4807eb2"
-        },
-        {
-          "name": "places/ChIJ5_gMvNe1RIYRsn6AxNEpiOM/reviews/Ci9DQUlRQUNvZENodHljRjlvT25kRk1rOURjMmcyVGtwc1puUjVaRFZGU1VGMVkwRRAB",
-          "relativePublishTimeDescription": "7 months ago",
-          "rating": 4,
-          "text": {
-            "text": "Food was awesome, service was great. Only downside was the space. It is incredibly tight in there. But other than that. Place was great food was great though the oysters were a hit or miss (2 out of 6) drinks were awesome.. no complaints.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "Food was awesome, service was great. Only downside was the space. It is incredibly tight in there. But other than that. Place was great food was great though the oysters were a hit or miss (2 out of 6) drinks were awesome.. no complaints.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Jordan ZOE",
-            "uri": "https://www.google.com/maps/contrib/110344002237711128852/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUQ_8uNzQ0z8OL3s7jvC9fXHpYkGCfhsz7vjQOiIHG44P31hf8v=s128-c0x00000000-cc-rp-mo-ba3"
-          },
-          "publishTime": "2025-10-21T01:57:55.985103079Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25kRk1rOURjMmcyVGtwc1puUjVaRFZGU1VGMVkwRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25kRk1rOURjMmcyVGtwc1puUjVaRFZGU1VGMVkwRRAB!2m1!1s0x8644b5d7bc0cf8e7:0xe38829d1c4807eb2"
-        },
-        {
-          "name": "places/ChIJ5_gMvNe1RIYRsn6AxNEpiOM/reviews/Ci9DQUlRQUNvZENodHljRjlvT21GV00zbFZVM05qYjNkWVdEZHVlVFJuTUU5WVVIYxAB",
-          "relativePublishTimeDescription": "6 months ago",
-          "rating": 5,
-          "text": {
-            "text": "Such great place!\nDrinks were amazing, oysters with the mignonette were incredible and the burger was fantastic!\nThe staff were also really great!\nLOVED this spot. Can’t wait to come back",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "Such great place!\nDrinks were amazing, oysters with the mignonette were incredible and the burger was fantastic!\nThe staff were also really great!\nLOVED this spot. Can’t wait to come back",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Ilya D",
-            "uri": "https://www.google.com/maps/contrib/103399352902742915022/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUVEy9ufdlLjsWJueIk8yscixwtL6x9JhIRVzLWiRyjne-LkDrw=s128-c0x00000000-cc-rp-mo-ba6"
-          },
-          "publishTime": "2025-12-01T14:07:17.965436318Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT21GV00zbFZVM05qYjNkWVdEZHVlVFJuTUU5WVVIYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT21GV00zbFZVM05qYjNkWVdEZHVlVFJuTUU5WVVIYxAB!2m1!1s0x8644b5d7bc0cf8e7:0xe38829d1c4807eb2"
-        }
-      ]
+      "rating": null,
+      "userRatingCount": null,
+      "reviews": []
     },
     "ChIJS2H2b-O1RIYRmXym-9wWQJ4": {
       "regularOpeningHours": {
@@ -21815,7 +21497,7 @@
     },
     "ChIJbeqvYxO1RIYR5zZEcyfr02s": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -21911,7 +21593,7 @@
           "Saturday: 11:00 AM – 11:00 PM",
           "Sunday: 11:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 1496,
@@ -22235,7 +21917,7 @@
     },
     "ChIJL1aO2dZLW4YRKsx-SrrIrcw": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -22331,7 +22013,7 @@
           "Saturday: 11:00 AM – 10:00 PM",
           "Sunday: 11:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 1707,
@@ -22953,31 +22635,31 @@
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25CSmJUUjZVbDlqV2xSVGQzZFliM1ZKUzFsalQzYxAB!2m1!1s0x8644b51ecba165cf:0x6c41be37669e60ee"
         },
         {
-          "name": "places/ChIJz2Whyx61RIYR7mCeZje-QWw/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xKdGVYRkZablJ5VjJkSE5sUkRMVWx1WVdodloyYxAB",
-          "relativePublishTimeDescription": "3 months ago",
+          "name": "places/ChIJz2Whyx61RIYR7mCeZje-QWw/reviews/Ci9DQUlRQUNvZENodHljRjlvT2sxUFZHZE9NSFpDY2tSRGFYZE5OVlJDZFhGVVEyYxAB",
+          "relativePublishTimeDescription": "a month ago",
           "rating": 5,
           "text": {
-            "text": "We chose the omakase-style tasting menu and a few à la carte, and every single dish was truly delicious—there wasn’t one course we didn’t enjoy. The quality of the food was exceptional and clearly reflects a high level of culinary skill.\n\nThe only critique I would offer is the pacing of the experience. At times, the courses felt rushed. On a few occasions, additional dishes were plated before we had finished the previous course, or food arrived and sat briefly, affecting the intended temperature. Where we were sitting in the middle of the dining room, the servers would rush by adding to the “rush” feel. I think everyone needs to slow down a bit and just enjoy. Given the level of craftsmanship involved, a slower, more intentional pace would allow each dish to be appreciated fully.\n\nThe servers were attentive and professional, though it was evident they were very busy. Menu descriptions were delivered quite quickly, which added to the overall feeling of being rushed. Slowing down slightly—both in service and explanation—would elevate the experience even further.\n\nOverall, the food itself was outstanding, and with a more relaxed, deliberate flow, this restaurant could offer an even more memorable and immersive dining experience.",
+            "text": "The food was delicious. We went on a girl's night. Mixture of omakase, vegetarian tasting menu and a la carte.\nEverything was delicious.\nThe sushi, sashimi were so fresh. The rolls are delicious!! Go to all their different restaurants and enjoy. The server was kind and very knowledgeable on WhatsApp to recommend!",
             "languageCode": "en"
           },
           "originalText": {
-            "text": "We chose the omakase-style tasting menu and a few à la carte, and every single dish was truly delicious—there wasn’t one course we didn’t enjoy. The quality of the food was exceptional and clearly reflects a high level of culinary skill.\n\nThe only critique I would offer is the pacing of the experience. At times, the courses felt rushed. On a few occasions, additional dishes were plated before we had finished the previous course, or food arrived and sat briefly, affecting the intended temperature. Where we were sitting in the middle of the dining room, the servers would rush by adding to the “rush” feel. I think everyone needs to slow down a bit and just enjoy. Given the level of craftsmanship involved, a slower, more intentional pace would allow each dish to be appreciated fully.\n\nThe servers were attentive and professional, though it was evident they were very busy. Menu descriptions were delivered quite quickly, which added to the overall feeling of being rushed. Slowing down slightly—both in service and explanation—would elevate the experience even further.\n\nOverall, the food itself was outstanding, and with a more relaxed, deliberate flow, this restaurant could offer an even more memorable and immersive dining experience.",
+            "text": "The food was delicious. We went on a girl's night. Mixture of omakase, vegetarian tasting menu and a la carte.\nEverything was delicious.\nThe sushi, sashimi were so fresh. The rolls are delicious!! Go to all their different restaurants and enjoy. The server was kind and very knowledgeable on WhatsApp to recommend!",
             "languageCode": "en"
           },
           "authorAttribution": {
-            "displayName": "Nadia Rodriguez Amante",
-            "uri": "https://www.google.com/maps/contrib/105067206690381652150/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUghr3GG-dFDMzIEDRs0cHUlpmdaVHoilada8iuiLfMvOIrm0s9FA=s128-c0x00000000-cc-rp-mo-ba4"
+            "displayName": "Shruti Subramanian",
+            "uri": "https://www.google.com/maps/contrib/104238710879047592116/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWx9eQdP-8Q2X99E24e4dAe1-tNueaK4bRK4HJ8XJcN5kbarduUJA=s128-c0x00000000-cc-rp-mo-ba5"
           },
-          "publishTime": "2026-02-25T18:01:41.552825400Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xKdGVYRkZablJ5VjJkSE5sUkRMVWx1WVdodloyYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xKdGVYRkZablJ5VjJkSE5sUkRMVWx1WVdodloyYxAB!2m1!1s0x8644b51ecba165cf:0x6c41be37669e60ee"
+          "publishTime": "2026-05-01T02:34:50.981804431Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2sxUFZHZE9NSFpDY2tSRGFYZE5OVlJDZFhGVVEyYxAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2sxUFZHZE9NSFpDY2tSRGFYZE5OVlJDZFhGVVEyYxAB!2m1!1s0x8644b51ecba165cf:0x6c41be37669e60ee"
         }
       ]
     },
     "ChIJm1Lr-K_LRIYRmy1ivVVaF8E": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -23073,7 +22755,7 @@
           "Saturday: 11:00 AM – 10:00 PM",
           "Sunday: 11:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 2663,
@@ -23397,7 +23079,7 @@
     },
     "ChIJFXgH7dK1RIYR4aisjkbCN-Y": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -23493,7 +23175,7 @@
           "Saturday: 9:00 AM – 10:00 PM",
           "Sunday: 9:00 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 405,
@@ -23805,7 +23487,7 @@
     },
     "ChIJq6qbYPu0RIYRmv2-0Wf0NmE": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -23901,7 +23583,7 @@
           "Saturday: 11:30 AM – 10:00 PM",
           "Sunday: 11:30 AM – 10:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:30:00Z"
+        "nextCloseTime": "2026-06-16T03:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 693,
@@ -23991,31 +23673,31 @@
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25wd1dHVmFNRWRYVERGRE1HUklabVIyUVVsaWVtYxAB!2m1!1s0x8644b4fb609baaab:0x6136f467d1befd9a"
         },
         {
-          "name": "places/ChIJq6qbYPu0RIYRmv2-0Wf0NmE/reviews/Ci9DQUlRQUNvZENodHljRjlvT2pZeFUxRjRVV3M0VVZBdFZHZHJUR2xwY25SM1psRRAB",
-          "relativePublishTimeDescription": "8 months ago",
-          "rating": 5,
+          "name": "places/ChIJq6qbYPu0RIYRmv2-0Wf0NmE/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xSTWFHc3dObEZJT0d0VkxYbzNYM052VW1oYWNYYxAB",
+          "relativePublishTimeDescription": "a week ago",
+          "rating": 3,
           "text": {
-            "text": "Incredible experience. On par with the likes of Uchi, Toshokan, and other major sushi contenders in Austin! The service was attentive, friendly, and laid back. Staff was knowledgeable of their menu and kindly made modifications, if necessary, for dietary issues. I specifically went for lunch and enjoyed the Chirashi lunch set, Salmon Crunch Hand Roll, and many fresh salads. ❤️ Dessert was refreshing and fun too! Definitely will be back in the near future.",
+            "text": "Honestly this place is good, but that’s about it. Celebrated my birthday lunch here, and we spent ~$330 for the four of us and we I’ll just say none of us were really satisfied. Nigiri and yakitori was good but the rolls were ok, like the ingredients were fresh but the tastes just didn’t play together. Same for tempura, very average (although fresh). Besides that, atmosphere was top notch and service was good. Asked for best seats and they delivered, but not sure if I would recommend this place to my friends. I personally think kata ro**** or ka**mi in Houston is best in Texas. But ladies would love it if their boyfriends surprised them with a place like this. Great vibes",
             "languageCode": "en"
           },
           "originalText": {
-            "text": "Incredible experience. On par with the likes of Uchi, Toshokan, and other major sushi contenders in Austin! The service was attentive, friendly, and laid back. Staff was knowledgeable of their menu and kindly made modifications, if necessary, for dietary issues. I specifically went for lunch and enjoyed the Chirashi lunch set, Salmon Crunch Hand Roll, and many fresh salads. ❤️ Dessert was refreshing and fun too! Definitely will be back in the near future.",
+            "text": "Honestly this place is good, but that’s about it. Celebrated my birthday lunch here, and we spent ~$330 for the four of us and we I’ll just say none of us were really satisfied. Nigiri and yakitori was good but the rolls were ok, like the ingredients were fresh but the tastes just didn’t play together. Same for tempura, very average (although fresh). Besides that, atmosphere was top notch and service was good. Asked for best seats and they delivered, but not sure if I would recommend this place to my friends. I personally think kata ro**** or ka**mi in Houston is best in Texas. But ladies would love it if their boyfriends surprised them with a place like this. Great vibes",
             "languageCode": "en"
           },
           "authorAttribution": {
-            "displayName": "Illya M",
-            "uri": "https://www.google.com/maps/contrib/106961258190855631489/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjV15dlQKSnKjCHAHEXJEuKkIbSuZSDjK0B2KLpOjLOuKd7salLN=s128-c0x00000000-cc-rp-mo-ba4"
+            "displayName": "ur homie",
+            "uri": "https://www.google.com/maps/contrib/103573157942385865319/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWs4zral7QZCLys7yjJplAMN1Df-WOwmyLE0E0Xk3XKaYJ4va75=s128-c0x00000000-cc-rp-mo-ba4"
           },
-          "publishTime": "2025-09-30T04:38:11.667749856Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2pZeFUxRjRVV3M0VVZBdFZHZHJUR2xwY25SM1psRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2pZeFUxRjRVV3M0VVZBdFZHZHJUR2xwY25SM1psRRAB!2m1!1s0x8644b4fb609baaab:0x6136f467d1befd9a"
+          "publishTime": "2026-06-03T16:53:27.800363706Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xSTWFHc3dObEZJT0d0VkxYbzNYM052VW1oYWNYYxAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xSTWFHc3dObEZJT0d0VkxYbzNYM052VW1oYWNYYxAB!2m1!1s0x8644b4fb609baaab:0x6136f467d1befd9a"
         }
       ]
     },
     "ChIJo6DbJZi1RIYRI0U4l-RAmQw": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -24111,7 +23793,7 @@
           "Saturday: 9:00 AM – 10:00 PM",
           "Sunday: 9:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T16:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 380,
@@ -24160,7 +23842,7 @@
         },
         {
           "name": "places/ChIJo6DbJZi1RIYRI0U4l-RAmQw/reviews/Ci9DQUlRQUNvZENodHljRjlvT2tGQmVVeE1jalJ6ZUdsaU1IUkZTa05mY0ZCYVRFRRAB",
-          "relativePublishTimeDescription": "3 months ago",
+          "relativePublishTimeDescription": "4 months ago",
           "rating": 5,
           "text": {
             "text": "Danny & Sarina were absolutely amazing bartenders — super friendly, attentive, and made the whole experience even better! Their service was warm and welcoming, and they really made us feel taken care of from start to finish. I highly recommend stopping by Carpenters Hall for brunch and asking for them — they’ll make sure you have a great time! ♥️",
@@ -24181,7 +23863,7 @@
         },
         {
           "name": "places/ChIJo6DbJZi1RIYRI0U4l-RAmQw/reviews/Ci9DQUlRQUNvZENodHljRjlvT2s1WllWQXRkRjkxTUZkbFNYcDNlRjh0VkdSRFMwRRAB",
-          "relativePublishTimeDescription": "3 months ago",
+          "relativePublishTimeDescription": "4 months ago",
           "rating": 5,
           "text": {
             "text": "Fantastic place for my Sunday brunch this morning. Food and server (Lianna C) and hosts/servers (Allison, Cameron, Jordan and more) were all wonderful. Beautiful environment, and the hotel grounds and adjoining coffee shop offer additional, splendid goodness. Highly recommended!",
@@ -24531,7 +24213,7 @@
           "Saturday: 11:00 AM – 2:00 AM",
           "Sunday: 11:00 AM – 1:00 AM"
         ],
-        "nextCloseTime": "2026-06-15T06:00:00Z"
+        "nextCloseTime": "2026-06-16T06:00:00Z"
       },
       "rating": 4.3,
       "userRatingCount": 1686,
@@ -24732,7 +24414,7 @@
         "nextOpenTime": "2026-06-16T22:30:00Z"
       },
       "rating": 4.5,
-      "userRatingCount": 997,
+      "userRatingCount": 998,
       "reviews": [
         {
           "name": "places/ChIJlWBjs7-1RIYRsJt0C41E558/reviews/Ci9DQUlRQUNvZENodHljRjlvT25NeVJqTXhZMUF6VjJ0clpYUlhTM3BVUkV0VkxVRRAB",
@@ -24799,7 +24481,7 @@
         },
         {
           "name": "places/ChIJlWBjs7-1RIYRsJt0C41E558/reviews/Ci9DQUlRQUNvZENodHljRjlvT2tSQ1RVRkNUekp6UnpSaFQzaHdSVGRCT0VGcmQyYxAB",
-          "relativePublishTimeDescription": "6 months ago",
+          "relativePublishTimeDescription": "7 months ago",
           "rating": 2,
           "text": {
             "text": "We visited this fine-dining restaurant, and unfortunately, the experience was quite mixed. Here is my detailed impression of the dishes and the service.\nFood:\nOysters. They were very fresh, with a creative and visually appealing presentation. However, the non-classic sauces didn’t work for me — traditional pairings would have tasted better.\nSteak tartare. A complete disappointment. You can barely taste the meat: the pieces are tiny and thin, and the flavor is completely overpowered by a grain that tastes like toasted buckwheat.\nMushrooms. Over-seasoned and over-fried. They were meant to be piquant, but there were so many spices that you could literally feel the powdery texture.\nHalibut. The highlight of the entire evening was perfectly cooked, beautifully presented, and incredibly delicious. The only dish I would genuinely want to order again.\nDesserts (panna cotta and ice cream). Both desserts were interesting, but the ice cream was the clear winner.\nAtmosphere:\nThere is a powerful smell of smoke inside — so strong that your hair and clothes end up absorbing it completely. This was highly unpleasant.\nService:\nEven though there were free tables and we had a reservation, we waited about 20 minutes before being seated. The waitress taking our order was very polite and knowledgeable about the menu, but the staff bringing out the dishes mixed up where to place them.\nWe were also celebrating two birthdays, and the situation with the desserts was uncomfortable: we ordered two desserts, but both received candles. The second one was placed in front of the other birthday person, who didn’t even order a dessert. It felt awkward and unprofessional. In restaurants of this level, it's standard to offer a complimentary dessert for birthday guests, but here everything felt strange and poorly handled.\nOverall:\nI’m giving one star for the halibut and one star for the waitress.\nUnfortunately, the restaurant doesn’t deserve more than that. I would not return.",
@@ -25171,7 +24853,7 @@
         },
         {
           "name": "places/ChIJdUdA46i1RIYRJnc7t8vqHxw/reviews/Ci9DQUlRQUNvZENodHljRjlvT2tSdFdtOHpiblZ6VWs5dlRqVlNYM1p5YmtOdmNFRRAB",
-          "relativePublishTimeDescription": "3 months ago",
+          "relativePublishTimeDescription": "4 months ago",
           "rating": 5,
           "text": {
             "text": "I always have an amazing experience at Garrison. The food is Michelin star quality some of the best in Austin. The whole team is amazing, Joel was excellent and took great care of us!",
@@ -25635,7 +25317,7 @@
     },
     "ChIJ4WXjCG61RIYRVJw00YsKl_E": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -25731,7 +25413,7 @@
           "Saturday: 10:00 AM – 10:00 PM",
           "Sunday: 10:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T14:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.5,
       "userRatingCount": 349,
@@ -25822,7 +25504,7 @@
         },
         {
           "name": "places/ChIJ4WXjCG61RIYRVJw00YsKl_E/reviews/Ci9DQUlRQUNvZENodHljRjlvT21sTU1FOVFkR3N3TUcwMGFHaG5hVnAxWTFOdVVrRRAB",
-          "relativePublishTimeDescription": "3 months ago",
+          "relativePublishTimeDescription": "4 months ago",
           "rating": 5,
           "text": {
             "text": "An absolute brunch masterpiece!\nIf you’re looking for the best brunch spot in Austin, Poeta is it. I’m already counting down the days until I can go back!\n\nFrom the second we walked in, the vibes were perfect. The entire staff were incredibly friendly and attentive—they truly make you feel welcome, especially the bartender Kat, crafting the best drinks. And the food? Everything was so delicious!\nHere’s the breakdown of what blew us away:\n• The Kolaches: You can tell these are freshly baked. They were pillowy, warm, and easily some of the best I've had.\n• The Avocado Toast: This is a bold claim, but it’s the best avocado toast I’ve ever had. They do a white bean purée with whole white beans on top that adds such a sophisticated, creamy texture.\n• The Breakfast Plate: Every bite was a powerhouse of flavor. It’s a classic dish elevated with so many unique notes.\n• The Hash Browns: Forget everything you know about standard hash browns. These were ultra-crispy with a unique spin that made them addictive.\n• Waffle with Gelato: We ended with the waffle, which came topped with gelato and a buttery espresso syrup. It was such a unique, yummy combination of flavors that I haven't seen anywhere else.\nPoeta isn’t just a meal; it’s an experience. Amazing service, creative dishes, and top-tier flavors. See you guys again very soon!",
@@ -26253,7 +25935,7 @@
     },
     "ChIJ9TjxCvG0RIYRmIe0K-h_w1c": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -26349,32 +26031,11 @@
           "Saturday: 9:00 AM – 10:00 PM",
           "Sunday: 9:00 AM – 8:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T14:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.3,
       "userRatingCount": 2422,
       "reviews": [
-        {
-          "name": "places/ChIJ9TjxCvG0RIYRmIe0K-h_w1c/reviews/Ci9DQUlRQUNvZENodHljRjlvT25BemFYQmpUVGQxZEVJeldXNXFkazE2WVRrdFIzYxAB",
-          "relativePublishTimeDescription": "7 months ago",
-          "rating": 5,
-          "text": {
-            "text": "We came into Curra's the Monday after Grand Prix weekend when all restaurants seems overbooked. We were seated immediately for a late lunch around 1-2pm. Staff were very fast and attentive and explained the menu for us.\n\nThis was very different than what we're used to with California-Mexican food. The spice level is intense, but we really enjoyed the bright flavors as well. The dishes might have been a tad too spicy for us, and we have decent spice tolerance, but we'd come back just to try more of their menu.\n\nI ordered the patos en mole tacos, and my dad got the cochinita pixel, both so flavorful and satisfying. We would definitely come back.",
-            "languageCode": "en"
-          },
-          "originalText": {
-            "text": "We came into Curra's the Monday after Grand Prix weekend when all restaurants seems overbooked. We were seated immediately for a late lunch around 1-2pm. Staff were very fast and attentive and explained the menu for us.\n\nThis was very different than what we're used to with California-Mexican food. The spice level is intense, but we really enjoyed the bright flavors as well. The dishes might have been a tad too spicy for us, and we have decent spice tolerance, but we'd come back just to try more of their menu.\n\nI ordered the patos en mole tacos, and my dad got the cochinita pixel, both so flavorful and satisfying. We would definitely come back.",
-            "languageCode": "en"
-          },
-          "authorAttribution": {
-            "displayName": "Sammi",
-            "uri": "https://www.google.com/maps/contrib/100971279254188445539/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXmcGE5fp703L0d3ZcGy-OLipQKIeT0f6AH-CgeND1PAMw5MNMjiw=s128-c0x00000000-cc-rp-mo-ba4"
-          },
-          "publishTime": "2025-10-23T14:37:10.729018209Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25BemFYQmpUVGQxZEVJeldXNXFkazE2WVRrdFIzYxAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25BemFYQmpUVGQxZEVJeldXNXFkazE2WVRrdFIzYxAB!2m1!1s0x8644b4f10af138f5:0x57c37fe82bb48798"
-        },
         {
           "name": "places/ChIJ9TjxCvG0RIYRmIe0K-h_w1c/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xOMVZHdGxXa2xNZERKNWNHbE9TVzAxTWpZelVVRRAB",
           "relativePublishTimeDescription": "10 months ago",
@@ -26418,25 +26079,25 @@
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2tkeVducFViMG90V2xrNGFqazFTa1p6TW5sQ1VsRRAB!2m1!1s0x8644b4f10af138f5:0x57c37fe82bb48798"
         },
         {
-          "name": "places/ChIJ9TjxCvG0RIYRmIe0K-h_w1c/reviews/Ci9DQUlRQUNvZENodHljRjlvT25GVUxXVmpPVTVTVUVVdFQyMVlNekJ2UjFSVFExRRAB",
-          "relativePublishTimeDescription": "4 months ago",
+          "name": "places/ChIJ9TjxCvG0RIYRmIe0K-h_w1c/reviews/Ci9DQUlRQUNvZENodHljRjlvT25BemFYQmpUVGQxZEVJeldXNXFkazE2WVRrdFIzYxAB",
+          "relativePublishTimeDescription": "7 months ago",
           "rating": 5,
           "text": {
-            "text": "If you don’t like it, you’re wrong. Avocado margs for life. Ask for some of their hot salsa if you like your food more spicy. It’s literally fire.",
+            "text": "We came into Curra's the Monday after Grand Prix weekend when all restaurants seems overbooked. We were seated immediately for a late lunch around 1-2pm. Staff were very fast and attentive and explained the menu for us.\n\nThis was very different than what we're used to with California-Mexican food. The spice level is intense, but we really enjoyed the bright flavors as well. The dishes might have been a tad too spicy for us, and we have decent spice tolerance, but we'd come back just to try more of their menu.\n\nI ordered the patos en mole tacos, and my dad got the cochinita pixel, both so flavorful and satisfying. We would definitely come back.",
             "languageCode": "en"
           },
           "originalText": {
-            "text": "If you don’t like it, you’re wrong. Avocado margs for life. Ask for some of their hot salsa if you like your food more spicy. It’s literally fire.",
+            "text": "We came into Curra's the Monday after Grand Prix weekend when all restaurants seems overbooked. We were seated immediately for a late lunch around 1-2pm. Staff were very fast and attentive and explained the menu for us.\n\nThis was very different than what we're used to with California-Mexican food. The spice level is intense, but we really enjoyed the bright flavors as well. The dishes might have been a tad too spicy for us, and we have decent spice tolerance, but we'd come back just to try more of their menu.\n\nI ordered the patos en mole tacos, and my dad got the cochinita pixel, both so flavorful and satisfying. We would definitely come back.",
             "languageCode": "en"
           },
           "authorAttribution": {
-            "displayName": "Amanda Willman",
-            "uri": "https://www.google.com/maps/contrib/106738669330146026957/reviews",
-            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUh91tSbDWc0cse3xlc2kdLHmGnmY8HlSczzqXXPDzy8aNgtSYe=s128-c0x00000000-cc-rp-mo-ba4"
+            "displayName": "Sammi",
+            "uri": "https://www.google.com/maps/contrib/100971279254188445539/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXmcGE5fp703L0d3ZcGy-OLipQKIeT0f6AH-CgeND1PAMw5MNMjiw=s128-c0x00000000-cc-rp-mo-ba4"
           },
-          "publishTime": "2026-02-06T20:28:45.600191309Z",
-          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25GVUxXVmpPVTVTVUVVdFQyMVlNekJ2UjFSVFExRRAB&d=17924085&t=1",
-          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25GVUxXVmpPVTVTVUVVdFQyMVlNekJ2UjFSVFExRRAB!2m1!1s0x8644b4f10af138f5:0x57c37fe82bb48798"
+          "publishTime": "2025-10-23T14:37:10.729018209Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25BemFYQmpUVGQxZEVJeldXNXFkazE2WVRrdFIzYxAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25BemFYQmpUVGQxZEVJeldXNXFkazE2WVRrdFIzYxAB!2m1!1s0x8644b4f10af138f5:0x57c37fe82bb48798"
         },
         {
           "name": "places/ChIJ9TjxCvG0RIYRmIe0K-h_w1c/reviews/ChdDSUhNMG9nS0VJQ0FnTURnNnVHV3NRRRAB",
@@ -26458,12 +26119,33 @@
           "publishTime": "2025-02-24T04:17:40.786810Z",
           "flagContentUri": "https://www.google.com/local/content/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnTURnNnVHV3NRRRAB&d=17924085&t=1",
           "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTURnNnVHV3NRRRAB!2m1!1s0x8644b4f10af138f5:0x57c37fe82bb48798"
+        },
+        {
+          "name": "places/ChIJ9TjxCvG0RIYRmIe0K-h_w1c/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xoYVNYaE1TemRNV0dsRWFEQlZaWGxvUjB0bVluYxAB",
+          "relativePublishTimeDescription": "4 months ago",
+          "rating": 5,
+          "text": {
+            "text": "Went to celebrate the first National Missing Persons Day at the State Capitol Southside steps. This is the place Jo Ann wanted to go,we haven't had enough mexican food lately. WOW this place hit the spot ! The 5 of us had an array from the menue. Caldi to Chile Relano was very tasty and the Avacado Margaritas were great.Smoothie with alcohol  ?Since this is in Austin there is No complimentary chips and salsa. The service was great ,quick,helpful,accurate as well as attentive.The restrooms were immaculate,and this was just after the lunch rush. The best dining experience in a long time.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Went to celebrate the first National Missing Persons Day at the State Capitol Southside steps. This is the place Jo Ann wanted to go,we haven't had enough mexican food lately. WOW this place hit the spot ! The 5 of us had an array from the menue. Caldi to Chile Relano was very tasty and the Avacado Margaritas were great.Smoothie with alcohol  ?Since this is in Austin there is No complimentary chips and salsa. The service was great ,quick,helpful,accurate as well as attentive.The restrooms were immaculate,and this was just after the lunch rush. The best dining experience in a long time.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "John Rugg",
+            "uri": "https://www.google.com/maps/contrib/116445648894986122802/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocLBrwKDB64CQHgyQC3__mwaHiVPoteSE9AfJf8tOEVUmHXOTQ=s128-c0x00000000-cc-rp-mo-ba5"
+          },
+          "publishTime": "2026-02-04T00:50:23.209360143Z",
+          "flagContentUri": "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT2xoYVNYaE1TemRNV0dsRWFEQlZaWGxvUjB0bVluYxAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xoYVNYaE1TemRNV0dsRWFEQlZaWGxvUjB0bVluYxAB!2m1!1s0x8644b4f10af138f5:0x57c37fe82bb48798"
         }
       ]
     },
     "ChIJN_uV57C1RIYRZkRMAwU8buk": {
       "regularOpeningHours": {
-        "openNow": false,
+        "openNow": true,
         "periods": [
           {
             "open": {
@@ -26559,7 +26241,7 @@
           "Saturday: 8:00 AM – 9:00 PM",
           "Sunday: 8:00 AM – 9:00 PM"
         ],
-        "nextOpenTime": "2026-06-15T13:00:00Z"
+        "nextCloseTime": "2026-06-16T02:00:00Z"
       },
       "rating": 4.4,
       "userRatingCount": 1272,
@@ -26772,7 +26454,7 @@
         "nextOpenTime": "2026-06-15T21:00:00Z"
       },
       "rating": 4.7,
-      "userRatingCount": 2435,
+      "userRatingCount": 2436,
       "reviews": [
         {
           "name": "places/ChIJqQ7aNPa1RIYREETlax1ArpU/reviews/Ci9DQUlRQUNvZENodHljRjlvT2twWGVIRm1kRmRwUkV4eVIxSnVTVGgwZGpoclFVRRAB",
