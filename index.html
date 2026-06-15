@@ -199,6 +199,22 @@ select option{background:white}
 .dp-lastvisited{font-size:12px;font-weight:600;margin:-8px 0 14px}
 .last-visited{font-size:inherit;font-weight:inherit}
 .stars-row{display:flex;align-items:center;gap:6px;margin-bottom:14px}
+
+.g-ratings{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;margin-bottom:14px}
+.g-rating-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.g-rating-num{font-size:13px;font-weight:600;color:var(--text)}
+.g-rating-count{font-size:12px;color:var(--subtle)}
+.g-stars{display:inline-flex;gap:1px}
+.g-star{position:relative;display:inline-block;font-size:13px;line-height:1;color:#D8D0C8}
+.g-star-bg{color:#D8D0C8}
+.g-star-fg{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:var(--amber)}
+.g-review{margin-top:10px}
+.g-review-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px}
+.g-review-author{font-size:12px;font-weight:600;color:var(--text)}
+.g-review-time{font-size:11px;color:var(--subtle)}
+.g-review-text{font-size:12px;color:var(--muted);line-height:1.5}
+.g-more{background:none;border:none;padding:0;margin-left:2px;color:var(--accent);font-size:12px;font-weight:600;cursor:pointer}
+.g-attrib{font-size:10px;color:var(--subtle);margin-top:10px}
 .star-btn{font-size:20px;cursor:pointer;line-height:1;background:none;border:none;padding:2px;transition:transform .1s}
 .star-btn:hover{transform:scale(1.25)}
 .star-lbl{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace}
@@ -357,14 +373,6 @@ select option{background:white}
   white-space:nowrap;transition:background .15s,color .15s;flex-shrink:0;
 }
 #surprise-btn:hover{background:var(--accent);color:white}
-#open-now-btn{
-  height:32px;padding:0 14px;border-radius:20px;
-  background:var(--green-light);color:var(--green);border:none;font-size:12px;
-  font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;
-  white-space:nowrap;transition:background .15s,color .15s;flex-shrink:0;
-}
-#open-now-btn:hover{background:var(--green);color:white}
-#open-now-btn.active{background:var(--green);color:white}
 
 #toast{
   position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
@@ -410,7 +418,6 @@ select option{background:white}
     <option value="5">★★★★★ 5</option>
   </select>
   <span id="cnt"></span>
-  <button id="open-now-btn" onclick="A.toggleOpenNow()">🟢 Open Now</button>
   <button id="surprise-btn" onclick="A.surpriseMe()">🎲 Surprise Me</button>
   <button id="find-table-btn" onclick="A.toggleResMode()">🗓 Find a table</button>
 </div>
@@ -518,11 +525,68 @@ const lastVisitedHTML=r=>{
   return `<span class="last-visited" style="color:${color}">Visited ${txt}</span>`;
 };
 
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// Renders a row of 5 stars supporting partial (half-star, etc.) fills.
+const starRow=rating=>{
+  const v=Math.max(0,Math.min(5,Number(rating)||0));
+  return [0,1,2,3,4].map(i=>{
+    const pct=Math.round(Math.max(0,Math.min(1,v-i))*100);
+    return `<span class="g-star"><span class="g-star-bg">★</span><span class="g-star-fg" style="width:${pct}%">★</span></span>`;
+  }).join('');
+};
+
+// Builds the Google rating + top reviews block for a restaurant's detail panel.
+// Returns '' if there's no cached rating/review data — never throws.
+const googleRatingHTML=(r,placesCache)=>{
+  try{
+    const entry=placesCache?.places?.[r?.googlePlaceId];
+    if(!entry)return '';
+    const{rating,userRatingCount,reviews}=entry;
+    if(rating==null&&!(reviews&&reviews.length))return '';
+
+    const summary=rating!=null?`
+      <div class="g-rating-row">
+        <span class="g-stars">${starRow(rating)}</span>
+        <span class="g-rating-num">${rating}</span>
+        ${userRatingCount!=null?`<span class="g-rating-count">${userRatingCount.toLocaleString()} reviews</span>`:''}
+      </div>`:'';
+
+    const top=(reviews||[]).slice(0,2).map(rv=>{
+      const author=esc(rv?.authorAttribution?.displayName||'Anonymous');
+      const rvRating=rv?.rating;
+      const time=esc(rv?.relativePublishTime||'');
+      const text=esc(rv?.text?.text||rv?.originalText?.text||'');
+      const long=text.length>150;
+      const short=esc(text.slice(0,150))+(long?'…':'');
+      return `<div class="g-review">
+        <div class="g-review-top">
+          <span class="g-review-author">${author}</span>
+          ${rvRating!=null?`<span class="g-stars">${starRow(rvRating)}</span>`:''}
+          ${time?`<span class="g-review-time">${time}</span>`:''}
+        </div>
+        <div class="g-review-text">
+          <span class="rv-short">${short}</span>${long?`<span class="rv-full" style="display:none">${esc(text)}</span> <button class="g-more" onclick="A.toggleReview(this)">more</button>`:''}
+        </div>
+      </div>`;
+    }).join('');
+
+    if(!summary&&!top)return '';
+    return `<div class="g-ratings">
+      ${summary}
+      ${top}
+      <div class="g-attrib">Reviews from Google</div>
+    </div>`;
+  }catch{
+    return '';
+  }
+};
+
 const A={
   data:[],sel:null,filter:'all',cuisineFilter:'',priceFilter:'',ratingFilter:0,
   search:'',admin:false,view:'map',
   resMode:false,resDate:'',resParty:2,resTime:'19:00',
-  openNowFilter:false,placesCache:null,
+  placesCache:null,
   lmap:null,markers:{},eid:null,sp:0,ntarea:null,stimer:null,
 
   async init(){
@@ -538,40 +602,6 @@ const A={
     this._initMap();
     this._events();
     this._populateFilters();
-    this.render();
-  },
-
-  // ── Open Now
-  // regularOpeningHours.periods entries: {open:{day,hour,minute}, close:{day,hour,minute}}
-  // day: 0=Sunday..6=Saturday. Returns true/false, or null if unknown.
-  isOpenNow(r){
-    const entry=this.placesCache?.places?.[r.googlePlaceId];
-    const periods=entry?.regularOpeningHours?.periods;
-    if(!periods||!periods.length)return null;
-    const now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Chicago'}));
-    const day=now.getDay(),mins=now.getHours()*60+now.getMinutes();
-    for(const p of periods){
-      if(!p.open)continue;
-      const openDay=p.open.day,openMins=p.open.hour*60+(p.open.minute||0);
-      if(!p.close){
-        if(day===openDay&&mins>=openMins)return true;
-        continue;
-      }
-      let closeDay=p.close.day,closeMins=p.close.hour*60+(p.close.minute||0);
-      if(closeDay===openDay&&closeMins<=openMins)closeDay=(openDay+1)%7;
-      if(day===openDay&&mins>=openMins){
-        if(closeDay===openDay){if(mins<closeMins)return true}
-        else return true;
-      }else if(day===closeDay&&closeDay!==openDay){
-        if(mins<closeMins)return true;
-      }
-    }
-    return false;
-  },
-
-  toggleOpenNow(){
-    this.openNowFilter=!this.openNowFilter;
-    document.getElementById('open-now-btn').classList.toggle('active',this.openNowFilter);
     this.render();
   },
 
@@ -619,7 +649,6 @@ const A={
       if(this.priceFilter&&r.price!==this.priceFilter)return false;
       if(this.ratingFilter>0&&(r.rating||0)<this.ratingFilter)return false;
       if(this.resMode&&!r.resy&&!r.opentable)return false;
-      if(this.openNowFilter&&!this.isOpenNow(r))return false;
       if(this.search){const q=this.search.toLowerCase();if(!r.name.toLowerCase().includes(q)&&!r.cuisine.toLowerCase().includes(q))return false}
       return true;
     });
@@ -741,6 +770,15 @@ const A={
     el.classList.add('show');
     clearTimeout(this._toastTimer);
     this._toastTimer=setTimeout(()=>el.classList.remove('show'),2500);
+  },
+
+  toggleReview(btn){
+    const wrap=btn.parentElement;
+    const short=wrap.querySelector('.rv-short'),full=wrap.querySelector('.rv-full');
+    const isExpanded=full.style.display!=='none';
+    full.style.display=isExpanded?'none':'inline';
+    short.style.display=isExpanded?'inline':'none';
+    btn.textContent=isExpanded?'more':'less';
   },
 
   surpriseMe(){
@@ -869,6 +907,7 @@ const A={
         <div class="dp-addr">📍 ${r.address}</div>
         ${r.lastVisited?`<div class="dp-lastvisited">${lastVisitedHTML(r)}</div>`:''}
         <div class="stars-row">${stars}<span class="star-lbl">${r.rating?`${r.rating}/5`:'Tap to rate'}</span></div>
+        ${googleRatingHTML(r,this.placesCache)}
         <div class="mets">
           <div class="met"><div class="met-l">Price</div><div class="met-v" style="color:${priceColor}">${r.price}</div></div>
           <div class="met"><div class="met-l">Quality</div><div class="met-v" style="color:var(--accent)">${r.quality?`${r.quality}<span style="font-size:10px;color:var(--subtle);font-weight:400">/10</span>`:'—'}</div></div>
