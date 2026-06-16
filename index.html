@@ -919,11 +919,17 @@ const A={
   discoverAdd(){
     const p=this.discoverQueue[0];
     if(!p)return;
+    const prefill={name:p.name,address:p.address,lat:p.lat,lng:p.lng,cuisine:p.cuisine,googlePlaceId:p.id};
+    if(!this.admin){
+      // Store prefill and open PIN; closePinDlg override will reopen modal
+      this._pendingModal='new';
+      this._pendingPrefill=prefill;
+      this.closeDiscover();
+      this.openPinDlg();
+      return;
+    }
     this.closeDiscover();
-    this.openModal(undefined,{
-      name:p.name,address:p.address,lat:p.lat,lng:p.lng,
-      cuisine:p.cuisine,googlePlaceId:p.id,
-    });
+    this.openModal(undefined,prefill);
   },
 
   toggleOpenNow(){
@@ -1237,6 +1243,7 @@ const A={
       photo:document.getElementById('f-photo').value||'',
       lastVisited:document.getElementById('f-lastvisited').value||'',
     };
+    const fromDiscover=!!this._prefillPlaceId;
     if(this._prefillPlaceId&&!obj.googlePlaceId)obj.googlePlaceId=this._prefillPlaceId;
     if(this._prefillPlaceId){
       this.discoverSkipped.push(this._prefillPlaceId);
@@ -1244,6 +1251,10 @@ const A={
     }
     const next=this.eid?this.data.map(x=>x.id===this.eid?obj:x):[...this.data,obj];
     this._upd(next);this.sel=obj.id;this.closeModal();this.render();
+    if(fromDiscover){
+      this.showToast('✅ '+name+' added to your list!');
+      setTimeout(()=>this.openDiscover(),1200);
+    }
   },
 
   // ── Mobile
