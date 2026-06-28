@@ -300,38 +300,6 @@ select option{background:white}
 .m-save{flex:2;height:44px;border-radius:12px;border:none;background:var(--accent);color:white;cursor:pointer;font-size:13px;font-weight:600;letter-spacing:.02em;transition:background .15s}
 .m-save:hover{background:var(--accent-dark)}
 
-/* ── DISCOVER ── */
-#dov{
-  position:fixed;inset:0;background:rgba(0,0,0,.65);
-  z-index:1000;display:none;flex-direction:column;align-items:center;
-  padding:20px;
-}
-#dov.show{display:flex}
-.dov-hdr{width:100%;max-width:420px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0}
-.dov-ttl{font-family:'Playfair Display',serif;font-size:22px;color:white}
-.dov-x{background:rgba(255,255,255,.15);border:none;color:white;width:32px;height:32px;border-radius:50%;font-size:14px;cursor:pointer}
-#dov-stack{position:relative;width:100%;max-width:420px;flex:1;min-height:0}
-.d-card{
-  position:absolute;top:0;left:0;right:0;
-  background:white;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);
-  display:flex;flex-direction:column;touch-action:none;cursor:grab;
-  transition:transform .25s ease,opacity .25s ease;
-  max-height:100%;
-}
-.d-card.dragging{transition:none}
-.d-photo{width:100%;height:200px;background:var(--bg);flex-shrink:0}
-.d-photo img{width:100%;height:100%;object-fit:cover}
-.d-body{padding:16px 18px;flex:1;overflow-y:auto}
-.d-name{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:4px}
-.d-sub{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px}
-.d-addr{font-size:12px;color:var(--subtle)}
-.d-btns{display:flex;gap:10px;padding:14px 18px;border-top:1px solid var(--border);flex-shrink:0}
-.d-skip{flex:1;height:46px;border-radius:12px;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-size:14px;font-weight:600}
-.d-skip:hover{border-color:#DC2626;color:#DC2626}
-.d-add{flex:1;height:46px;border-radius:12px;border:none;background:var(--accent);color:white;cursor:pointer;font-size:14px;font-weight:600}
-.d-add:hover{background:var(--accent-dark)}
-.d-empty{background:rgba(255,255,255,.1);border-radius:16px;padding:32px 24px;color:white;text-align:center;font-size:14px;line-height:1.8;position:absolute;top:50%;left:0;right:0;transform:translateY(-50%)}
-
 /* ── PIN DIALOG ── */
 #pov{
   position:fixed;inset:0;background:rgba(0,0,0,.4);
@@ -363,7 +331,7 @@ select option{background:white}
 #lov.show{display:block}
 
 /* ── MOBILE NAV ── */
-#nav{display:none;height:var(--nav);border-top:1px solid var(--border);background:white;flex-shrink:0}
+#nav{display:none;height:var(--nav);border-top:1px solid var(--border);background:white;flex-shrink:0;position:relative;z-index:1}
 @media(max-width:767px){#nav{display:flex}}
 .nb{flex:1;padding:8px 0 10px;background:transparent;border:none;color:var(--subtle);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .15s}
 .nb.on{color:var(--accent)}
@@ -416,13 +384,6 @@ select option{background:white}
 }
 #open-now-btn:hover{background:var(--accent);color:white}
 #open-now-btn.active{background:var(--accent);color:white}
-#discover-btn{
-  height:32px;padding:0 14px;border-radius:20px;
-  background:var(--accent-light);color:var(--accent);border:none;font-size:12px;
-  font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;
-  white-space:nowrap;transition:background .15s,color .15s;flex-shrink:0;
-}
-#discover-btn:hover{background:var(--accent);color:white}
 
 #toast{
   position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
@@ -471,7 +432,6 @@ select option{background:white}
   <button id="open-now-btn" onclick="A.toggleOpenNow()">🕐 Open Now</button>
   <button id="surprise-btn" onclick="A.surpriseMe()">🎲 Surprise Me</button>
   <button id="find-table-btn" onclick="A.toggleResMode()">🗓 Find a table</button>
-  <button id="discover-btn" onclick="A.openDiscover()">✨ Discover</button>
 </div>
 
 <div id="res-bar">
@@ -527,19 +487,11 @@ select option{background:white}
 <div id="mov" onclick="if(event.target===this)A.closeModal()"><div id="mod"></div></div>
 <div id="pov" onclick="if(event.target===this)A.closePinDlg()"><div id="pdlg"></div></div>
 
-<div id="dov">
-  <div class="dov-hdr">
-    <div class="dov-ttl">✨ Discover</div>
-    <button class="dov-x" onclick="A.closeDiscover()">✕</button>
-  </div>
-  <div id="dov-stack"></div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 'use strict';
-const LS='ae-data-v4', LP='ae-pin', SS='ae-admin', LD='ae-discover-skipped';
+const LS='ae-data-v4', LP='ae-pin', SS='ae-admin';
 const PRICE=['$','$$','$$$','$$$$'];
 const VIBES=['Romantic','Family','Casual','Business','Lively','Cozy','Healthy','Trendy'];
 const VI={Romantic:'🕯',Family:'👨‍👩‍👧',Casual:'🍻',Business:'💼',Lively:'🎉',Cozy:'☕',Healthy:'🌿',Trendy:'✨'};
@@ -696,7 +648,6 @@ const A={
   resMode:false,resDate:'',resParty:2,resTime:'19:00',
   openNowFilter:false,
   placesCache:null,
-  discoverCache:null,discoverQueue:[],discoverSkipped:[],
   lmap:null,markers:{},eid:null,sp:0,ntarea:null,stimer:null,
 
   async init(){
@@ -709,8 +660,6 @@ const A={
     if(!this.data.length)this.data=[];
     if(!localStorage.getItem(LS))this._ls();
     try{const r=await fetch('placesCache.json');if(r.ok)this.placesCache=await r.json()}catch{}
-    try{const r=await fetch('discoverCache.json');if(r.ok)this.discoverCache=await r.json()}catch{}
-    try{this.discoverSkipped=JSON.parse(localStorage.getItem(LD))||[]}catch{this.discoverSkipped=[]}
     this._initMap();
     this._events();
     this._populateFilters();
@@ -829,108 +778,6 @@ const A={
     }
   },
   closePinDlg(){document.getElementById('pov').classList.remove('show')},
-
-  // ── Discover
-  _discoverList(){
-    const known=new Set(this.data.map(r=>r.googlePlaceId).filter(Boolean));
-    const skipped=new Set(this.discoverSkipped);
-    return (this.discoverCache?.places||[]).filter(p=>!known.has(p.id)&&!skipped.has(p.id));
-  },
-
-  openDiscover(){
-    this.discoverQueue=this._discoverList();
-    document.getElementById('dov').classList.add('show');
-    this._renderDiscoverStack();
-  },
-
-  closeDiscover(){
-    document.getElementById('dov').classList.remove('show');
-  },
-
-  _renderDiscoverStack(){
-    const stack=document.getElementById('dov-stack');
-    const queue=this.discoverQueue;
-    if(!queue.length){
-      stack.innerHTML='<div class="d-empty">🎉 You\'ve seen everything we found.<br>Check back after the next weekly refresh.</div>';
-      return;
-    }
-    const PRICE_MAP={PRICE_LEVEL_FREE:'',PRICE_LEVEL_INEXPENSIVE:'$',PRICE_LEVEL_MODERATE:'$$',PRICE_LEVEL_EXPENSIVE:'$$$',PRICE_LEVEL_VERY_EXPENSIVE:'$$$$'};
-    stack.innerHTML=queue.slice(0,2).reverse().map((p,i,arr)=>{
-      const top=i===arr.length-1;
-      const photo=p.photoName?`/api/place-photo?name=${encodeURIComponent(p.photoName)}&w=480`:null;
-      const price=PRICE_MAP[p.priceLevel]||'';
-      return `<div class="d-card" data-id="${esc(p.id)}" style="transform:scale(${top?1:0.96}) translateY(${top?0:10}px);opacity:${top?1:.6};z-index:${i}">
-        <div class="d-photo">${photo?`<img src="${photo}" alt="${esc(p.name)}" loading="lazy"/>`:''}</div>
-        <div class="d-body">
-          <div class="d-name">${esc(p.name)}</div>
-          <div class="d-sub">
-            ${p.rating!=null?`<span class="g-stars">${starRow(p.rating)}</span><span class="g-rating-num">${p.rating}</span>`:''}
-            ${p.userRatingCount!=null?`<span class="g-rating-count">${p.userRatingCount.toLocaleString()} reviews</span>`:''}
-            ${price?`<span style="color:var(--border)">·</span><span>${price}</span>`:''}
-            ${p.cuisine?`<span style="color:var(--border)">·</span><span>${esc(p.cuisine)}</span>`:''}
-          </div>
-          <div class="d-addr">📍 ${esc(p.address)}</div>
-        </div>
-        <div class="d-btns">
-          <button class="d-skip" onclick="A.discoverSkip()">✕ Skip</button>
-          <button class="d-add" onclick="A.discoverAdd()">➕ Add to list</button>
-        </div>
-      </div>`;
-    }).join('');
-    const top=stack.querySelector('.d-card:last-child');
-    if(top)this._bindDiscoverSwipe(top);
-  },
-
-  _bindDiscoverSwipe(card){
-    let startX=0,dx=0,dragging=false;
-    const onDown=e=>{
-      dragging=true;startX=(e.touches?e.touches[0].clientX:e.clientX);
-      card.classList.add('dragging');
-    };
-    const onMove=e=>{
-      if(!dragging)return;
-      const x=(e.touches?e.touches[0].clientX:e.clientX);
-      dx=x-startX;
-      card.style.transform=`translateX(${dx}px) rotate(${dx/20}deg)`;
-    };
-    const onUp=()=>{
-      if(!dragging)return;
-      dragging=false;card.classList.remove('dragging');
-      if(dx>100)this.discoverAdd();
-      else if(dx<-100)this.discoverSkip();
-      else card.style.transform='';
-      dx=0;
-    };
-    card.addEventListener('pointerdown',onDown);
-    card.addEventListener('pointermove',onMove);
-    card.addEventListener('pointerup',onUp);
-    card.addEventListener('pointerleave',onUp);
-  },
-
-  discoverSkip(){
-    const p=this.discoverQueue.shift();
-    if(p){
-      this.discoverSkipped.push(p.id);
-      localStorage.setItem(LD,JSON.stringify(this.discoverSkipped));
-    }
-    this._renderDiscoverStack();
-  },
-
-  discoverAdd(){
-    const p=this.discoverQueue[0];
-    if(!p)return;
-    const prefill={name:p.name,address:p.address,lat:p.lat,lng:p.lng,cuisine:p.cuisine,googlePlaceId:p.id};
-    if(!this.admin){
-      // Store prefill and open PIN; closePinDlg override will reopen modal
-      this._pendingModal='new';
-      this._pendingPrefill=prefill;
-      this.closeDiscover();
-      this.openPinDlg();
-      return;
-    }
-    this.closeDiscover();
-    this.openModal(undefined,prefill);
-  },
 
   toggleOpenNow(){
     this.openNowFilter=!this.openNowFilter;
@@ -1243,18 +1090,9 @@ const A={
       photo:document.getElementById('f-photo').value||'',
       lastVisited:document.getElementById('f-lastvisited').value||'',
     };
-    const fromDiscover=!!this._prefillPlaceId;
     if(this._prefillPlaceId&&!obj.googlePlaceId)obj.googlePlaceId=this._prefillPlaceId;
-    if(this._prefillPlaceId){
-      this.discoverSkipped.push(this._prefillPlaceId);
-      localStorage.setItem(LD,JSON.stringify(this.discoverSkipped));
-    }
     const next=this.eid?this.data.map(x=>x.id===this.eid?obj:x):[...this.data,obj];
     this._upd(next);this.sel=obj.id;this.closeModal();this.render();
-    if(fromDiscover){
-      this.showToast('✅ '+name+' added to your list!');
-      setTimeout(()=>this.openDiscover(),1200);
-    }
   },
 
   // ── Mobile
