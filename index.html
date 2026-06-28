@@ -300,6 +300,19 @@ select option{background:white}
 .m-save{flex:2;height:44px;border-radius:12px;border:none;background:var(--accent);color:white;cursor:pointer;font-size:13px;font-weight:600;letter-spacing:.02em;transition:background .15s}
 .m-save:hover{background:var(--accent-dark)}
 
+/* ── MEAL COST ── */
+.meal-sec{border-top:1px solid var(--border2);padding:14px 0 2px}
+.meal-lbl{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-family:'DM Mono',monospace;margin-bottom:8px}
+.meal-row{display:flex;gap:6px;align-items:center}
+.meal-cost-inp{width:76px;height:34px;border:1.5px solid var(--border);border-radius:8px;padding:0 10px;font-size:14px;font-family:'DM Mono',monospace;color:var(--text);background:var(--bg);outline:none;transition:border-color .15s}
+.meal-cost-inp:focus{border-color:var(--accent)}
+.meal-note-inp{flex:1;height:34px;border:1.5px solid var(--border);border-radius:8px;padding:0 10px;font-size:13px;color:var(--text);background:var(--bg);outline:none;min-width:0;transition:border-color .15s}
+.meal-note-inp:focus{border-color:var(--accent)}
+.meal-save{height:34px;padding:0 12px;border-radius:8px;border:none;background:var(--accent);color:white;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s}
+.meal-save:hover{background:var(--accent-dark)}
+.meal-display{font-size:13px;color:var(--text);line-height:1.5}
+.meal-badge{font-size:11px;font-weight:600;color:var(--green);font-family:'DM Mono',monospace}
+
 /* ── PIN DIALOG ── */
 #pov{
   position:fixed;inset:0;background:rgba(0,0,0,.4);
@@ -427,6 +440,13 @@ select option{background:white}
     <option value="3">★★★ 3+</option>
     <option value="4">★★★★ 4+</option>
     <option value="5">★★★★★ 5</option>
+  </select>
+  <select class="bar-sel" id="fil-spend">
+    <option value="">Budget</option>
+    <option value="lt20">Under $20</option>
+    <option value="20-50">$20–$50</option>
+    <option value="50-100">$50–$100</option>
+    <option value="gt100">$100+</option>
   </select>
   <span id="cnt"></span>
   <button id="open-now-btn" onclick="A.toggleOpenNow()">🕐 Open Now</button>
@@ -646,7 +666,7 @@ const A={
   data:[],sel:null,filter:'all',cuisineFilter:'',priceFilter:'',ratingFilter:0,
   search:'',admin:false,view:'map',
   resMode:false,resDate:'',resParty:2,resTime:'19:00',
-  openNowFilter:false,
+  openNowFilter:false,spendFilter:'',
   placesCache:null,
   lmap:null,markers:{},eid:null,sp:0,ntarea:null,stimer:null,
 
@@ -711,6 +731,13 @@ const A={
       if(this.ratingFilter>0&&(r.rating||0)<this.ratingFilter)return false;
       if(this.resMode&&!r.resy&&!r.opentable)return false;
       if(this.openNowFilter&&!isOpenNow(r,this.placesCache))return false;
+      if(this.spendFilter){
+        const c=r.mealCost;if(c==null)return false;
+        if(this.spendFilter==='lt20'&&c>=20)return false;
+        if(this.spendFilter==='20-50'&&(c<20||c>50))return false;
+        if(this.spendFilter==='50-100'&&(c<50||c>100))return false;
+        if(this.spendFilter==='gt100'&&c<=100)return false;
+      }
       if(this.search){const q=this.search.toLowerCase();if(!r.name.toLowerCase().includes(q)&&!r.cuisine.toLowerCase().includes(q))return false}
       return true;
     });
@@ -863,6 +890,12 @@ const A={
   rate(id,v){this._upd(this.data.map(r=>r.id===id?{...r,rating:v}:r));this.renderDetail();this._drawMarkers()},
   toggleSt(id){this._upd(this.data.map(r=>r.id===id?{...r,status:r.status==='visited'?'wishlist':'visited'}:r));this.renderDetail();this.renderList();this.renderMobList()},
   del(id){if(!confirm('Delete this restaurant?'))return;this._upd(this.data.filter(r=>r.id!==id));this.sel=null;this.render()},
+  saveMealCost(id){
+    const cost=parseFloat(document.getElementById('mc-cost').value)||null;
+    const note=document.getElementById('mc-note').value.trim();
+    this._upd(this.data.map(r=>r.id===id?{...r,mealCost:cost,mealNote:note}:r));
+    this.showToast('💰 Meal cost saved');
+  },
 
   openNotes(id){
     const r=this.data.find(x=>x.id===id);if(!r)return;
@@ -913,6 +946,7 @@ const A={
           <span style="color:${r.price==='$$$$'?'#7C3AED':r.price==='$$$'?'#B45309':r.price==='$$'?'#065F46':'var(--green)'}">${r.price}</span>
           <span style="color:var(--border)">·</span>${this._badge(r)}
           ${r.lastVisited?`<span style="color:var(--border)">·</span>${lastVisitedHTML(r)}`:''}
+          ${r.mealCost?`<span style="color:var(--border)">·</span><span class="meal-badge">$${r.mealCost}</span>`:''}
         </div>
         ${hoursStatusHTML(r,this.placesCache)?`<div class="li-hours">${hoursStatusHTML(r,this.placesCache)}</div>`:''}
       </div>
@@ -935,7 +969,7 @@ const A={
           <div class="li-img"><img src="${r.photo||FP(r)}" alt="${r.name}" onerror="this.src='${FPE(r.id)}'" loading="lazy"/></div>
           <div style="flex:1;min-width:0">
             <div class="li-name">${r.name}</div>
-            <div class="li-sub"><span>${r.cuisine}</span><span style="color:var(--border)">·</span><span>${r.price}</span><span style="color:var(--border)">·</span>${this._badge(r)}</div>
+            <div class="li-sub"><span>${r.cuisine}</span><span style="color:var(--border)">·</span><span>${r.price}</span><span style="color:var(--border)">·</span>${this._badge(r)}${r.mealCost?`<span style="color:var(--border)">·</span><span class="meal-badge">$${r.mealCost}</span>`:''}</div>
             ${hoursStatusHTML(r,this.placesCache)?`<div class="li-hours">${hoursStatusHTML(r,this.placesCache)}</div>`:''}
           </div>
           <div class="li-stars" style="color:var(--amber)">${r.rating?'★'.repeat(r.rating):'—'}</div>
@@ -958,6 +992,10 @@ const A={
     const tags=(r.tags||[]).map(t=>`<span class="chip">${t}</span>`).join('');
     const priceColor=r.price==='$$$$'?'#7C3AED':r.price==='$$$'?'#B45309':r.price==='$$'?'#065F46':'var(--green)';
     const adm=this.admin?`<div class="adm-row"><button class="btn-s" onclick="A.openModal(${r.id})">✏️ Edit</button><button class="btn-s btn-danger" onclick="A.del(${r.id})">🗑 Delete</button></div>`:'';
+    const mealSec=this.admin
+      ?`<div class="meal-sec"><div class="meal-lbl">💰 Meal for two</div><div class="meal-row"><input class="meal-cost-inp" id="mc-cost" type="number" min="0" step="1" placeholder="$0" value="${r.mealCost||''}"/><input class="meal-note-inp" id="mc-note" type="text" placeholder="What we got…" value="${r.mealNote?esc(r.mealNote):''}"/><button class="meal-save" onclick="A.saveMealCost(${r.id})">Save</button></div></div>`
+      :r.mealCost?`<div class="meal-sec"><div class="meal-lbl">💰 Meal for two</div><div class="meal-display">$${r.mealCost}${r.mealNote?' · '+esc(r.mealNote):''}</div></div>`
+      :'';
 
     dp.innerHTML=`
       ${mob?'<div class="drag-handle"><div class="drag-bar"></div></div>':''}
@@ -992,6 +1030,7 @@ const A={
           <div class="notes-lbl">Notes</div>
           <div class="notes-txt${r.notes?'':' ph'}" onclick="A.openNotes(${r.id})">${r.notes||'Tap to add your notes…'}</div>
         </div>
+        ${mealSec}
         <div class="acts">
           <a class="btn-p" href="${maps}" target="_blank" rel="noopener">🗺 Directions</a>
           ${(()=>{
@@ -1049,6 +1088,10 @@ const A={
         <div class="fr2" style="margin-bottom:0"><input class="fi" id="f-lat" type="number" step="any" value="${d.lat||30.267}" placeholder="Lat"/><input class="fi" id="f-lng" type="number" step="any" value="${d.lng||-97.743}" placeholder="Lng"/></div>
       </div>
       <div class="fg"><label class="fl">Notes</label><textarea class="fi ft" id="f-notes">${d.notes||''}</textarea></div>
+      <div class="fr2">
+        <div><label class="fl">Meal Cost (for two) <span style="color:var(--border)">$</span></label><input class="fi" id="f-mealcost" type="number" min="0" step="1" value="${d.mealCost||''}" placeholder="e.g. 75"/></div>
+        <div><label class="fl">Meal Note <span style="color:var(--border)">(optional)</span></label><input class="fi" id="f-mealnote" value="${d.mealNote||''}" placeholder="What we got…"/></div>
+      </div>
       <div class="m-btns">
         <button class="m-cancel" onclick="A.closeModal()">Cancel</button>
         <button class="m-save" onclick="A.saveModal()">📍 ${r?'Save Changes':'Pin to Map'}</button>
@@ -1089,6 +1132,8 @@ const A={
       lng:parseFloat(document.getElementById('f-lng').value)||-97.743,
       photo:document.getElementById('f-photo').value||'',
       lastVisited:document.getElementById('f-lastvisited').value||'',
+      mealCost:parseFloat(document.getElementById('f-mealcost').value)||null,
+      mealNote:document.getElementById('f-mealnote').value.trim(),
     };
     if(this._prefillPlaceId&&!obj.googlePlaceId)obj.googlePlaceId=this._prefillPlaceId;
     const next=this.eid?this.data.map(x=>x.id===this.eid?obj:x):[...this.data,obj];
@@ -1128,6 +1173,10 @@ const A={
     document.getElementById('fil-rating').addEventListener('change',e=>{
       this.ratingFilter=parseInt(e.target.value)||0;this.sel=null;
       e.target.classList.toggle('on',this.ratingFilter>0);this.render();
+    });
+    document.getElementById('fil-spend').addEventListener('change',e=>{
+      this.spendFilter=e.target.value;this.sel=null;
+      e.target.classList.toggle('on',!!e.target.value);this.render();
     });
     document.getElementById('res-date').addEventListener('change',e=>{
       this.resDate=e.target.value;this.renderDetail();
