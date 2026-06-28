@@ -132,6 +132,10 @@ select option{background:white}
   font-size:10px;font-weight:600;padding:1px 6px;border-radius:20px;
   background:#FFF7ED;color:#C2410C;
 }
+.sv-badge{
+  font-size:10px;font-weight:600;padding:1px 6px;border-radius:20px;
+  background:var(--bg-2,#F5F3F0);color:var(--muted);
+}
 
 /* ── MAP ── */
 #mc{flex:1;position:relative;overflow:hidden}
@@ -190,6 +194,7 @@ select option{background:white}
 }
 .status-toggle.vis{background:var(--green-light);color:var(--green)}
 .status-toggle.wl{background:#FFF7ED;color:#C2410C}
+.status-toggle.sv{background:var(--bg-2,#F5F3F0);color:var(--muted)}
 .dp-addr{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.4}
 .dp-lastvisited{font-size:12px;font-weight:600;margin:-8px 0 14px}
 .last-visited{font-size:inherit;font-weight:inherit}
@@ -382,6 +387,7 @@ select option{background:white}
   <button class="pill on" data-f="all">All</button>
   <button class="pill" data-f="visited">✓ Visited</button>
   <button class="pill" data-f="wishlist">♡ Wishlist</button>
+  <button class="pill" data-f="saved">· Saved</button>
   <div class="bar-div"></div>
   <select class="bar-sel" id="fil-cuisine"><option value="">Cuisine</option></select>
   <select class="bar-sel" id="fil-price">
@@ -675,6 +681,7 @@ const A={
     return this.data.filter(r=>{
       if(this.filter==='visited'&&r.status!=='visited')return false;
       if(this.filter==='wishlist'&&r.status!=='wishlist')return false;
+      if(this.filter==='saved'&&r.status!=='saved')return false;
       if(this.cuisineFilter&&r.cuisine!==this.cuisineFilter)return false;
       if(this.priceFilter&&r.price!==this.priceFilter)return false;
       if(this.ratingFilter>0&&(r.rating||0)<this.ratingFilter)return false;
@@ -788,7 +795,11 @@ const A={
 
   // ── Quick actions
   rate(id,v){this._upd(this.data.map(r=>r.id===id?{...r,rating:v}:r));this.renderDetail();this._drawMarkers()},
-  toggleSt(id){this._upd(this.data.map(r=>r.id===id?{...r,status:r.status==='visited'?'wishlist':'visited'}:r));this.renderDetail();this.renderList();this.renderMobList()},
+  toggleSt(id){
+    const cycle={visited:'saved',wishlist:'visited',saved:'wishlist'};
+    this._upd(this.data.map(r=>r.id===id?{...r,status:cycle[r.status]||'wishlist'}:r));
+    this.renderDetail();this.renderList();this.renderMobList();
+  },
   del(id){if(!confirm('Delete this restaurant?'))return;this._upd(this.data.filter(r=>r.id!==id));this.sel=null;this.render()},
   editSpend(id){
     const r=this.data.find(x=>x.id===id);if(!r)return;
@@ -827,7 +838,9 @@ const A={
   _badge(r){
     return r.status==='visited'
       ?'<span class="vis-badge">✓ Visited</span>'
-      :'<span class="wl-badge">♡ Wishlist</span>';
+      :r.status==='wishlist'
+      ?'<span class="wl-badge">♡ Wishlist</span>'
+      :'<span class="sv-badge">· Saved</span>';
   },
 
   _liHTML(r){
@@ -897,8 +910,8 @@ const A={
       <div class="dp-body">
         <div class="dp-toprow">
           <span class="dp-cuisine">${r.cuisine}</span>
-          <button class="status-toggle ${r.status==='visited'?'vis':'wl'}" onclick="A.toggleSt(${r.id})">
-            ${r.status==='visited'?'✓ Visited':'♡ Wishlist'}
+          <button class="status-toggle ${r.status==='visited'?'vis':r.status==='wishlist'?'wl':'sv'}" onclick="A.toggleSt(${r.id})">
+            ${r.status==='visited'?'✓ Visited':r.status==='wishlist'?'♡ Wishlist':'· Saved'}
           </button>
         </div>
         <div class="dp-addr">📍 ${r.address}</div>
@@ -940,7 +953,7 @@ const A={
     const d=r||pf||{};
     this.eid=id??null;this.sp=r?.rating??0;
     const opt=(arr,v)=>arr.map(o=>`<option${o===v?' selected':''}>${o}</option>`).join('');
-    const defStatus=d.status||(pf?'wishlist':'visited');
+    const defStatus=d.status||(pf?'wishlist':'saved');
     document.getElementById('mod').innerHTML=`
       <div class="m-handle"><div class="m-handle-bar"></div></div>
       <div class="m-ttl">${r?'Edit':'Add'} <span>${r?r.name:'Restaurant'}</span></div>
@@ -952,7 +965,7 @@ const A={
       <div class="fg"><label class="fl">Address</label><input class="fi" id="f-addr" value="${d.address||''}" placeholder="Street, Austin TX"/></div>
       <div class="fr3">
         <div><label class="fl">Price</label><select class="fs" id="f-price">${opt(PRICE,d.price||'$$')}</select></div>
-        <div><label class="fl">Status</label><select class="fs" id="f-status"><option value="visited"${defStatus==='visited'?' selected':''}>Visited</option><option value="wishlist"${defStatus==='wishlist'?' selected':''}>Wishlist</option></select></div>
+        <div><label class="fl">Status</label><select class="fs" id="f-status"><option value="visited"${defStatus==='visited'?' selected':''}>Visited</option><option value="wishlist"${defStatus==='wishlist'?' selected':''}>Wishlist</option><option value="saved"${defStatus==='saved'?' selected':''}>Saved</option></select></div>
         <div><label class="fl">Emoji</label><input class="fi" id="f-emoji" value="${d.emoji||'🍽'}" maxlength="4" style="text-align:center;font-size:18px;padding:0 4px"/></div>
       </div>
       <div class="fg"><label class="fl">Last Visited <span style="color:var(--border)">(optional)</span></label><input class="fi" id="f-lastvisited" type="date" value="${d.lastVisited?d.lastVisited.slice(0,10):''}"/></div>
