@@ -387,7 +387,7 @@ select option{background:white}
   <button class="pill on" data-f="all">All</button>
   <button class="pill" data-f="visited">✓ Visited</button>
   <button class="pill" data-f="wishlist">♡ Wishlist</button>
-  <button class="pill" data-f="saved">· Saved</button>
+  <button class="pill" data-f="saved">Not Visited</button>
   <div class="bar-div"></div>
   <select class="bar-sel" id="fil-cuisine"><option value="">Cuisine</option></select>
   <select class="bar-sel" id="fil-price">
@@ -840,7 +840,7 @@ const A={
       ?'<span class="vis-badge">✓ Visited</span>'
       :r.status==='wishlist'
       ?'<span class="wl-badge">♡ Wishlist</span>'
-      :'<span class="sv-badge">· Saved</span>';
+      :'<span class="sv-badge">Not Visited</span>';
   },
 
   _liHTML(r){
@@ -911,7 +911,7 @@ const A={
         <div class="dp-toprow">
           <span class="dp-cuisine">${r.cuisine}</span>
           <button class="status-toggle ${r.status==='visited'?'vis':r.status==='wishlist'?'wl':'sv'}" onclick="A.toggleSt(${r.id})">
-            ${r.status==='visited'?'✓ Visited':r.status==='wishlist'?'♡ Wishlist':'· Saved'}
+            ${r.status==='visited'?'✓ Visited':r.status==='wishlist'?'♡ Wishlist':'Not Visited'}
           </button>
         </div>
         <div class="dp-addr">📍 ${r.address}</div>
@@ -965,7 +965,7 @@ const A={
       <div class="fg"><label class="fl">Address</label><input class="fi" id="f-addr" value="${d.address||''}" placeholder="Street, Austin TX"/></div>
       <div class="fr3">
         <div><label class="fl">Price</label><select class="fs" id="f-price">${opt(PRICE,d.price||'$$')}</select></div>
-        <div><label class="fl">Status</label><select class="fs" id="f-status"><option value="visited"${defStatus==='visited'?' selected':''}>Visited</option><option value="wishlist"${defStatus==='wishlist'?' selected':''}>Wishlist</option><option value="saved"${defStatus==='saved'?' selected':''}>Saved</option></select></div>
+        <div><label class="fl">Status</label><select class="fs" id="f-status"><option value="visited"${defStatus==='visited'?' selected':''}>Visited</option><option value="wishlist"${defStatus==='wishlist'?' selected':''}>Wishlist</option><option value="saved"${defStatus==='saved'?' selected':''}>Not Visited</option></select></div>
         <div><label class="fl">Emoji</label><input class="fi" id="f-emoji" value="${d.emoji||'🍽'}" maxlength="4" style="text-align:center;font-size:18px;padding:0 4px"/></div>
       </div>
       <div class="fg"><label class="fl">Last Visited <span style="color:var(--border)">(optional)</span></label><input class="fi" id="f-lastvisited" type="date" value="${d.lastVisited?d.lastVisited.slice(0,10):''}"/></div>
